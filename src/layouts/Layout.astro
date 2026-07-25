@@ -21,7 +21,7 @@ const {
   structuredData = [],
 } = Astro.props;
 
-const SITE_URL = 'https://aidriven.academy';
+const SITE_URL = 'https://kairn.academy';
 const canonicalURL = new URL(path, SITE_URL).toString();
 const ogImageURL = new URL(ogImage, SITE_URL).toString();
 
@@ -29,13 +29,13 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   '@id': `${SITE_URL}/#organization`,
-  name: 'AI Driven Academy',
+  name: 'kairn.academy',
   url: SITE_URL,
   logo: `${SITE_URL}/assets/icon-orange.png`,
   image: ogImageURL,
   description:
     "Organisme de formation et conseil qui apporte aux équipes product & tech une méthode de développement assisté par IA (Spec-Driven Development), du Discovery à la Delivery.",
-  email: 'nicolas@thegreencompagnon.com',
+  email: 'contact@kairn.academy',
   areaServed: 'FR',
   knowsAbout: [
     'Spec-Driven Development',
@@ -80,7 +80,7 @@ const jsonLdBlocks = [organizationSchema, ...structuredData];
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="AI Driven Academy" />
+    <meta property="og:site_name" content="kairn.academy" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />

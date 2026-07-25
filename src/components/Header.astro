@@ -7,8 +7,8 @@ const { active } = Astro.props;
 ---
 <header style="display: flex; align-items: center; gap: 32px; padding: 22px 64px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0px; background: rgba(26, 1, 22, 0.92); backdrop-filter: blur(8px); z-index: 50; color: rgb(255, 255, 255);">
   <a href="/" style="display: flex; align-items: center; gap: 12px; color: rgb(255, 255, 255);">
-    <img src="/assets/icon-orange.png" alt="AI Driven Academy" width="34" height="34" style="width: 34px; height: 34px; border-radius: 9px; display: block;" />
-    <span style="font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em;">AI Driven Academy</span>
+    <img src="/assets/icon-orange.png" alt="kairn.academy" width="34" height="34" style="width: 34px; height: 34px; border-radius: 9px; display: block;" />
+    <span style="font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em;">kairn.academy</span>
   </a>
   <nav class="m-hide" style="display: flex; gap: 28px; margin-left: auto; font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.78);">
     <a href="/" style={active === 'accueil' ? 'color: rgb(255, 255, 255); border-bottom: 2px solid var(--orange-500); padding-bottom: 2px;' : 'color: inherit;'}>Accueil</a>
@@ -18,8 +18,8 @@ const { active } = Astro.props;
     ? 'font-size: 12.5px; color: rgb(255, 255, 255); border-left: 1px solid rgba(255, 255, 255, 0.15); padding-left: 28px;'
     : 'font-size: 12.5px; color: rgba(255, 255, 255, 0.55); border-left: 1px solid rgba(255, 255, 255, 0.15); padding-left: 28px;'}>
     {active === 'studio'
-      ? <span style="border-bottom: 2px solid var(--orange-500); padding-bottom: 2px;">AI Academy Studio - Partners</span>
-      : 'AI Academy Studio - Partners'}
+      ? <span style="border-bottom: 2px solid var(--orange-500); padding-bottom: 2px;">Kairn Studio - Partners</span>
+      : 'Kairn Studio - Partners'}
   </a>
   <a href="/contact" class="btn-orange m-hide" style="background: var(--orange-500); color: rgb(255, 255, 255); font-weight: 600; font-size: 14.5px; padding: 12px 22px; border-radius: 10px;">Cadrer votre besoin</a>
 
@@ -32,14 +32,14 @@ const { active } = Astro.props;
 
 <div class="mobile-menu-overlay" id="mobile-menu">
   <div style="display: flex; align-items: center; gap: 10px;">
-    <img src="/assets/icon-orange.png" alt="AI Driven Academy" width="32" height="32" style="width: 32px; height: 32px; border-radius: 9px; display: block;" />
-    <span style="font-family: var(--font-display); font-weight: 700; font-size: 16.5px;">AI Driven Academy</span>
+    <img src="/assets/icon-orange.png" alt="kairn.academy" width="32" height="32" style="width: 32px; height: 32px; border-radius: 9px; display: block;" />
+    <span style="font-family: var(--font-display); font-weight: 700; font-size: 16.5px;">kairn.academy</span>
     <button type="button" class="menu-close" id="menu-close" aria-label="Fermer">×</button>
   </div>
   <nav>
     <a href="/" class:list={{ 'is-active': active === 'accueil' }}>Accueil{active === 'accueil' && <span style="color: var(--orange-500);"> ·</span>}</a>
     <a href="/offre" class:list={{ 'is-active': active === 'formations' }}>Nos formations{active === 'formations' && <span style="color: var(--orange-500);"> ·</span>}</a>
-    <a href="/studio" class:list={{ 'is-active': active === 'studio' }}>AI Academy Studio{active === 'studio' && <span style="color: var(--orange-500);"> ·</span>}</a>
+    <a href="/studio" class:list={{ 'is-active': active === 'studio' }}>Kairn Studio{active === 'studio' && <span style="color: var(--orange-500);"> ·</span>}</a>
   </nav>
   <a href="/contact" class="menu-cta">Cadrer votre besoin</a>
 </div>

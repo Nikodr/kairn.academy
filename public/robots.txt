@@ -1,4 +1,4 @@
-# AI Driven Academy - robots.txt
+# kairn.academy - robots.txt
 
 User-agent: *
 Allow: /
@@ -32,4 +32,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://aidriven.academy/sitemap-index.xml
+Sitemap: https://kairn.academy/sitemap-index.xml

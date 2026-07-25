@@ -1,19 +1,19 @@
-# AI Driven Academy
+# kairn.academy
 
 > Organisme de formation et de conseil qui apporte aux équipes product & tech une méthode de développement assisté par IA (Spec-Driven Development), du Discovery à la Delivery. Conçue et portée par un CPO (Nicolas Drouet) et un CTO (Aurélien Binder-Meunier).
 
-AI Driven Academy structure le passage de l'intention produit au code livré en production à l'aide d'agents IA, à travers une méthode en trois temps : avant la spec (analyse de marché, retours utilisateurs), la spec (prd.md → feature-spec.md → plan.md → code), et après le code (review, tests, observabilité).
+kairn.academy structure le passage de l'intention produit au code livré en production à l'aide d'agents IA, à travers une méthode en trois temps : avant la spec (analyse de marché, retours utilisateurs), la spec (prd.md → feature-spec.md → plan.md → code), et après le code (review, tests, observabilité).
 
 Marché : France, B2B, équipes product & engineering.
 
 ## Pages
 
-- [Accueil](https://aidriven.academy/): présentation de la méthode Spec-Driven Development, du constat de départ (qualité qui baisse, product/engineering qui ne se comprennent plus, consommation de tokens sans valeur livrée) aux études de cas et à l'équipe fondatrice.
-- [Nos formations](https://aidriven.academy/offre): détail des quatre formats — Formations initiales (modules unitaires, modules regroupés ou cohorte distancielle), Kickstart Spec Driven (3 jours d'accompagnement embarqué sur un projet réel), Atelier Transfo IA (1 journée, équipes produit et dev réunies), BBL récurrent (sessions courtes récurrentes).
-- [Cadrer votre besoin](https://aidriven.academy/contact): formulaire de contact et prise de rendez-vous.
-- AI Academy Studio (page partenaires, non indexée): offre de formation IA en marque blanche pour ESN, cabinets de conseil et communautés.
+- [Accueil](https://kairn.academy/): présentation de la méthode Spec-Driven Development, du constat de départ (qualité qui baisse, product/engineering qui ne se comprennent plus, consommation de tokens sans valeur livrée) aux études de cas et à l'équipe fondatrice.
+- [Nos formations](https://kairn.academy/offre): détail des quatre formats — Formations initiales (modules unitaires, modules regroupés ou cohorte distancielle), Kickstart Spec Driven (3 jours d'accompagnement embarqué sur un projet réel), Atelier Transfo IA (1 journée, équipes produit et dev réunies), BBL récurrent (sessions courtes récurrentes).
+- [Cadrer votre besoin](https://kairn.academy/contact): formulaire de contact et prise de rendez-vous.
+- Kairn Studio (page partenaires, non indexée): offre de formation IA en marque blanche pour ESN, cabinets de conseil et communautés.
 
 ## Contact
 
-- Email: nicolas@thegreencompagnon.com
+- Email: contact@kairn.academy
 - Financement: OPCO possible sur l'ensemble des formats.
