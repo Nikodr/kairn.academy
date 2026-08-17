@@ -50,9 +50,9 @@ const courseSchema = {
       position: 4,
       item: {
         '@type': 'Course',
-        name: 'Lunch & Learn récurrent',
+        name: 'AI Kata récurrent',
         description:
-          "Sessions courtes et récurrentes pour entretenir la dynamique des équipes après le parcours de formation.",
+          "Sessions courtes de 1h à 1h30 : démo d'un intervenant externe sur un sujet opérationnel précis, suivie d'exercices pratiques.",
         provider: { '@id': `${SITE_URL}/#organization` },
       },
     },
@@ -69,8 +69,8 @@ const breadcrumbSchema = {
 };
 ---
 <Layout
-  title="Formations IA : Kickstart, Ateliers, Lunch & Learn | kairn.academy"
-  description="Quatre formats de formation en IA pour équipes tech & produit : formations initiales, Kickstart Spec Driven, ateliers collectifs, Lunch & Learn récurrent."
+  title="Formations IA : Kickstart, Ateliers, AI Kata | kairn.academy"
+  description="Quatre formats de formation en IA pour équipes tech & produit : formations initiales, Kickstart Spec Driven, ateliers collectifs, AI Kata récurrent."
   path="/offre"
   structuredData={[courseSchema, breadcrumbSchema]}
 >
@@ -115,9 +115,9 @@ const breadcrumbSchema = {
               <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11.5px; color: rgba(255, 255, 255, 0.55);">collectif</span>
             </a>
             <span style="font-family: var(--font-mono); font-size: 12px; color: var(--orange-500); margin: 3px 0px 3px 18px;">↓</span>
-            <a href="#bbl" class="m-parcours-link" style="display: flex; align-items: center; gap: 16px; padding: 13px 16px; border: 1px solid rgba(255, 255, 255, 0.13); border-radius: 10px; background: rgba(255, 255, 255, 0.03);">
+            <a href="#ai-kata" class="m-parcours-link" style="display: flex; align-items: center; gap: 16px; padding: 13px 16px; border: 1px solid rgba(255, 255, 255, 0.13); border-radius: 10px; background: rgba(255, 255, 255, 0.03);">
               <span style="font-family: var(--font-mono); font-size: 12px; color: var(--orange-500); flex: none;">04</span>
-              <span style="font-family: var(--font-display); font-weight: 700; font-size: 16.5px; color: rgb(255, 255, 255);">Lunch & learn</span>
+              <span style="font-family: var(--font-display); font-weight: 700; font-size: 16.5px; color: rgb(255, 255, 255);">AI Kata</span>
               <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11.5px; color: rgba(255, 255, 255, 0.55);">récurrent</span>
             </a>
           </div>
@@ -128,7 +128,7 @@ const breadcrumbSchema = {
         { label: '01 FORMATIONS', href: '#formations' },
         { label: '02 KICKSTART', href: '#kickstart' },
         { label: '03 ATELIER TRANSFO', href: '#atelier' },
-        { label: '04 LUNCH & LEARN', href: '#bbl' },
+        { label: '04 AI KATA', href: '#ai-kata' },
         { label: 'VOS PRATIQUES', active: true },
       ]} />
     </div>
@@ -136,9 +136,9 @@ const breadcrumbSchema = {
     <!-- Format 01 -->
     <div id="formations" class="m-section" style="background: rgb(255, 255, 255); padding: 96px 64px;">
       <div class="m-kicker" style="font-weight: 700; font-size: 13px; letter-spacing: 0.18em; color: var(--orange-700); margin-bottom: 18px;">FORMAT 01</div>
-      <div class="g-stack" style="display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: end; margin-bottom: 44px;">
+      <div style="margin-bottom: 44px;">
         <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px; text-wrap: balance;">Formations initiales</h2>
-        <p class="m-body-lg" style="margin: 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600);">Deux parcours distincts, animés par des formateurs différents : un pour vos équipes de développement, un pour vos équipes produit.</p>
+        <p class="m-body-lg" style="margin: 18px 0px 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600); max-width: 900px;">Deux parcours distincts, animés par des formateurs différents : un pour vos équipes de développement, un pour vos équipes produit, le tout parfaitement alignés pour garantir une pratique cohérente du Discovery à la Delivery.</p>
       </div>
       <p class="m-body-lg" style="margin: 0px 0px 32px; font-size: 16px; line-height: 1.65; color: var(--plum-600); max-width: 900px; text-wrap: pretty;">Chacun couvre la méthode sur son terrain, de l'analyse de marché et des retours utilisateurs jusqu'au code produit avec des agents, avant que les deux se rejoignent sur vos projets.</p>
       <div class="g-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px;">
@@ -218,9 +218,9 @@ const breadcrumbSchema = {
     <!-- Format 03 -->
     <div id="atelier" class="m-section" style="background: rgb(255, 255, 255); padding: 96px 64px;">
       <div class="m-kicker" style="font-weight: 700; font-size: 13px; letter-spacing: 0.18em; color: var(--orange-700); margin-bottom: 18px;">FORMAT 03</div>
-      <div class="g-stack" style="display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: end; margin-bottom: 36px;">
+      <div style="margin-bottom: 36px;">
         <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px; text-wrap: balance;">Atelier Transfo IA</h2>
-        <p class="m-body-lg" style="margin: 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600);">C'est le moment où la méthode cesse d'être l'affaire de chaque équipe pour devenir celle de l'organisation.</p>
+        <p class="m-body-lg" style="margin: 18px 0px 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600); max-width: 860px;">C'est le moment où la méthode cesse d'être l'affaire de chaque équipe pour devenir celle de l'organisation.</p>
       </div>
       <p class="m-body-lg" style="margin: 0px 0px 28px; font-size: 16.5px; line-height: 1.65; color: var(--plum-600); max-width: 860px; text-wrap: pretty;">Une journée d'atelier collectif où vos équipes produit et développement travaillent ensemble, sur les mêmes cas, avec le même vocabulaire.</p>
       <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 28px;">
@@ -235,13 +235,13 @@ const breadcrumbSchema = {
     </div>
 
     <!-- Format 04 -->
-    <div id="bbl" class="m-section" style="background: var(--plum-50); padding: 96px 64px; border-top: 1px solid var(--plum-200); border-bottom: 1px solid var(--plum-200);">
+    <div id="ai-kata" class="m-section" style="background: var(--plum-50); padding: 96px 64px; border-top: 1px solid var(--plum-200); border-bottom: 1px solid var(--plum-200);">
       <div class="m-kicker" style="font-weight: 700; font-size: 13px; letter-spacing: 0.18em; color: var(--orange-700); margin-bottom: 18px;">FORMAT 04</div>
-      <div class="g-stack" style="display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: end; margin-bottom: 28px;">
-        <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px; text-wrap: balance;">Lunch & Learn récurrent</h2>
-        <p class="m-body-lg" style="margin: 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600);">Format court récurrent, sur site ou à distance, au rythme qui convient à vos équipes.</p>
+      <div style="margin-bottom: 28px;">
+        <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px; text-wrap: balance;">AI Kata</h2>
+        <p class="m-body-lg" style="margin: 18px 0px 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600); max-width: 860px;">Une session courte, récurrente, sur site ou à distance, au rythme qui convient à vos équipes.</p>
       </div>
-      <p class="m-body-lg" style="margin: 0px; font-size: 16.5px; line-height: 1.65; color: var(--plum-600); max-width: 860px; text-wrap: pretty;">Des sessions courtes et régulières pour entretenir la dynamique après le parcours : un sujet, un cas d'usage, à chaque fois. Les pratiques évoluent vite ; ce format maintient vos équipes à jour sans mobiliser des journées entières.</p>
+      <p class="m-body-lg" style="margin: 0px; font-size: 16.5px; line-height: 1.65; color: var(--plum-600); max-width: 860px; text-wrap: pretty;">Chaque AI Kata dure 1h à 1h30 : une démo animée par un intervenant externe sur un sujet précis et opérationnel, suivie d'exercices pour ancrer l'apprentissage. Vos collaborateurs progressent aux côtés de leurs pairs, dans des entreprises confrontées aux mêmes enjeux.</p>
     </div>
 
     <!-- Synthèse -->
@@ -274,8 +274,8 @@ const breadcrumbSchema = {
           <span data-label="POUR QUI" style="font-size: 14.5px; color: rgba(255, 255, 255, 0.72);">Jusqu'à 24 participants, produit et dev réunis</span>
         </div>
         <div class="table-row-dark m-table-row m-table-row--dark" style="display: grid; grid-template-columns: 1.2fr 1.4fr 1fr 1.3fr; gap: 24px; padding: 22px 32px; align-items: baseline;">
-          <span style="font-family: var(--font-display); font-weight: 700; font-size: 17px; color: rgb(255, 255, 255);">Lunch & Learn récurrent</span>
-          <span data-label="DURÉE" style="font-size: 14.5px; color: rgba(255, 255, 255, 0.72);">Sessions courtes récurrentes</span>
+          <span style="font-family: var(--font-display); font-weight: 700; font-size: 17px; color: rgb(255, 255, 255);">AI Kata récurrent</span>
+          <span data-label="DURÉE" style="font-size: 14.5px; color: rgba(255, 255, 255, 0.72);">1h à 1h30, sessions récurrentes</span>
           <span data-label="MODALITÉ" style="font-size: 14.5px; color: rgba(255, 255, 255, 0.72);">Présentiel ou distanciel</span>
           <span data-label="POUR QUI" style="font-size: 14.5px; color: rgba(255, 255, 255, 0.72);">Toutes vos équipes formées</span>
         </div>
