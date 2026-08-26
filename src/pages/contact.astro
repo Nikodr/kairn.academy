@@ -17,13 +17,13 @@ const breadcrumbSchema = {
 const contactPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Cadrer votre besoin — kairn.academy',
+  name: 'Cadrer votre besoin - kairn.academy',
   url: `${SITE_URL}/contact`,
   about: { '@id': `${SITE_URL}/#organization` },
 };
 ---
 <Layout
-  title="Cadrer votre besoin — Contact | kairn.academy"
+  title="Cadrer votre besoin - Contact | kairn.academy"
   description="Décrivez-nous vos équipes et votre contexte. Nous revenons vers vous avec le format de formation IA adapté, du module d'une demi-journée au parcours complet."
   path="/contact"
   structuredData={[breadcrumbSchema, contactPageSchema]}
@@ -36,7 +36,7 @@ const contactPageSchema = {
     <div class="bg-dots m-section-tight" style="color: rgb(255, 255, 255); padding: 72px 64px 64px;">
       <div class="m-terminal" style="font-family: var(--font-mono); font-size: 15px; color: var(--orange-500); margin-bottom: 24px;">Décrivez-nous votre contexte<span style="display: inline-block; width: 10px; height: 19px; background: var(--orange-500); vertical-align: -3px; margin-left: 7px; animation: 1.1s step-end 0s infinite normal none running ada-blink;"></span></div>
       <h1 class="m-h1" style="font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1.06; letter-spacing: -0.025em; margin: 0px; color: rgb(255, 255, 255); max-width: 900px; text-wrap: balance;">Cadrer votre besoin</h1>
-      <p class="m-body-lg" style="margin: 22px 0px 0px; font-size: 17px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 700px; text-wrap: pretty;">Décrivez-nous vos équipes, vos projets en cours et là où ça coince. Nous revenons vers vous avec le format ou la combinaison adaptée — pas de séquence commerciale, une lecture attentive et une réponse argumentée.</p>
+      <p class="m-body-lg" style="margin: 22px 0px 0px; font-size: 17px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 700px; text-wrap: pretty;">Décrivez-nous vos équipes, vos projets en cours et là où ça coince. Nous revenons vers vous avec le format ou la combinaison adaptée - pas de séquence commerciale, une lecture attentive et une réponse argumentée.</p>
     </div>
 
     <div class="m-section" style="background: rgb(255, 255, 255); padding: 80px 64px 96px;">
@@ -52,11 +52,11 @@ const contactPageSchema = {
               <span class="field-error" data-error-for="f-email" style="display: none; font-size: 13px; color: #C0392B;"></span>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <label for="f-tel" style="font-weight: 700; font-size: 14.5px;">Votre téléphone <span style="font-weight: 500; color: var(--plum-500);">— optionnel</span></label>
+              <label for="f-tel" style="font-weight: 700; font-size: 14.5px;">Votre téléphone <span style="font-weight: 500; color: var(--plum-500);">- optionnel</span></label>
               <input id="f-tel" name="tel" type="tel" placeholder="06 12 34 56 78" style="font-family: Figtree, system-ui, sans-serif; font-size: 15.5px; padding: 14px 16px; border: 1px solid var(--plum-200); border-radius: 10px; background: rgb(255, 255, 255); color: var(--plum-900); outline: none;" />
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <label for="f-contexte" style="font-weight: 700; font-size: 14.5px;">Votre contexte <span style="font-weight: 500; color: var(--plum-500);">— vos équipes, vos projets en cours, ce qui coince</span></label>
+              <label for="f-contexte" style="font-weight: 700; font-size: 14.5px;">Votre contexte <span style="font-weight: 500; color: var(--plum-500);">- vos équipes, vos projets en cours, ce qui coince</span></label>
               <textarea id="f-contexte" name="contexte" required rows="5" placeholder="Deux ou trois phrases suffisent." style="font-family: Figtree, system-ui, sans-serif; font-size: 15.5px; line-height: 1.6; padding: 14px 16px; border: 1px solid var(--plum-200); border-radius: 10px; background: rgb(255, 255, 255); color: var(--plum-900); outline: none; resize: vertical;"></textarea>
               <span class="field-error" data-error-for="f-contexte" style="display: none; font-size: 13px; color: #C0392B;"></span>
             </div>
@@ -159,8 +159,8 @@ const contactPageSchema = {
           },
           body: JSON.stringify({
             access_key: '1476d813-26e1-41bd-9633-327c6b703cae',
-            subject: 'Nouveau message — formulaire de contact kairn.academy',
-            from_name: 'kairn.academy — Formulaire de contact',
+            subject: 'Nouveau message - formulaire de contact kairn.academy',
+            from_name: 'kairn.academy - Formulaire de contact',
             email: emailInput.value.trim(),
             tel: telInput.value.trim(),
             contexte: contexteInput.value.trim(),
