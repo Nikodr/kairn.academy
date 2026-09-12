@@ -47,6 +47,56 @@ const faqs = [
     answer:
       "Un AI Kata est une session courte et récurrente de 1h à 1h30 : une démo animée par un intervenant externe sur un sujet précis et opérationnel, suivie d'exercices pour ancrer l'apprentissage, aux côtés de pairs d'entreprises confrontées aux mêmes enjeux.",
   },
+  {
+    question: "Qu'est-ce qu'une formation IA pour Product Manager ?",
+    answer:
+      "Une formation IA pour Product Manager apprend à intégrer l'intelligence artificielle dans la découverte, la priorisation, la rédaction des spécifications et le suivi de livraison. Elle combine maîtrise des outils, méthodes de cadrage, évaluation des résultats et collaboration efficace avec les équipes design et engineering.",
+  },
+  {
+    question: "Pourquoi un PM doit-il se former à l'intelligence artificielle ?",
+    answer:
+      "Un PM formé à l'IA peut mieux analyser les retours utilisateurs, accélérer la recherche, clarifier les besoins et produire des artefacts exploitables par les équipes et les agents IA. La formation permet surtout de conserver une exigence produit : pertinence, qualité, sécurité et valeur réellement livrée.",
+  },
+  {
+    question: 'Quels outils IA utiliser dans le métier de Product Manager ?',
+    answer:
+      "Les PM utilisent des outils d'IA générative pour synthétiser des entretiens, analyser un marché, explorer des hypothèses, rédiger un PRD ou préparer une feature spec. Leur efficacité dépend toutefois du contexte fourni, de consignes précises et d'une validation humaine systématique des livrables générés.",
+  },
+  {
+    question: "Comment l'IA aide-t-elle à rédiger des spécifications produit ?",
+    answer:
+      "L'IA aide le PM à structurer les besoins, expliciter les critères d'acceptation, identifier les cas limites et reformuler une spécification pour différents publics. Une formation IA PM apprend à produire des specs fiables, cohérentes et directement consommables par les développeurs comme par leurs agents IA.",
+  },
+  {
+    question: 'Une formation IA PM est-elle adaptée aux équipes produit et tech ?',
+    answer:
+      "Oui, une formation IA PM est particulièrement utile lorsqu'elle réunit product, design et engineering autour de cas concrets. Elle crée un langage commun, aligne les pratiques de discovery et de delivery, puis facilite la transmission entre PRD, spécifications fonctionnelles, plan technique, code et revue.",
+  },
+  {
+    question: 'Comment choisir une formation IA pour PM ?',
+    answer:
+      "Choisissez une formation IA pour PM centrée sur vos situations de travail, plutôt que sur de simples démonstrations d'outils. Privilégiez un format associant pratique, méthode, livrables réutilisables et accompagnement terrain. Vérifiez aussi qu'elle couvre la qualité, la gouvernance et la collaboration avec l'engineering.",
+  },
+  {
+    question: 'Qu\'est-ce qu\'une formation IA pour développeurs ?',
+    answer:
+      "Une formation IA pour développeurs apprend à travailler efficacement avec des agents de code : préparer le contexte à partir d'une spec, formuler des instructions précises, relire et valider le code généré, puis itérer jusqu'à un résultat testé et prêt pour la revue.",
+  },
+  {
+    question: 'Comment les développeurs utilisent-ils le Spec-Driven Development avec les agents IA ?',
+    answer:
+      "Les développeurs consomment les artefacts produits en amont (PRD, feature-spec, plan) pour cadrer précisément ce que l'agent doit produire. Cette structure limite les allers-retours, réduit la consommation de tokens et garantit que le code livré répond aux critères d'acceptation définis en amont.",
+  },
+  {
+    question: 'Quels outils IA utiliser au quotidien pour un développeur ?',
+    answer:
+      "Les développeurs combinent des agents de génération de code, des outils de revue automatisée et des environnements de tests pour fiabiliser la delivery. Leur efficacité dépend de la qualité du contexte fourni et d'une relecture humaine systématique avant mise en production.",
+  },
+  {
+    question: 'Comment une formation IA aide les développeurs à fiabiliser le code produit avec des agents ?',
+    answer:
+      "Une formation IA pour développeurs structure les pratiques de revue, de tests et d'évaluation du code généré par les agents. Elle couvre aussi l'observabilité et le monitoring nécessaires pour garantir qu'un code produit avec l'IA tient en production.",
+  },
 ];
 
 const faqSchema = {
@@ -63,7 +113,7 @@ const faqSchema = {
 };
 ---
 <Layout
-  title="Formation IA équipes produit & tech : Spec-Driven Development"
+  title="Formation IA équipes produit & dev : Spec-Driven Development"
   description="Formations en développement assisté par IA pour équipes product & tech, méthode Spec-Driven Development conçue par un CPO et un CTO. Financement OPCO possible."
   path="/"
   structuredData={[faqSchema]}
@@ -150,6 +200,7 @@ const faqSchema = {
         <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px; text-wrap: balance;">Une méthode qui couvre tout le cycle, pas seulement le code</h2>
         <p class="m-body-lg" style="margin: 0px; font-size: 16px; line-height: 1.6; color: var(--plum-600);">Le Spec-Driven Development structure le passage de la spec au code. Mais une spec ne vaut que par ce qui la précède, et un code ne vaut que par ce qui le suit. Notre méthode couvre les trois temps.</p>
       </div>
+      <p class="m-body" style="margin: 0px 0px 36px; font-size: 15.5px; line-height: 1.65; color: var(--plum-600); max-width: 860px;">Pour un product manager comme pour des développeurs, l'IA générative ne remplace ni la compréhension du besoin ni l'arbitrage : elle accélère la préparation, la synthèse et l'exploration. Le product manager augmenté (ou PM augmenté) sait préparer le contexte nécessaire aux agents, puis vérifier les résultats avec ses développeurs. Chaque PM dispose ainsi d'artefacts cohérents et de rituels de product management partagés avec son équipe. Une formation product manager ancre ces réflexes sur des cas réels ; une seconde session approfondit les pratiques communes entre PM et développeurs, du discovery à la delivery.</p>
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <div class="card-slide g-stack m-card-pad" style="display: grid; grid-template-columns: 340px 1fr; gap: 32px; align-items: center; border: 1px solid var(--plum-200); border-radius: 14px; padding: 26px 32px; background: rgb(255, 255, 255); box-shadow: rgba(63, 4, 52, 0.14) 0px 4px 24px;">
           <div style="font-family: var(--font-mono); font-size: 15px;"><span style="color: var(--orange-500);">▸</span> 01-avant-la-spec/</div>
