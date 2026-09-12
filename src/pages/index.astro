@@ -334,7 +334,7 @@ const faqSchema = {
     <div id="faq" class="m-section" style="background: var(--plum-50); padding: 96px 64px; border-top: 1px solid var(--plum-200); border-bottom: 1px solid var(--plum-200);">
       <div class="m-kicker" style="font-weight: 700; font-size: 13px; letter-spacing: 0.18em; color: var(--orange-700); margin-bottom: 18px;">FAQ</div>
       <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px 0px 44px; max-width: 720px; text-wrap: balance;">FAQ sur la formation IA</h2>
-      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 860px;">
+      <div class="g-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;">
         {faqs.map((faq) => (
           <details class="m-card-pad" style="border: 1px solid var(--plum-200); border-radius: 14px; padding: 22px 28px; background: rgb(255, 255, 255); box-shadow: rgba(63, 4, 52, 0.08) 0px 2px 8px;">
             <summary style="font-family: var(--font-display); font-weight: 700; font-size: 17px; cursor: pointer; color: var(--plum-900);">{faq.question}</summary>
