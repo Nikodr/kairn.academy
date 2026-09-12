@@ -5,11 +5,68 @@ import Footer from '../components/Footer.astro';
 import PipelineBar from '../components/PipelineBar.astro';
 import CtaBand from '../components/CtaBand.astro';
 import MobileStickyCta from '../components/MobileStickyCta.astro';
+
+const faqs = [
+  {
+    question: "Qu'est-ce qu'une formation IA ?",
+    answer:
+      "Une formation IA aide les équipes à comprendre, utiliser et déployer l'intelligence artificielle dans leurs métiers. Elle associe principes, outils et exercices concrets. Pour les organisations produit et tech, elle doit aussi structurer les pratiques : cadrage, rédaction de spécifications, développement assisté, tests et gouvernance.",
+  },
+  {
+    question: 'Quelle formation IA choisir pour son entreprise ?',
+    answer:
+      "Le choix dépend du rôle, du niveau et des objectifs opérationnels. Une formation IA efficace pour les équipes produit, design et engineering privilégie des cas réels, des outils déjà utilisés et une méthode partagée. Elle transforme l'apprentissage en livrables réutilisables plutôt qu'en simples démonstrations.",
+  },
+  {
+    question: "Comment se former à l'intelligence artificielle en équipe ?",
+    answer:
+      "Pour se former à l'intelligence artificielle, commencez par identifier les tâches, décisions ou étapes produit à améliorer. Alternez apports essentiels et mise en pratique sur vos projets. Les équipes progressent plus vite lorsqu'elles apprennent à préparer le contexte, formuler les instructions, évaluer les résultats et itérer.",
+  },
+  {
+    question: 'Pourquoi suivre une formation IA en entreprise ?',
+    answer:
+      "Une formation IA en entreprise aligne les métiers autour de cas d'usage prioritaires et de règles communes. Elle peut couvrir la découverte des outils génératifs, la qualité des données, la sécurité et le travail produit-tech. Les meilleurs formats alternent formation, atelier collectif, accompagnement terrain et suivi.",
+  },
+  {
+    question: 'Une formation IA peut-elle être financée par un OPCO ?',
+    answer:
+      "Oui, une formation IA peut, selon la situation de l'entreprise et les critères de son OPCO, faire l'objet d'un financement. Vérifiez l'éligibilité du programme, les modalités de prise en charge et les délais avant inscription. L'organisme de formation peut vous aider à préparer les éléments administratifs nécessaires.",
+  },
+  {
+    question: 'Qu\'est-ce que l\'offre "Kickstart Spec Driven" ?',
+    answer:
+      "Kickstart Spec Driven est un accompagnement embarqué de 3 jours auprès d'une équipe, pour lancer une démarche spec-driven sur un projet réel plutôt que sur un cas d'école. La méthode s'applique directement à votre code, vos specs et votre contexte, et peut se dérouler entièrement à distance.",
+  },
+  {
+    question: 'Qu\'est-ce qu\'un "Atelier Transfo IA" ?',
+    answer:
+      "L'Atelier Transfo IA est une journée d'atelier collectif où les équipes produit et développement travaillent ensemble sur les mêmes cas, avec le même vocabulaire. Il permet de diffuser à toute l'organisation ce qu'une équipe pilote a éprouvé sur le terrain lors d'un Kickstart.",
+  },
+  {
+    question: 'Qu\'est-ce qu\'un "AI Kata" ?',
+    answer:
+      "Un AI Kata est une session courte et récurrente de 1h à 1h30 : une démo animée par un intervenant externe sur un sujet précis et opérationnel, suivie d'exercices pour ancrer l'apprentissage, aux côtés de pairs d'entreprises confrontées aux mêmes enjeux.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 <Layout
-  title="Formation Spec-Driven Development & IA | kairn.academy"
+  title="Formation IA équipes produit & tech : Spec-Driven Development"
   description="Formations en développement assisté par IA pour équipes product & tech, méthode Spec-Driven Development conçue par un CPO et un CTO. Financement OPCO possible."
   path="/"
+  structuredData={[faqSchema]}
 >
   <div class="page-shell" style="background: rgb(255, 255, 255); color: var(--plum-900); min-width: 1240px;">
 
@@ -20,8 +77,8 @@ import MobileStickyCta from '../components/MobileStickyCta.astro';
       <div class="g-stack m-section-tight" style="display: grid; grid-template-columns: 1fr 440px; gap: 72px; align-items: center; padding: 96px 64px 76px;">
         <div>
           <div class="m-terminal" style="font-family: var(--font-mono); font-size: 15px; color: var(--orange-500); margin-bottom: 26px;">Vos équipes ont déjà les outils IA<span style="display: inline-block; width: 10px; height: 19px; background: var(--orange-500); vertical-align: -3px; margin-left: 7px; animation: 1.1s step-end 0s infinite normal none running ada-blink;"></span></div>
-          <h1 class="m-h1 m-h1--home" style="font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1.06; letter-spacing: -0.025em; margin: 0px; color: rgb(255, 255, 255); text-wrap: balance;">Notre académie leur apporte la méthode, <span style="color: var(--orange-500);">du Discovery à la Delivery.</span></h1>
-          <p class="m-body-lg" style="margin: 28px 0px 0px; font-size: 17px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 700px; text-wrap: pretty;">Une méthode commune, de l'analyse de marché et des retours utilisateurs jusqu'au code produit avec des agents IA, conçue et portée par un CPO et un CTO.</p>
+          <h1 class="m-h1 m-h1--home" style="font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1.06; letter-spacing: -0.025em; margin: 0px; color: rgb(255, 255, 255); text-wrap: balance;">Notre formation IA leur apporte la méthode, <span style="color: var(--orange-500);">du Discovery à la Delivery.</span></h1>
+          <p class="m-body-lg" style="margin: 28px 0px 0px; font-size: 17px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 700px; text-wrap: pretty;">Les formations IA et l'accompagnement de kairn.academy aident les équipes product et engineering à adopter l'IA dans leur quotidien, le développement assisté par IA (Spec-Driven Development), du discovery à la mise en production. Ils fournissent une méthode commune, des artefacts exploitables par les humains et les agents IA, et des pratiques concrètes pour améliorer qualité, vélocité et valeur livrée. Cette formation intelligence artificielle s'inscrit dans une logique de formation continue : elle aide les équipes à faire de l'intelligence artificielle un levier de delivery fiable.</p>
           <a href="/contact" class="btn-orange m-hide" style="display: inline-block; margin-top: 38px; background: var(--orange-500); color: rgb(255, 255, 255); font-weight: 700; font-size: 17px; padding: 18px 34px; border-radius: 12px;">Cadrer votre besoin</a>
         </div>
         <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.13); border-radius: 14px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.45) 0px 24px 60px;">
@@ -204,7 +261,7 @@ import MobileStickyCta from '../components/MobileStickyCta.astro';
       <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px 0px 44px; text-wrap: balance;">Qui forme vos équipes</h2>
       <div class="g-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
         <div class="g-stack" style="display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--plum-200); border-radius: 14px; overflow: hidden; background: rgb(255, 255, 255); box-shadow: rgba(63, 4, 52, 0.08) 0px 2px 8px;">
-          <img class="m-founder-photo" src="/assets/photo-aurelien.jpg" alt="Aurélien Binder-Meunier, fondateur CTO de kairn.academy" loading="lazy" decoding="async" width="200" height="220" style="width: 100%; height: 100%; min-height: 220px; object-fit: cover; display: block;" />
+          <img class="m-founder-photo" src="/assets/photo-aurelien-binder-meunier.jpg" alt="Aurélien Binder-Meunier, fondateur CTO de kairn.academy" loading="lazy" decoding="async" width="200" height="220" style="width: 100%; height: 100%; min-height: 220px; object-fit: cover; display: block;" />
           <div class="m-card-pad" style="padding: 30px 32px;">
             <h3 class="m-h3" style="font-family: var(--font-display); font-weight: 800; font-size: 25px; margin: 0px 0px 6px; letter-spacing: -0.01em;">Aurélien Binder-Meunier</h3>
             <div class="m-kicker" style="font-weight: 700; font-size: 12px; letter-spacing: 0.14em; color: var(--orange-700); margin-bottom: 16px;">FONDATEUR - CTO · ENGINEERING</div>
@@ -212,13 +269,27 @@ import MobileStickyCta from '../components/MobileStickyCta.astro';
           </div>
         </div>
         <div class="g-stack" style="display: grid; grid-template-columns: 200px 1fr; border: 1px solid var(--plum-200); border-radius: 14px; overflow: hidden; background: rgb(255, 255, 255); box-shadow: rgba(63, 4, 52, 0.08) 0px 2px 8px;">
-          <img class="m-founder-photo" src="/assets/photo-nicolas.jpg" alt="Nicolas Drouet, fondateur CPO de kairn.academy" loading="lazy" decoding="async" width="200" height="220" style="width: 100%; height: 100%; min-height: 220px; object-fit: cover; display: block;" />
+          <img class="m-founder-photo" src="/assets/photo-nicolas-drouet.jpg" alt="Nicolas Drouet, fondateur CPO de kairn.academy" loading="lazy" decoding="async" width="200" height="220" style="width: 100%; height: 100%; min-height: 220px; object-fit: cover; display: block;" />
           <div class="m-card-pad" style="padding: 30px 32px;">
             <h3 class="m-h3" style="font-family: var(--font-display); font-weight: 800; font-size: 25px; margin: 0px 0px 6px; letter-spacing: -0.01em;">Nicolas Drouet</h3>
             <div class="m-kicker" style="font-weight: 700; font-size: 12px; letter-spacing: 0.14em; color: var(--orange-700); margin-bottom: 16px;">FONDATEUR - CPO · STRATÉGIE PRODUIT</div>
             <p class="m-body" style="margin: 0px; font-size: 15px; line-height: 1.6; color: var(--plum-600);">Ex-CPO chez Kiliba (Startup IA, 7M levé), ex Senior PM Red Hat & Head of presales Ericsson. Sparring partner des dirigeants tech sur la gouvernance IA. Fondateur de The Green Compagnon, communauté de 250+ experts du numérique responsable et centre de formation.</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" class="m-section" style="background: var(--plum-50); padding: 96px 64px; border-top: 1px solid var(--plum-200); border-bottom: 1px solid var(--plum-200);">
+      <div class="m-kicker" style="font-weight: 700; font-size: 13px; letter-spacing: 0.18em; color: var(--orange-700); margin-bottom: 18px;">FAQ</div>
+      <h2 class="m-h2" style="font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; margin: 0px 0px 44px; max-width: 720px; text-wrap: balance;">FAQ sur la formation IA</h2>
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 860px;">
+        {faqs.map((faq) => (
+          <details class="m-card-pad" style="border: 1px solid var(--plum-200); border-radius: 14px; padding: 22px 28px; background: rgb(255, 255, 255); box-shadow: rgba(63, 4, 52, 0.08) 0px 2px 8px;">
+            <summary style="font-family: var(--font-display); font-weight: 700; font-size: 17px; cursor: pointer; color: var(--plum-900);">{faq.question}</summary>
+            <p class="m-body" style="margin: 14px 0px 0px; font-size: 15px; line-height: 1.6; color: var(--plum-600);">{faq.answer}</p>
+          </details>
+        ))}
       </div>
     </div>
 
