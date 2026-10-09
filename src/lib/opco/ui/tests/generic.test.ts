@@ -238,3 +238,26 @@ describe('devis saisi avec son nombre d\'heures', () => {
     expect(plain(payload.resultSummary).match(/reste à charge/g)).toHaveLength(1);
   });
 });
+
+describe('lead avec devis : prise en charge et reste à charge sur le devis', () => {
+  const common = { firstName: 'A', email: 'a@b.fr', companyName: 'X', opco: 'atlas' as const, sizeBand: 'lt11' as const, participants: 1, generic: null, turnstileToken: 't' };
+
+  it('renseigne le montant couvert et le reste à charge du devis (plafond appliqué)', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const big = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: [21], quoteHt: 4800 });
+    expect(buildLeadPayload({ ...common, idcc: '1486', quoteHt: 4800, result: big })).toMatchObject({ quoteHt: 4800, quoteCoverageHt: 2500, quoteRemainingHt: 2300 });
+
+    const small = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: [14], quoteHt: 1490 });
+    expect(buildLeadPayload({ ...common, idcc: '1486', quoteHt: 1490, result: small })).toMatchObject({ quoteCoverageHt: 1490, quoteRemainingHt: 0 });
+  });
+
+  it('reste vide sans devis ou sans barème officiel', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const catalog = estimate({ ...base, opco: 'atlas', sizeBand: 'lt11', idcc: '1486' });
+    expect(buildLeadPayload({ ...common, idcc: '1486', result: catalog })).toMatchObject({ quoteHt: null, quoteCoverageHt: null, quoteRemainingHt: null });
+
+    const noScale = estimate({ opco: 'atlas', sizeBand: 'lt11', participants: 1, durationsHours: [14], quoteHt: 4800 });
+    const generic = genericEstimate({ participants: 1, durationsHours: [14], sizeBand: 'lt11', quoteHt: 4800 });
+    expect(buildLeadPayload({ ...common, quoteHt: 4800, result: noScale, generic })).toMatchObject({ quoteHt: 4800, quoteCoverageHt: null, quoteRemainingHt: null });
+  });
+});

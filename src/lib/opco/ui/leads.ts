@@ -28,6 +28,8 @@ export interface LeadPayload {
   coverage14hHt: number | null;
   remaining7hHt: number | null;
   remaining14hHt: number | null;
+  quoteCoverageHt: number | null;
+  quoteRemainingHt: number | null;
   resultType: ResultType;
   resultSummary: string;
   turnstileToken: string;
@@ -66,7 +68,15 @@ function remainingFor(result: EstimateResult, hours: number, quoteHt?: number): 
   return coverage === null || price === undefined ? null : remainingAfterCoverage(price, coverage);
 }
 
+/** Avec un devis : ce que l'OPCO couvre sur ce devis (plafond appliqué) et le reste à charge, si un barème officiel s'applique. */
+function quoteAmounts(input: LeadInput): { covered: number | null; remaining: number | null } {
+  if (input.quoteHt === undefined || input.result.status !== 'estimated') return { covered: null, remaining: null };
+  const scenario = input.result.scenarios[0];
+  return { covered: scenario?.coveredHt ?? null, remaining: scenario?.remainingHt ?? null };
+}
+
 export function buildLeadPayload(input: LeadInput): LeadPayload {
+  const quote = quoteAmounts(input);
   const [short, long] = DURATIONS_HOURS;
   return {
     source: 'kairn.academy/simulateur-opco',
@@ -84,6 +94,8 @@ export function buildLeadPayload(input: LeadInput): LeadPayload {
     coverage14hHt: coverageFor(input.result, long),
     remaining7hHt: remainingFor(input.result, short, input.quoteHt),
     remaining14hHt: remainingFor(input.result, long, input.quoteHt),
+    quoteCoverageHt: quote.covered,
+    quoteRemainingHt: quote.remaining,
     resultType: resultTypeOf(input),
     resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt)),
     turnstileToken: input.turnstileToken,
