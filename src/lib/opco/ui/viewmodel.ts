@@ -28,6 +28,10 @@ export type ResultView =
 
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
+/** Reste à charge d'une session : son montant moins la prise en charge, jamais négatif. */
+export const remainingAfterCoverage = (priceHt: number, coverageHt: number): number =>
+  round2(priceHt - Math.min(priceHt, coverageHt));
+
 function limitSentence(s: ScenarioResult): string {
   const annual = s.annualCeilingHt;
   if (s.hourlyCeilingHt === undefined) {
@@ -51,7 +55,7 @@ export function buildScenarioView(s: ScenarioResult, priceFor?: PriceFor): Scena
     limit: limitSentence(s),
   };
   const price = priceFor?.(s.hours);
-  if (price !== undefined) view.estimatedRemaining = formatEuroHt(round2(price - Math.min(price, s.maxCoverageHt)));
+  if (price !== undefined) view.estimatedRemaining = formatEuroHt(remainingAfterCoverage(price, s.maxCoverageHt));
   if (s.hourlyCeilingHt !== undefined && s.limitedBy === 'hourly' && s.participants > 1) {
     view.perParticipant = `Soit ${formatEuroHt(round2(s.hourlyCeilingHt / s.participants))} par participant.`;
   }
@@ -87,11 +91,13 @@ export function buildResultView(result: EstimateResult, priceFor?: PriceFor): Re
 }
 
 /** Résumé en une ligne du résultat affiché, pour l'enregistrement du lead. */
-export function summarizeResult(result: EstimateResult): string {
+export function summarizeResult(result: EstimateResult, priceFor?: PriceFor): string {
   if (result.status === 'to_confirm') return `Barème à confirmer (${result.reason})`;
   return result.scenarios
     .map((s) => {
-      const base = `${s.hours} h : jusqu'à ${formatEuroHt(s.maxCoverageHt)} (${s.limitedBy === 'hourly' ? 'plafond horaire' : 'plafond annuel'})`;
+      const price = priceFor?.(s.hours);
+      const remaining = price !== undefined ? `, reste à charge estimé ${formatEuroHt(remainingAfterCoverage(price, s.maxCoverageHt))}` : '';
+      const base = `${s.hours} h : jusqu'à ${formatEuroHt(s.maxCoverageHt)} (${s.limitedBy === 'hourly' ? 'plafond horaire' : 'plafond annuel'})${remaining}`;
       return s.coveredHt !== undefined && s.remainingHt !== undefined
         ? `${base}, pris en charge ${formatEuroHt(s.coveredHt)}, reste à charge ${formatEuroHt(s.remainingHt)}`
         : base;
@@ -128,8 +134,8 @@ export function buildGenericView(generic: GenericEstimate, priceFor?: PriceFor):
       if (price !== undefined) {
         // Meilleur cas : prise en charge haute ; pire cas : prise en charge basse.
         view.estimatedRemaining = formatRangeHt(
-          round2(price - Math.min(price, s.highHt)),
-          round2(price - Math.min(price, s.lowHt)),
+          remainingAfterCoverage(price, s.highHt),
+          remainingAfterCoverage(price, s.lowHt),
         );
       }
       if (s.coveredLowHt !== undefined && s.coveredHighHt !== undefined && s.remainingLowHt !== undefined && s.remainingHighHt !== undefined) {
@@ -144,10 +150,19 @@ export function buildGenericView(generic: GenericEstimate, priceFor?: PriceFor):
 }
 
 /** Résumé de ce qui est réellement affiché (barème chiffré, fourchette générique ou « à confirmer »). */
-export function summarizeDisplayed(result: EstimateResult, generic: GenericEstimate | null): string {
+export function summarizeDisplayed(result: EstimateResult, generic: GenericEstimate | null, priceFor?: PriceFor): string {
   if (result.status === 'to_confirm' && generic) {
-    const ranges = generic.scenarios.map((s) => `${s.hours} h : ${formatRangeHt(s.lowHt, s.highHt)}`).join(' | ');
+    const ranges = generic.scenarios
+      .map((s) => {
+        const price = priceFor?.(s.hours);
+        const remaining =
+          price !== undefined
+            ? `, reste à charge estimé ${formatRangeHt(remainingAfterCoverage(price, s.highHt), remainingAfterCoverage(price, s.lowHt))}`
+            : '';
+        return `${s.hours} h : ${formatRangeHt(s.lowHt, s.highHt)}${remaining}`;
+      })
+      .join(' | ');
     return `Estimation générique (${result.reason}) : ${ranges}`;
   }
-  return summarizeResult(result);
+  return summarizeResult(result, priceFor);
 }

@@ -4,6 +4,7 @@ interface TurnstileApi {
     options: {
       sitekey: string;
       theme?: 'light' | 'dark' | 'auto';
+      appearance?: 'always' | 'execute' | 'interaction-only';
       language?: string;
       callback: (token: string) => void;
       'expired-callback': () => void;
@@ -44,6 +45,8 @@ export function loadTurnstile(): Promise<TurnstileApi> {
 export interface TurnstileHandle {
   /** Jeton courant, vide tant que le contrôle n'est pas passé ou s'il a expiré. */
   token(): string;
+  /** Attend le jeton (vérification invisible en cours), "" si le délai est dépassé. */
+  waitForToken(timeoutMs: number): Promise<string>;
   reset(): void;
   destroy(): void;
 }
@@ -58,6 +61,8 @@ export async function mountTurnstile(
   const widgetId = api.render(container, {
     sitekey: siteKey,
     theme: 'light',
+    // Le bloc Cloudflare n'apparaît que si la personne doit réellement faire une vérification.
+    appearance: 'interaction-only',
     language: 'fr',
     callback: (token) => {
       current = token;
@@ -74,6 +79,11 @@ export async function mountTurnstile(
   });
   return {
     token: () => current,
+    waitForToken: async (timeoutMs) => {
+      const deadline = Date.now() + timeoutMs;
+      while (!current && Date.now() < deadline) await new Promise((resolve) => setTimeout(resolve, 150));
+      return current;
+    },
     reset: () => {
       current = '';
       api.reset(widgetId);
