@@ -142,6 +142,9 @@ export function initSimulator(): void {
       steps[id].hidden = id !== step;
     });
     progress.head.hidden = step === 'result';
+    // L'écran de résultat porte déjà sa propre mention : pas de doublon sous le bloc.
+    const disclaimer = document.querySelector<HTMLElement>('[data-page-disclaimer]');
+    if (disclaimer) disclaimer.hidden = step === 'result';
     if (step !== 'result') {
       const n = step === 'company' ? 1 : 2;
       progress.label.textContent = `Étape ${n} sur 2`;
