@@ -312,7 +312,8 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
   .opco-consent__label { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.55; color: var(--plum-700); cursor: pointer; }
   .opco-consent__label input { flex: 0 0 auto; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--plum-800); cursor: pointer; }
   .opco-consent a { font-weight: 700; color: var(--plum-900); border-bottom: 2px solid var(--orange-500); }
-  .opco-antibot { min-height: 70px; margin-bottom: 14px; }
+  .opco-antibot { margin-bottom: 14px; }
+  .opco-antibot:empty { display: none; }
   .opco-fine { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--plum-600); }
 
   .opco-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }

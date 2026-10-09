@@ -604,10 +604,18 @@ export function initSimulator(): void {
     if (!consentInput.checked) fail('consent', 'Votre accord est nécessaire pour afficher et enregistrer votre estimation.', consentInput);
 
     let token = turnstile?.token() ?? '';
+    if (!token && turnstile && !invalid.length) {
+      // La vérification est invisible : elle peut simplement ne pas être terminée au moment du clic.
+      submitButton.disabled = true;
+      submitButton.textContent = 'Vérification…';
+      token = await turnstile.waitForToken(10_000);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Afficher mon estimation';
+    }
     if (!token) {
       // En développement sans widget (script bloqué, pas de clé), on ne bloque pas le test du parcours.
       if (import.meta.env.DEV && (!TURNSTILE_SITE_KEY || turnstileFailed)) token = 'dev-no-turnstile';
-      else fail('turnstile', 'Validez la vérification anti-robot pour continuer.');
+      else fail('turnstile', "La vérification anti-robot n'a pas abouti. Cochez la case si elle s'affiche, ou réessayez.");
     }
     if (invalid.length) {
       invalid[0].focus();

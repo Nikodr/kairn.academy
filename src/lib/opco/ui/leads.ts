@@ -1,8 +1,8 @@
 import type { EstimateResult, OpcoId, SizeBand } from '../types';
-import { CONSENT_VERSION, DURATIONS_HOURS, LEADS_ENDPOINT } from './config';
+import { CONSENT_VERSION, DURATIONS_HOURS, LEADS_ENDPOINT, TRAINING_PRICE_HT } from './config';
 import type { GenericEstimate } from './generic';
 import { opcoLabel, sizeLabel } from './options';
-import { summarizeDisplayed } from './viewmodel';
+import { remainingAfterCoverage, summarizeDisplayed } from './viewmodel';
 
 export type ResultType = 'Chiffré' | 'Fourchette générique' | 'À confirmer';
 
@@ -25,6 +25,8 @@ export interface LeadPayload {
   quoteHt: number | null;
   coverage7hHt: number | null;
   coverage14hHt: number | null;
+  remaining7hHt: number | null;
+  remaining14hHt: number | null;
   resultType: ResultType;
   resultSummary: string;
   turnstileToken: string;
@@ -56,6 +58,13 @@ function coverageFor(result: EstimateResult, hours: number): number | null {
   return result.scenarios.find((s) => s.hours === hours)?.maxCoverageHt ?? null;
 }
 
+/** Reste à charge estimé d'une session, seulement quand un barème officiel a été appliqué. */
+function remainingFor(result: EstimateResult, hours: number): number | null {
+  const coverage = coverageFor(result, hours);
+  const price = TRAINING_PRICE_HT[hours];
+  return coverage === null || price === undefined ? null : remainingAfterCoverage(price, coverage);
+}
+
 export function buildLeadPayload(input: LeadInput): LeadPayload {
   const [short, long] = DURATIONS_HOURS;
   return {
@@ -72,8 +81,10 @@ export function buildLeadPayload(input: LeadInput): LeadPayload {
     quoteHt: input.quoteHt ?? null,
     coverage7hHt: coverageFor(input.result, short),
     coverage14hHt: coverageFor(input.result, long),
+    remaining7hHt: remainingFor(input.result, short),
+    remaining14hHt: remainingFor(input.result, long),
     resultType: resultTypeOf(input),
-    resultSummary: summarizeDisplayed(input.result, input.generic),
+    resultSummary: summarizeDisplayed(input.result, input.generic, (hours) => TRAINING_PRICE_HT[hours]),
     turnstileToken: input.turnstileToken,
   };
 }

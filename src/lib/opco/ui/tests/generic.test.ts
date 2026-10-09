@@ -178,3 +178,19 @@ describe('reste à charge estimé', () => {
     expect(view.scenarios[0].estimatedRemaining).toBeUndefined();
   });
 });
+
+describe('reste à charge dans le lead', () => {
+  it('renseigne le reste à charge 7 h / 14 h seulement quand un barème officiel est appliqué', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const common = { firstName: 'A', email: 'a@b.fr', companyName: 'X', sizeBand: 'lt11' as const, participants: 2, turnstileToken: 't' };
+
+    const atlas = buildLeadPayload({ ...common, opco: 'atlas', idcc: '1486', result: estimate({ ...base, opco: 'atlas', sizeBand: 'lt11', idcc: '1486' }), generic: null });
+    expect(atlas).toMatchObject({ coverage7hHt: 2500, remaining7hHt: 500, coverage14hHt: 2500, remaining14hHt: 3500 });
+    expect(plain(atlas.resultSummary)).toContain('reste à charge estimé 500 € HT');
+
+    const noScale = estimate({ ...base, opco: 'atlas', sizeBand: 'lt11' });
+    const generic = buildLeadPayload({ ...common, opco: 'atlas', result: noScale, generic: genericEstimate({ ...base, sizeBand: 'lt11' }) });
+    expect(generic).toMatchObject({ remaining7hHt: null, remaining14hHt: null, resultType: 'Fourchette générique' });
+    expect(plain(generic.resultSummary)).toContain('reste à charge estimé 500 € à 2 720 € HT');
+  });
+});
