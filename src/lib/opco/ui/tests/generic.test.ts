@@ -185,7 +185,7 @@ describe('reste à charge dans le lead', () => {
     const common = { firstName: 'A', email: 'a@b.fr', companyName: 'X', sizeBand: 'lt11' as const, participants: 2, turnstileToken: 't' };
 
     const atlas = buildLeadPayload({ ...common, opco: 'atlas', idcc: '1486', result: estimate({ ...base, opco: 'atlas', sizeBand: 'lt11', idcc: '1486' }), generic: null });
-    expect(atlas).toMatchObject({ coverage7hHt: 2500, remaining7hHt: 500, coverage14hHt: 2500, remaining14hHt: 3500 });
+    expect(atlas).toMatchObject({ coverage7hHt: 2500, remaining7hHt: 0, coverage14hHt: 2500, remaining14hHt: 1500, otherCoverageHt: 2000 });
     expect(plain(atlas.resultSummary)).toContain('reste à charge estimé 500 € HT');
 
     const noScale = estimate({ ...base, opco: 'atlas', sizeBand: 'lt11' });
@@ -229,11 +229,11 @@ describe('devis saisi avec son nombre d\'heures', () => {
     const { hoursFor } = await import('../pricing');
     const common = { firstName: 'A', email: 'a@b.fr', companyName: 'X', opco: 'atlas' as const, sizeBand: 'lt11' as const, idcc: '1486', participants: 1, quoteHt: 4800, generic: null, turnstileToken: 't' };
     const r14 = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: hoursFor(4800, 14), quoteHt: 4800 });
-    expect(buildLeadPayload({ ...common, result: r14 })).toMatchObject({ coverage14hHt: 2500, remaining14hHt: 2300, coverage7hHt: null, remaining7hHt: null, quoteHt: 4800 });
+    expect(buildLeadPayload({ ...common, result: r14 })).toMatchObject({ coverage14hHt: 2500, remaining14hHt: 300, coverage7hHt: null, remaining7hHt: null, quoteHt: 4800 });
     const r21 = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: hoursFor(4800, 21), quoteHt: 4800 });
     const payload = buildLeadPayload({ ...common, result: r21 });
     expect(payload).toMatchObject({ coverage7hHt: null, coverage14hHt: null, remaining7hHt: null, remaining14hHt: null });
-    expect(plain(payload.resultSummary)).toBe('Devis 4 800 € HT sur 21 h : prise en charge 2 500 € HT (plafond annuel de 2 500 € HT), reste à charge 2 300 € HT');
+    expect(plain(payload.resultSummary)).toBe('Devis 4 800 € HT sur 21 h : prise en charge 2 500 € HT (plafond annuel de 2 500 € HT), reste à charge 2 300 € HT hors bonus ; Autre prise en charge : bonus « Transition écologique » de 2 000 € HT (sous condition d\'un module d\'IA durable), prise en charge totale jusqu\'à 4 500 € HT, reste à charge total 300 € HT');
   });
 });
 
@@ -243,7 +243,7 @@ describe('lead avec devis : prise en charge et reste à charge sur le devis', ()
   it('renseigne le montant couvert et le reste à charge du devis (plafond appliqué)', async () => {
     const { buildLeadPayload } = await import('../leads');
     const big = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: [21], quoteHt: 4800 });
-    expect(buildLeadPayload({ ...common, idcc: '1486', quoteHt: 4800, result: big })).toMatchObject({ quoteHt: 4800, quoteCoverageHt: 2500, quoteRemainingHt: 2300 });
+    expect(buildLeadPayload({ ...common, idcc: '1486', quoteHt: 4800, result: big })).toMatchObject({ quoteHt: 4800, quoteCoverageHt: 2500, quoteRemainingHt: 300, otherCoverageHt: 2000 });
 
     const small = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: [14], quoteHt: 1490 });
     expect(buildLeadPayload({ ...common, idcc: '1486', quoteHt: 1490, result: small })).toMatchObject({ quoteCoverageHt: 1490, quoteRemainingHt: 0 });
@@ -274,5 +274,31 @@ describe('résumé du lead quand le devis donne une fourchette générique', () 
     expect(plain(payload.resultSummary)).toBe(
       'Estimation générique (branch_not_covered) : Devis 4 800 € HT sur 14 h : prise en charge 1 800 € à 3 000 € HT, reste à charge 1 800 € à 3 000 € HT',
     );
+  });
+});
+
+describe('autre prise en charge (bonus Transition écologique) dans le lead', () => {
+  const common = { firstName: 'A', email: 'a@b.fr', companyName: 'X', participants: 4, turnstileToken: 't' };
+
+  it('50 à 299 salariés : 3 000 € HT, reste à charge total diminué', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const result = estimate({ opco: 'atlas', sizeBand: '50-299', idcc: '1486', participants: 4, durationsHours: [7, 14] });
+    const p = buildLeadPayload({ ...common, opco: 'atlas', sizeBand: '50-299', idcc: '1486', result, generic: null });
+    expect(p).toMatchObject({ coverage7hHt: 4000, remaining7hHt: 0, coverage14hHt: 4000, remaining14hHt: 0, otherCoverageHt: 3000 });
+  });
+
+  it('300 salariés et plus : montant du bonus renseigné, sans reste à charge chiffré', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const result = estimate({ opco: 'atlas', sizeBand: '300+', idcc: '1486', participants: 4, durationsHours: [7, 14] });
+    const p = buildLeadPayload({ ...common, opco: 'atlas', sizeBand: '300+', idcc: '1486', result, generic: null });
+    expect(p).toMatchObject({ resultType: 'À confirmer', otherCoverageHt: 4500, remaining7hHt: null, remaining14hHt: null });
+  });
+
+  it('autre OPCO ou autre convention : champ vide, résultats inchangés', async () => {
+    const { buildLeadPayload, toFormBody } = await import('../leads');
+    const result = estimate({ opco: 'afdas', sizeBand: '11-49', participants: 4, durationsHours: [7] });
+    const p = buildLeadPayload({ ...common, opco: 'afdas', sizeBand: '11-49', result, generic: null });
+    expect(p.otherCoverageHt).toBeNull();
+    expect(toFormBody(p).get('otherCoverageHt')).toBe('');
   });
 });

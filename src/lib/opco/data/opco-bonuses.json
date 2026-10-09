@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "bonuses": [
+    {
+      "id": "transition-ecologique",
+      "label": "Bonus « Transition écologique »",
+      "opco": "atlas",
+      "branch": "bet",
+      "cumulative": true,
+      "condition": "La formation IA doit inclure un module d'IA durable (réduire l'impact environnemental de l'IA).",
+      "notes": [
+        "Financement supplémentaire alloué par la branche pour agir concrètement en faveur de la transition écologique, cumulable avec le plafond annuel du plan de développement des compétences.",
+        "Toutes les entreprises, sous réserve d'être à jour de leur contribution conventionnelle.",
+        "Coût pédagogique uniquement, hors formations obligatoires de mise à niveau.",
+        "Peut s'articuler avec le dossier du plan de développement des compétences ou être activé individuellement."
+      ],
+      "updatedAt": "2026-01-05",
+      "verifiedAt": "2026-10-09",
+      "verifiedFrom": "Fiche « Bonus Transition écologique » des critères de financement Atlas, relevée sur captures d'écran le 2026-10-09 : 2 000 € HT/an par entreprise (moins de 50 salariés), 3 000 € HT/an (50 à 299 salariés), 4 500 € HT/an (300 salariés et plus). Mise à jour Atlas du 05/01/26. Autres branches et Afdas : non vérifié.",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/bureaux-detudes-techniques-ingenieurs-et-conseils",
+      "annualCapByBand": {
+        "lt11": 2000,
+        "11-49": 2000,
+        "50-299": 3000,
+        "300+": 4500
+      }
+    }
+  ]
+}
