@@ -1,1 +1,2469 @@
-{"_meta":{"source":"France compétences, Table SIRET-OPCO SIRO (siro-202606.csv), data.gouv.fr, Licence Ouverte 2.0","sourceUrl":"https://www.data.gouv.fr/datasets/table-siret-opco","generatedAt":"2026-10-08","rule":"OPCO majoritaire par IDCC (au moins 99 % des établissements et au moins 3 établissements). 9999 (sans convention) exclu : l'OPCO dépend de l'activité.","atlasBranch":"Seule la branche BET (1486) est rattachée à un barème Atlas chiffré."},"map":{"0002":{"opco":"opco2i"},"0003":{"opco":"opcomobilites"},"0005":{"opco":"opcommerce"},"0007":{"opco":"constructys"},"0016":{"opco":"opcomobilites"},"0018":{"opco":"opco2i"},"0029":{"opco":"opcosante"},"0043":{"opco":"opcommerce"},"0044":{"opco":"opco2i"},"0045":{"opco":"opco2i"},"0054":{"opco":"opco2i"},"0071":{"opco":"constructys"},"0073":{"opco":"akto"},"0076":{"opco":"constructys"},"0080":{"opco":"constructys"},"0083":{"opco":"opco2i"},"0086":{"opco":"afdas"},"0087":{"opco":"opco2i"},"0112":{"opco":"ocapiat"},"0132":{"opco":"constructys"},"0134":{"opco":"constructys"},"0135":{"opco":"opco2i"},"0137":{"opco":"constructys"},"0140":{"opco":"constructys"},"0142":{"opco":"constructys"},"0146":{"opco":"constructys"},"0149":{"opco":"constructys"},"0152":{"opco":"constructys"},"0157":{"opco":"constructys"},"0158":{"opco":"akto"},"0161":{"opco":"opco2i"},"0171":{"opco":"constructys"},"0172":{"opco":"akto"},"0176":{"opco":"opco2i"},"0184":{"opco":"opcoep"},"0189":{"opco":"akto"},"0190":{"opco":"constructys"},"0192":{"opco":"constructys"},"0200":{"opco":"ocapiat"},"0207":{"opco":"opco2i"},"0208":{"opco":"constructys"},"0211":{"opco":"opco2i"},"0214":{"opco":"afdas"},"0218":{"opco":"uniformation"},"0240":{"opco":"opcoep"},"0247":{"opco":"opco2i"},"0252":{"opco":"constructys"},"0275":{"opco":"akto"},"0279":{"opco":"constructys"},"0292":{"opco":"opco2i"},"0303":{"opco":"opco2i"},"0351":{"opco":"constructys"},"0357":{"opco":"constructys"},"0362":{"opco":"constructys"},"0363":{"opco":"opco2i"},"0365":{"opco":"constructys"},"0372":{"opco":"constructys"},"0379":{"opco":"opcommerce"},"0390":{"opco":"akto"},"0394":{"opco":"afdas"},"0398":{"opco":"constructys"},"0405":{"opco":"opcosante"},"0409":{"opco":"constructys"},"0412":{"opco":"opcomobilites"},"0413":{"opco":"opcosante"},"0416":{"opco":"constructys"},"0418":{"opco":"opco2i"},"0436":{"opco":"constructys"},"0438":{"opco":"atlas"},"0440":{"opco":"ocapiat"},"0454":{"opco":"opcoep"},"0456":{"opco":"constructys"},"0468":{"opco":"opcommerce"},"0478":{"opco":"atlas"},"0489":{"opco":"opco2i"},"0493":{"opco":"ocapiat"},"0500":{"opco":"opcommerce"},"0509":{"opco":"afdas"},"0530":{"opco":"opcommerce"},"0533":{"opco":"constructys"},"0538":{"opco":"opcomobilites"},"0564":{"opco":"akto"},"0567":{"opco":"opco2i"},"0573":{"opco":"akto"},"0575":{"opco":"akto"},"0585":{"opco":"constructys"},"0598":{"opco":"afdas"},"0599":{"opco":"constructys"},"0601":{"opco":"akto"},"0614":{"opco":"opcoep"},"0625":{"opco":"afdas"},"0627":{"opco":"constructys"},"0635":{"opco":"akto"},"0637":{"opco":"opco2i"},"0650":{"opco":"opco2i"},"0652":{"opco":"constructys"},"0653":{"opco":"atlas"},"0663":{"opco":"opcoep"},"0669":{"opco":"opco2i"},"0673":{"opco":"opco2i"},"0675":{"opco":"opcommerce"},"0693":{"opco":"afdas"},"0698":{"opco":"afdas"},"0700":{"opco":"opco2i"},"0706":{"opco":"opcommerce"},"0707":{"opco":"opco2i"},"0711":{"opco":"opcommerce"},"0714":{"opco":"opco2i"},"0715":{"opco":"opco2i"},"0716":{"opco":"afdas"},"0731":{"opco":"akto"},"0733":{"opco":"opcoep"},"0735":{"opco":"opcommerce"},"0749":{"opco":"constructys"},"0759":{"opco":"opcoep"},"0771":{"opco":"constructys"},"0779":{"opco":"opcomobilites"},"0780":{"opco":"opco2i"},"0781":{"opco":"afdas"},"0783":{"opco":"opcosante"},"0787":{"opco":"atlas"},"0797":{"opco":"constructys"},"0800":{"opco":"akto"},"0802":{"opco":"opco2i"},"0822":{"opco":"opco2i"},"0827":{"opco":"opco2i"},"0828":{"opco":"opco2i"},"0829":{"opco":"opco2i"},"0833":{"opco":"opco2i"},"0836":{"opco":"opco2i"},"0843":{"opco":"opcoep"},"0860":{"opco":"opco2i"},"0863":{"opco":"opco2i"},"0878":{"opco":"opco2i"},"0887":{"opco":"opco2i"},"0892":{"opco":"afdas"},"0897":{"opco":"opcosante"},"0898":{"opco":"opco2i"},"0899":{"opco":"opco2i"},"0901":{"opco":"opcoep"},"0911":{"opco":"opco2i"},"0914":{"opco":"opco2i"},"0915":{"opco":"opcoep"},"0919":{"opco":"opcomobilites"},"0920":{"opco":"opco2i"},"0923":{"opco":"opco2i"},"0925":{"opco":"opco2i"},"0930":{"opco":"opco2i"},"0934":{"opco":"opco2i"},"0937":{"opco":"opco2i"},"0943":{"opco":"opco2i"},"0948":{"opco":"opco2i"},"0953":{"opco":"opcoep"},"0959":{"opco":"opcoep"},"0965":{"opco":"opco2i"},"0972":{"opco":"opcoep"},"0979":{"opco":"opco2i"},"0984":{"opco":"opco2i"},"0992":{"opco":"opcoep"},"0993":{"opco":"opcoep"},"0998":{"opco":"opco2i"},"1000":{"opco":"opcoep"},"1001":{"opco":"opcosante"},"1007":{"opco":"opco2i"},"1016":{"opco":"afdas"},"1017":{"opco":"akto"},"1031":{"opco":"uniformation"},"1043":{"opco":"opcoep"},"1044":{"opco":"opco2i"},"1049":{"opco":"constructys"},"1057":{"opco":"opcomobilites"},"1059":{"opco":"opco2i"},"1060":{"opco":"opco2i"},"1062":{"opco":"constructys"},"1077":{"opco":"ocapiat"},"1090":{"opco":"opcomobilites"},"1113":{"opco":"akto"},"1140":{"opco":"akto"},"1147":{"opco":"opcoep"},"1159":{"opco":"opco2i"},"1164":{"opco":"opco2i"},"1170":{"opco":"opco2i"},"1182":{"opco":"opcomobilites"},"1194":{"opco":"afdas"},"1203":{"opco":"opcommerce"},"1225":{"opco":"opcommerce"},"1232":{"opco":"akto"},"1237":{"opco":"atlas"},"1240":{"opco":"opcommerce"},"1247":{"opco":"opcomobilites"},"1256":{"opco":"opco2i"},"1257":{"opco":"opcoep"},"1260":{"opco":"akto"},"1261":{"opco":"uniformation"},"1266":{"opco":"akto"},"1267":{"opco":"opcoep"},"1274":{"opco":"opco2i"},"1278":{"opco":"uniformation"},"1281":{"opco":"afdas"},"1285":{"opco":"afdas"},"1286":{"opco":"opcoep"},"1307":{"opco":"afdas"},"1311":{"opco":"akto"},"1314":{"opco":"opcommerce"},"1315":{"opco":"opco2i"},"1316":{"opco":"uniformation"},"1320":{"opco":"akto"},"1326":{"opco":"akto"},"1334":{"opco":"akto"},"1341":{"opco":"ocapiat"},"1351":{"opco":"akto"},"1353":{"opco":"opco2i"},"1365":{"opco":"opco2i"},"1369":{"opco":"opco2i"},"1383":{"opco":"akto"},"1384":{"opco":"ocapiat"},"1387":{"opco":"opco2i"},"1388":{"opco":"opco2i"},"1391":{"opco":"akto"},"1396":{"opco":"ocapiat"},"1402":{"opco":"constructys"},"1404":{"opco":"opcoep"},"1405":{"opco":"ocapiat"},"1406":{"opco":"opcommerce"},"1408":{"opco":"opcoep"},"1411":{"opco":"opco2i"},"1412":{"opco":"opcoep"},"1413":{"opco":"akto"},"1415":{"opco":"opcommerce"},"1420":{"opco":"uniformation"},"1423":{"opco":"opco2i"},"1424":{"opco":"opcomobilites"},"1431":{"opco":"opcommerce"},"1446":{"opco":"akto"},"1465":{"opco":"afdas"},"1468":{"opco":"atlas"},"1472":{"opco":"opco2i"},"1480":{"opco":"afdas"},"1483":{"opco":"opcoep"},"1486":{"opco":"atlas","atlasBranch":"bet"},"1487":{"opco":"opcommerce"},"1492":{"opco":"opco2i"},"1495":{"opco":"opco2i"},"1499":{"opco":"opcoep"},"1501":{"opco":"akto"},"1504":{"opco":"opcoep"},"1505":{"opco":"opcommerce"},"1512":{"opco":"opcoep"},"1513":{"opco":"ocapiat"},"1516":{"opco":"akto"},"1517":{"opco":"opcommerce"},"1518":{"opco":"uniformation"},"1525":{"opco":"opco2i"},"1527":{"opco":"opcoep"},"1534":{"opco":"ocapiat"},"1536":{"opco":"opcomobilites"},"1539":{"opco":"opcommerce"},"1543":{"opco":"ocapiat"},"1555":{"opco":"opco2i"},"1557":{"opco":"opcommerce"},"1558":{"opco":"opco2i"},"1560":{"opco":"opco2i"},"1561":{"opco":"opco2i"},"1563":{"opco":"afdas"},"1564":{"opco":"opco2i"},"1565":{"opco":"uniformation"},"1572":{"opco":"opco2i"},"1576":{"opco":"opco2i"},"1577":{"opco":"opco2i"},"1578":{"opco":"opco2i"},"1580":{"opco":"opco2i"},"1586":{"opco":"ocapiat"},"1588":{"opco":"uniformation"},"1589":{"opco":"opcoep"},"1591":{"opco":"opcoep"},"1592":{"opco":"opco2i"},"1596":{"opco":"constructys"},"1597":{"opco":"constructys"},"1604":{"opco":"opco2i"},"1605":{"opco":"opcoep"},"1606":{"opco":"opcommerce"},"1607":{"opco":"opco2i"},"1611":{"opco":"opcoep"},"1612":{"opco":"opco2i"},"1618":{"opco":"opcommerce"},"1619":{"opco":"opcoep"},"1621":{"opco":"opcoep"},"1624":{"opco":"akto"},"1626":{"opco":"opco2i"},"1627":{"opco":"opco2i"},"1628":{"opco":"opco2i"},"1631":{"opco":"afdas"},"1634":{"opco":"opco2i"},"1635":{"opco":"opco2i"},"1638":{"opco":"constructys"},"1659":{"opco":"ocapiat"},"1668":{"opco":"constructys"},"1671":{"opco":"akto"},"1672":{"opco":"atlas"},"1679":{"opco":"atlas"},"1686":{"opco":"opcommerce"},"1700":{"opco":"ocapiat"},"1702":{"opco":"constructys"},"1710":{"opco":"opcomobilites"},"1722":{"opco":"constructys"},"1726":{"opco":"atlas"},"1732":{"opco":"opco2i"},"1734":{"opco":"afdas"},"1740":{"opco":"constructys"},"1747":{"opco":"ocapiat"},"1758":{"opco":"constructys"},"1759":{"opco":"constructys"},"1760":{"opco":"opcommerce"},"1761":{"opco":"akto"},"1779":{"opco":"constructys"},"1780":{"opco":"constructys"},"1785":{"opco":"constructys"},"1790":{"opco":"afdas"},"1794":{"opco":"uniformation"},"1800":{"opco":"opco2i"},"1801":{"opco":"atlas"},"1809":{"opco":"opco2i"},"1810":{"opco":"akto"},"1813":{"opco":"opco2i"},"1821":{"opco":"opco2i"},"1843":{"opco":"constructys"},"1850":{"opco":"opcoep"},"1867":{"opco":"opco2i"},"1871":{"opco":"afdas"},"1874":{"opco":"afdas"},"1875":{"opco":"opcoep"},"1876":{"opco":"constructys"},"1880":{"opco":"opcommerce"},"1885":{"opco":"opco2i"},"1886":{"opco":"constructys"},"1888":{"opco":"constructys"},"1895":{"opco":"afdas"},"1902":{"opco":"opco2i"},"1903":{"opco":"afdas"},"1909":{"opco":"afdas"},"1912":{"opco":"opco2i"},"1921":{"opco":"opcoep"},"1922":{"opco":"afdas"},"1923":{"opco":"opcomobilites"},"1930":{"opco":"ocapiat"},"1938":{"opco":"ocapiat"},"1942":{"opco":"opco2i"},"1944":{"opco":"akto"},"1945":{"opco":"opco2i"},"1947":{"opco":"constructys"},"1951":{"opco":"opcoep"},"1960":{"opco":"opco2i"},"1961":{"opco":"opcoep"},"1966":{"opco":"opco2i"},"1967":{"opco":"opco2i"},"1970":{"opco":"opcommerce"},"1974":{"opco":"opcomobilites"},"1978":{"opco":"opcoep"},"1979":{"opco":"akto"},"1980":{"opco":"opcomobilites"},"1982":{"opco":"opcoep"},"1987":{"opco":"ocapiat"},"1996":{"opco":"opcoep"},"2002":{"opco":"akto"},"2003":{"opco":"opco2i"},"2014":{"opco":"afdas"},"2021":{"opco":"afdas"},"2025":{"opco":"opco2i"},"2032":{"opco":"constructys"},"2033":{"opco":"constructys"},"2034":{"opco":"constructys"},"2046":{"opco":"opcosante"},"2060":{"opco":"akto"},"2070":{"opco":"atlas"},"2075":{"opco":"ocapiat"},"2089":{"opco":"opco2i"},"2098":{"opco":"opcoep"},"2101":{"opco":"akto"},"2104":{"opco":"opcosante"},"2111":{"opco":"opcoep"},"2120":{"opco":"atlas"},"2121":{"opco":"afdas"},"2126":{"opco":"opco2i"},"2128":{"opco":"uniformation"},"2145":{"opco":"constructys"},"2147":{"opco":"akto"},"2148":{"opco":"afdas"},"2149":{"opco":"akto"},"2150":{"opco":"uniformation"},"2152":{"opco":"akto"},"2156":{"opco":"opcommerce"},"2162":{"opco":"opcommerce"},"2174":{"opco":"opcomobilites"},"2190":{"opco":"uniformation"},"2194":{"opco":"constructys"},"2195":{"opco":"constructys"},"2198":{"opco":"opcommerce"},"2205":{"opco":"opcoep"},"2216":{"opco":"opcommerce"},"2219":{"opco":"opcoep"},"2221":{"opco":"opco2i"},"2230":{"opco":"atlas"},"2247":{"opco":"atlas"},"2250":{"opco":"opcoep"},"2257":{"opco":"afdas"},"2264":{"opco":"opcosante"},"2266":{"opco":"opco2i"},"2267":{"opco":"constructys"},"2272":{"opco":"opcoep"},"2294":{"opco":"opco2i"},"2306":{"opco":"opco2i"},"2310":{"opco":"afdas"},"2328":{"opco":"constructys"},"2329":{"opco":"opcoep"},"2332":{"opco":"opcoep"},"2335":{"opco":"atlas"},"2336":{"opco":"uniformation"},"2344":{"opco":"opco2i"},"2345":{"opco":"opcomobilites"},"2354":{"opco":"constructys"},"2357":{"opco":"atlas"},"2360":{"opco":"opcomobilites"},"2372":{"opco":"afdas"},"2378":{"opco":"akto"},"2389":{"opco":"constructys"},"2395":{"opco":"opcoep"},"2397":{"opco":"afdas"},"2405":{"opco":"opcosante"},"2408":{"opco":"akto"},"2409":{"opco":"constructys"},"2410":{"opco":"ocapiat"},"2411":{"opco":"afdas"},"2412":{"opco":"afdas"},"2420":{"opco":"constructys"},"2489":{"opco":"opco2i"},"2494":{"opco":"ocapiat"},"2511":{"opco":"afdas"},"2519":{"opco":"afdas"},"2526":{"opco":"uniformation"},"2528":{"opco":"opco2i"},"2534":{"opco":"ocapiat"},"2535":{"opco":"ocapiat"},"2542":{"opco":"opco2i"},"2543":{"opco":"atlas"},"2564":{"opco":"opcoep"},"2579":{"opco":"opco2i"},"2582":{"opco":"constructys"},"2583":{"opco":"akto"},"2584":{"opco":"constructys"},"2585":{"opco":"constructys"},"2596":{"opco":"opcoep"},"2603":{"opco":"uniformation"},"2609":{"opco":"constructys"},"2614":{"opco":"constructys"},"2615":{"opco":"opco2i"},"2625":{"opco":"constructys"},"2630":{"opco":"opco2i"},"2631":{"opco":"afdas"},"2636":{"opco":"akto"},"2642":{"opco":"afdas"},"2658":{"opco":"akto"},"2666":{"opco":"uniformation"},"2667":{"opco":"constructys"},"2683":{"opco":"afdas"},"2691":{"opco":"akto"},"2697":{"opco":"opcoep"},"2700":{"opco":"opco2i"},"2701":{"opco":"atlas"},"2702":{"opco":"atlas"},"2704":{"opco":"atlas"},"2706":{"opco":"opcoep"},"2707":{"opco":"constructys"},"2717":{"opco":"afdas"},"2728":{"opco":"ocapiat"},"2754":{"opco":"opcommerce"},"2755":{"opco":"opco2i"},"2770":{"opco":"afdas"},"2785":{"opco":"opcoep"},"2793":{"opco":"uniformation"},"2847":{"opco":"uniformation"},"2870":{"opco":"constructys"},"2931":{"opco":"atlas"},"2941":{"opco":"uniformation"},"2964":{"opco":"opcomobilites"},"2972":{"opco":"opcomobilites"},"2978":{"opco":"opcoep"},"2980":{"opco":"opco2i"},"2992":{"opco":"opco2i"},"3013":{"opco":"opcoep"},"3016":{"opco":"uniformation"},"3017":{"opco":"opcomobilites"},"3028":{"opco":"opcomobilites"},"3032":{"opco":"opcoep"},"3035":{"opco":"opcoep"},"3043":{"opco":"akto"},"3053":{"opco":"opco2i"},"3090":{"opco":"afdas"},"3097":{"opco":"afdas"},"3105":{"opco":"uniformation"},"3107":{"opco":"constructys"},"3109":{"opco":"ocapiat"},"3123":{"opco":"opcomobilites"},"3127":{"opco":"opcoep"},"3128":{"opco":"constructys"},"3144":{"opco":"constructys"},"3160":{"opco":"atlas"},"3168":{"opco":"opcommerce"},"3201":{"opco":"afdas"},"3202":{"opco":"afdas"},"3204":{"opco":"constructys"},"3205":{"opco":"opcommerce"},"3206":{"opco":"opcoep"},"3207":{"opco":"opcomobilites"},"3209":{"opco":"opco2i"},"3210":{"opco":"atlas"},"3211":{"opco":"akto"},"3212":{"opco":"constructys"},"3213":{"opco":"atlas"},"3216":{"opco":"constructys"},"3217":{"opco":"opcomobilites"},"3218":{"opco":"akto"},"3219":{"opco":"akto"},"3220":{"opco":"uniformation"},"3221":{"opco":"afdas"},"3222":{"opco":"opco2i"},"3223":{"opco":"opcomobilites"},"3224":{"opco":"opco2i"},"3225":{"opco":"afdas"},"3227":{"opco":"opco2i"},"3228":{"opco":"opcomobilites"},"3229":{"opco":"opcomobilites"},"3230":{"opco":"afdas"},"3231":{"opco":"opco2i"},"3232":{"opco":"uniformation"},"3233":{"opco":"opco2i"},"3235":{"opco":"opcoep"},"3236":{"opco":"opco2i"},"3237":{"opco":"opcommerce"},"3238":{"opco":"opco2i"},"3239":{"opco":"opcoep"},"3241":{"opco":"afdas"},"3242":{"opco":"afdas"},"3243":{"opco":"akto"},"3244":{"opco":"opcoep"},"3245":{"opco":"opcomobilites"},"3248":{"opco":"opco2i"},"3249":{"opco":"opco2i"},"3250":{"opco":"opcoep"},"3251":{"opco":"opco2i"},"3252":{"opco":"afdas"},"3253":{"opco":"opcoep"},"3254":{"opco":"opcoep"},"3255":{"opco":"ocapiat"},"5001":{"opco":"opco2i"},"5002":{"opco":"uniformation"},"5005":{"opco":"atlas"},"5010":{"opco":"opcoep"},"5011":{"opco":"akto"},"5014":{"opco":"opcomobilites"},"5017":{"opco":"akto"},"5018":{"opco":"atlas"},"5019":{"opco":"ocapiat"},"5020":{"opco":"opcomobilites"},"5023":{"opco":"ocapiat"},"5024":{"opco":"akto"},"5025":{"opco":"atlas"},"5203":{"opco":"afdas"},"5502":{"opco":"opcosante"},"5503":{"opco":"akto"},"5505":{"opco":"opco2i"},"5506":{"opco":"atlas"},"5507":{"opco":"afdas"},"5509":{"opco":"ocapiat"},"5513":{"opco":"opco2i"},"5516":{"opco":"opcoep"},"5519":{"opco":"uniformation"},"5520":{"opco":"opcomobilites"},"5521":{"opco":"opcomobilites"},"5522":{"opco":"opcosante"},"5524":{"opco":"opcosante"},"5526":{"opco":"afdas"},"5530":{"opco":"uniformation"},"5531":{"opco":"ocapiat"},"5532":{"opco":"opcosante"},"5533":{"opco":"uniformation"},"5539":{"opco":"akto"},"5541":{"opco":"afdas"},"5542":{"opco":"afdas"},"5545":{"opco":"akto"},"5546":{"opco":"opco2i"},"5548":{"opco":"uniformation"},"5550":{"opco":"uniformation"},"5553":{"opco":"uniformation"},"5554":{"opco":"opcomobilites"},"5555":{"opco":"opcomobilites"},"5558":{"opco":"opcoep"},"5562":{"opco":"opco2i"},"5564":{"opco":"uniformation"},"5566":{"opco":"opcoep"},"5568":{"opco":"ocapiat"},"5569":{"opco":"afdas"},"5570":{"opco":"afdas"},"5571":{"opco":"opcosante"},"5572":{"opco":"opcoep"},"5573":{"opco":"akto"},"5574":{"opco":"afdas"},"5579":{"opco":"afdas"},"5580":{"opco":"afdas"},"5583":{"opco":"opcomobilites"},"5584":{"opco":"atlas"},"5593":{"opco":"ocapiat"},"5598":{"opco":"opcomobilites"},"5600":{"opco":"atlas"},"5601":{"opco":"opcosante"},"5604":{"opco":"akto"},"5606":{"opco":"atlas"},"5610":{"opco":"afdas"},"5613":{"opco":"afdas"},"5614":{"opco":"ocapiat"},"5618":{"opco":"uniformation"},"5619":{"opco":"ocapiat"},"5623":{"opco":"ocapiat"},"5629":{"opco":"uniformation"},"5633":{"opco":"constructys"},"5634":{"opco":"akto"},"7001":{"opco":"ocapiat"},"7002":{"opco":"ocapiat"},"7003":{"opco":"ocapiat"},"7004":{"opco":"ocapiat"},"7005":{"opco":"ocapiat"},"7006":{"opco":"ocapiat"},"7007":{"opco":"ocapiat"},"7008":{"opco":"ocapiat"},"7009":{"opco":"ocapiat"},"7010":{"opco":"ocapiat"},"7012":{"opco":"ocapiat"},"7013":{"opco":"ocapiat"},"7014":{"opco":"ocapiat"},"7015":{"opco":"ocapiat"},"7016":{"opco":"ocapiat"},"7017":{"opco":"ocapiat"},"7018":{"opco":"ocapiat"},"7019":{"opco":"ocapiat"},"7020":{"opco":"ocapiat"},"7021":{"opco":"ocapiat"},"7023":{"opco":"ocapiat"},"7024":{"opco":"ocapiat"},"7025":{"opco":"ocapiat"},"7026":{"opco":"ocapiat"},"7027":{"opco":"ocapiat"},"7028":{"opco":"ocapiat"},"7501":{"opco":"ocapiat"},"7502":{"opco":"ocapiat"},"7503":{"opco":"ocapiat"},"7508":{"opco":"ocapiat"},"7509":{"opco":"akto"},"7511":{"opco":"ocapiat"},"7513":{"opco":"ocapiat"},"7514":{"opco":"ocapiat"},"7515":{"opco":"ocapiat"},"7520":{"opco":"akto"},"8112":{"opco":"ocapiat"},"8113":{"opco":"ocapiat"},"8115":{"opco":"ocapiat"},"8116":{"opco":"ocapiat"},"8117":{"opco":"ocapiat"},"8212":{"opco":"akto"},"8214":{"opco":"ocapiat"},"8216":{"opco":"ocapiat"},"8221":{"opco":"ocapiat"},"8233":{"opco":"ocapiat"},"8234":{"opco":"ocapiat"},"8243":{"opco":"ocapiat"},"8244":{"opco":"ocapiat"},"8252":{"opco":"ocapiat"},"8262":{"opco":"ocapiat"},"8313":{"opco":"ocapiat"},"8414":{"opco":"ocapiat"},"8416":{"opco":"ocapiat"},"8422":{"opco":"ocapiat"},"8433":{"opco":"ocapiat"},"8434":{"opco":"ocapiat"},"8435":{"opco":"ocapiat"},"8523":{"opco":"ocapiat"},"8525":{"opco":"ocapiat"},"8526":{"opco":"ocapiat"},"8532":{"opco":"ocapiat"},"8534":{"opco":"ocapiat"},"8535":{"opco":"ocapiat"},"8542":{"opco":"ocapiat"},"8723":{"opco":"ocapiat"},"8733":{"opco":"ocapiat"},"8734":{"opco":"ocapiat"},"8825":{"opco":"ocapiat"},"8826":{"opco":"ocapiat"},"8832":{"opco":"ocapiat"},"8912":{"opco":"ocapiat"},"9011":{"opco":"ocapiat"},"9021":{"opco":"ocapiat"},"9031":{"opco":"ocapiat"},"9032":{"opco":"ocapiat"},"9041":{"opco":"ocapiat"},"9051":{"opco":"ocapiat"},"9061":{"opco":"ocapiat"},"9071":{"opco":"ocapiat"},"9081":{"opco":"ocapiat"},"9091":{"opco":"ocapiat"},"9101":{"opco":"ocapiat"},"9111":{"opco":"ocapiat"},"9112":{"opco":"ocapiat"},"9121":{"opco":"ocapiat"},"9131":{"opco":"ocapiat"},"9141":{"opco":"ocapiat"},"9142":{"opco":"ocapiat"},"9151":{"opco":"ocapiat"},"9161":{"opco":"ocapiat"},"9171":{"opco":"ocapiat"},"9181":{"opco":"ocapiat"},"9182":{"opco":"ocapiat"},"9191":{"opco":"ocapiat"},"9201":{"opco":"ocapiat"},"9202":{"opco":"ocapiat"},"9221":{"opco":"ocapiat"},"9222":{"opco":"ocapiat"},"9231":{"opco":"ocapiat"},"9232":{"opco":"ocapiat"},"9241":{"opco":"ocapiat"},"9261":{"opco":"ocapiat"},"9272":{"opco":"ocapiat"},"9273":{"opco":"ocapiat"},"9281":{"opco":"ocapiat"},"9283":{"opco":"ocapiat"},"9291":{"opco":"ocapiat"},"9292":{"opco":"ocapiat"},"9301":{"opco":"ocapiat"},"9302":{"opco":"ocapiat"},"9311":{"opco":"ocapiat"},"9321":{"opco":"ocapiat"},"9331":{"opco":"ocapiat"},"9341":{"opco":"ocapiat"},"9351":{"opco":"ocapiat"},"9352":{"opco":"ocapiat"},"9361":{"opco":"ocapiat"},"9362":{"opco":"ocapiat"},"9371":{"opco":"ocapiat"},"9372":{"opco":"ocapiat"},"9374":{"opco":"ocapiat"},"9381":{"opco":"ocapiat"},"9383":{"opco":"ocapiat"},"9401":{"opco":"ocapiat"},"9411":{"opco":"ocapiat"},"9412":{"opco":"ocapiat"},"9413":{"opco":"ocapiat"},"9421":{"opco":"ocapiat"},"9422":{"opco":"ocapiat"},"9441":{"opco":"ocapiat"},"9442":{"opco":"ocapiat"},"9444":{"opco":"ocapiat"},"9451":{"opco":"ocapiat"},"9452":{"opco":"ocapiat"},"9453":{"opco":"ocapiat"},"9454":{"opco":"ocapiat"},"9455":{"opco":"ocapiat"},"9456":{"opco":"ocapiat"},"9461":{"opco":"ocapiat"},"9471":{"opco":"ocapiat"},"9472":{"opco":"ocapiat"},"9491":{"opco":"ocapiat"},"9492":{"opco":"ocapiat"},"9493":{"opco":"ocapiat"},"9494":{"opco":"ocapiat"},"9497":{"opco":"ocapiat"},"9501":{"opco":"ocapiat"},"9502":{"opco":"ocapiat"},"9521":{"opco":"ocapiat"},"9531":{"opco":"ocapiat"},"9532":{"opco":"ocapiat"},"9541":{"opco":"ocapiat"},"9553":{"opco":"ocapiat"},"9561":{"opco":"ocapiat"},"9562":{"opco":"ocapiat"},"9573":{"opco":"ocapiat"},"9591":{"opco":"ocapiat"},"9592":{"opco":"ocapiat"},"9601":{"opco":"ocapiat"},"9603":{"opco":"ocapiat"},"9612":{"opco":"ocapiat"},"9613":{"opco":"ocapiat"},"9621":{"opco":"ocapiat"},"9622":{"opco":"ocapiat"},"9631":{"opco":"ocapiat"},"9641":{"opco":"ocapiat"},"9651":{"opco":"ocapiat"},"9661":{"opco":"ocapiat"},"9691":{"opco":"ocapiat"},"9712":{"opco":"ocapiat"},"9721":{"opco":"ocapiat"},"9722":{"opco":"ocapiat"},"9723":{"opco":"ocapiat"},"9761":{"opco":"ocapiat"},"9762":{"opco":"ocapiat"},"9771":{"opco":"ocapiat"},"9791":{"opco":"ocapiat"},"9802":{"opco":"ocapiat"},"9811":{"opco":"ocapiat"},"9821":{"opco":"ocapiat"},"9831":{"opco":"ocapiat"},"9841":{"opco":"ocapiat"},"9851":{"opco":"ocapiat"},"9852":{"opco":"ocapiat"},"9853":{"opco":"ocapiat"},"9871":{"opco":"ocapiat"},"9881":{"opco":"ocapiat"},"9882":{"opco":"ocapiat"},"9971":{"opco":"ocapiat"},"9972":{"opco":"ocapiat"}}}
+{
+  "_meta": {
+    "source": "France compétences, Table SIRET-OPCO SIRO (siro-202606.csv), data.gouv.fr, Licence Ouverte 2.0",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/table-siret-opco",
+    "generatedAt": "2026-10-08",
+    "rule": "OPCO majoritaire par IDCC (au moins 99 % des établissements et au moins 3 établissements). 9999 (sans convention) exclu : l'OPCO dépend de l'activité.",
+    "atlasBranch": "Branche BET (1486) et neuf branches Banque / assurance / finance rattachées à un barème Atlas chiffré (relevé du 2026-10-09)."
+  },
+  "map": {
+    "0002": {
+      "opco": "opco2i"
+    },
+    "0003": {
+      "opco": "opcomobilites"
+    },
+    "0005": {
+      "opco": "opcommerce"
+    },
+    "0007": {
+      "opco": "constructys"
+    },
+    "0016": {
+      "opco": "opcomobilites"
+    },
+    "0018": {
+      "opco": "opco2i"
+    },
+    "0029": {
+      "opco": "opcosante"
+    },
+    "0043": {
+      "opco": "opcommerce"
+    },
+    "0044": {
+      "opco": "opco2i"
+    },
+    "0045": {
+      "opco": "opco2i"
+    },
+    "0054": {
+      "opco": "opco2i"
+    },
+    "0071": {
+      "opco": "constructys"
+    },
+    "0073": {
+      "opco": "akto"
+    },
+    "0076": {
+      "opco": "constructys"
+    },
+    "0080": {
+      "opco": "constructys"
+    },
+    "0083": {
+      "opco": "opco2i"
+    },
+    "0086": {
+      "opco": "afdas"
+    },
+    "0087": {
+      "opco": "opco2i"
+    },
+    "0112": {
+      "opco": "ocapiat"
+    },
+    "0132": {
+      "opco": "constructys"
+    },
+    "0134": {
+      "opco": "constructys"
+    },
+    "0135": {
+      "opco": "opco2i"
+    },
+    "0137": {
+      "opco": "constructys"
+    },
+    "0140": {
+      "opco": "constructys"
+    },
+    "0142": {
+      "opco": "constructys"
+    },
+    "0146": {
+      "opco": "constructys"
+    },
+    "0149": {
+      "opco": "constructys"
+    },
+    "0152": {
+      "opco": "constructys"
+    },
+    "0157": {
+      "opco": "constructys"
+    },
+    "0158": {
+      "opco": "akto"
+    },
+    "0161": {
+      "opco": "opco2i"
+    },
+    "0171": {
+      "opco": "constructys"
+    },
+    "0172": {
+      "opco": "akto"
+    },
+    "0176": {
+      "opco": "opco2i"
+    },
+    "0184": {
+      "opco": "opcoep"
+    },
+    "0189": {
+      "opco": "akto"
+    },
+    "0190": {
+      "opco": "constructys"
+    },
+    "0192": {
+      "opco": "constructys"
+    },
+    "0200": {
+      "opco": "ocapiat"
+    },
+    "0207": {
+      "opco": "opco2i"
+    },
+    "0208": {
+      "opco": "constructys"
+    },
+    "0211": {
+      "opco": "opco2i"
+    },
+    "0214": {
+      "opco": "afdas"
+    },
+    "0218": {
+      "opco": "uniformation"
+    },
+    "0240": {
+      "opco": "opcoep"
+    },
+    "0247": {
+      "opco": "opco2i"
+    },
+    "0252": {
+      "opco": "constructys"
+    },
+    "0275": {
+      "opco": "akto"
+    },
+    "0279": {
+      "opco": "constructys"
+    },
+    "0292": {
+      "opco": "opco2i"
+    },
+    "0303": {
+      "opco": "opco2i"
+    },
+    "0351": {
+      "opco": "constructys"
+    },
+    "0357": {
+      "opco": "constructys"
+    },
+    "0362": {
+      "opco": "constructys"
+    },
+    "0363": {
+      "opco": "opco2i"
+    },
+    "0365": {
+      "opco": "constructys"
+    },
+    "0372": {
+      "opco": "constructys"
+    },
+    "0379": {
+      "opco": "opcommerce"
+    },
+    "0390": {
+      "opco": "akto"
+    },
+    "0394": {
+      "opco": "afdas"
+    },
+    "0398": {
+      "opco": "constructys"
+    },
+    "0405": {
+      "opco": "opcosante"
+    },
+    "0409": {
+      "opco": "constructys"
+    },
+    "0412": {
+      "opco": "opcomobilites"
+    },
+    "0413": {
+      "opco": "opcosante"
+    },
+    "0416": {
+      "opco": "constructys"
+    },
+    "0418": {
+      "opco": "opco2i"
+    },
+    "0436": {
+      "opco": "constructys"
+    },
+    "0438": {
+      "opco": "atlas"
+    },
+    "0440": {
+      "opco": "ocapiat"
+    },
+    "0454": {
+      "opco": "opcoep"
+    },
+    "0456": {
+      "opco": "constructys"
+    },
+    "0468": {
+      "opco": "opcommerce"
+    },
+    "0478": {
+      "opco": "atlas",
+      "atlasBranch": "societes-financieres"
+    },
+    "0489": {
+      "opco": "opco2i"
+    },
+    "0493": {
+      "opco": "ocapiat"
+    },
+    "0500": {
+      "opco": "opcommerce"
+    },
+    "0509": {
+      "opco": "afdas"
+    },
+    "0530": {
+      "opco": "opcommerce"
+    },
+    "0533": {
+      "opco": "constructys"
+    },
+    "0538": {
+      "opco": "opcomobilites"
+    },
+    "0564": {
+      "opco": "akto"
+    },
+    "0567": {
+      "opco": "opco2i"
+    },
+    "0573": {
+      "opco": "akto"
+    },
+    "0575": {
+      "opco": "akto"
+    },
+    "0585": {
+      "opco": "constructys"
+    },
+    "0598": {
+      "opco": "afdas"
+    },
+    "0599": {
+      "opco": "constructys"
+    },
+    "0601": {
+      "opco": "akto"
+    },
+    "0614": {
+      "opco": "opcoep"
+    },
+    "0625": {
+      "opco": "afdas"
+    },
+    "0627": {
+      "opco": "constructys"
+    },
+    "0635": {
+      "opco": "akto"
+    },
+    "0637": {
+      "opco": "opco2i"
+    },
+    "0650": {
+      "opco": "opco2i"
+    },
+    "0652": {
+      "opco": "constructys"
+    },
+    "0653": {
+      "opco": "atlas"
+    },
+    "0663": {
+      "opco": "opcoep"
+    },
+    "0669": {
+      "opco": "opco2i"
+    },
+    "0673": {
+      "opco": "opco2i"
+    },
+    "0675": {
+      "opco": "opcommerce"
+    },
+    "0693": {
+      "opco": "afdas"
+    },
+    "0698": {
+      "opco": "afdas"
+    },
+    "0700": {
+      "opco": "opco2i"
+    },
+    "0706": {
+      "opco": "opcommerce"
+    },
+    "0707": {
+      "opco": "opco2i"
+    },
+    "0711": {
+      "opco": "opcommerce"
+    },
+    "0714": {
+      "opco": "opco2i"
+    },
+    "0715": {
+      "opco": "opco2i"
+    },
+    "0716": {
+      "opco": "afdas"
+    },
+    "0731": {
+      "opco": "akto"
+    },
+    "0733": {
+      "opco": "opcoep"
+    },
+    "0735": {
+      "opco": "opcommerce"
+    },
+    "0749": {
+      "opco": "constructys"
+    },
+    "0759": {
+      "opco": "opcoep"
+    },
+    "0771": {
+      "opco": "constructys"
+    },
+    "0779": {
+      "opco": "opcomobilites"
+    },
+    "0780": {
+      "opco": "opco2i"
+    },
+    "0781": {
+      "opco": "afdas"
+    },
+    "0783": {
+      "opco": "opcosante"
+    },
+    "0787": {
+      "opco": "atlas",
+      "atlasBranch": "experts-comptables"
+    },
+    "0797": {
+      "opco": "constructys"
+    },
+    "0800": {
+      "opco": "akto"
+    },
+    "0802": {
+      "opco": "opco2i"
+    },
+    "0822": {
+      "opco": "opco2i"
+    },
+    "0827": {
+      "opco": "opco2i"
+    },
+    "0828": {
+      "opco": "opco2i"
+    },
+    "0829": {
+      "opco": "opco2i"
+    },
+    "0833": {
+      "opco": "opco2i"
+    },
+    "0836": {
+      "opco": "opco2i"
+    },
+    "0843": {
+      "opco": "opcoep"
+    },
+    "0860": {
+      "opco": "opco2i"
+    },
+    "0863": {
+      "opco": "opco2i"
+    },
+    "0878": {
+      "opco": "opco2i"
+    },
+    "0887": {
+      "opco": "opco2i"
+    },
+    "0892": {
+      "opco": "afdas"
+    },
+    "0897": {
+      "opco": "opcosante"
+    },
+    "0898": {
+      "opco": "opco2i"
+    },
+    "0899": {
+      "opco": "opco2i"
+    },
+    "0901": {
+      "opco": "opcoep"
+    },
+    "0911": {
+      "opco": "opco2i"
+    },
+    "0914": {
+      "opco": "opco2i"
+    },
+    "0915": {
+      "opco": "opcoep"
+    },
+    "0919": {
+      "opco": "opcomobilites"
+    },
+    "0920": {
+      "opco": "opco2i"
+    },
+    "0923": {
+      "opco": "opco2i"
+    },
+    "0925": {
+      "opco": "opco2i"
+    },
+    "0930": {
+      "opco": "opco2i"
+    },
+    "0934": {
+      "opco": "opco2i"
+    },
+    "0937": {
+      "opco": "opco2i"
+    },
+    "0943": {
+      "opco": "opco2i"
+    },
+    "0948": {
+      "opco": "opco2i"
+    },
+    "0953": {
+      "opco": "opcoep"
+    },
+    "0959": {
+      "opco": "opcoep"
+    },
+    "0965": {
+      "opco": "opco2i"
+    },
+    "0972": {
+      "opco": "opcoep"
+    },
+    "0979": {
+      "opco": "opco2i"
+    },
+    "0984": {
+      "opco": "opco2i"
+    },
+    "0992": {
+      "opco": "opcoep"
+    },
+    "0993": {
+      "opco": "opcoep"
+    },
+    "0998": {
+      "opco": "opco2i"
+    },
+    "1000": {
+      "opco": "opcoep"
+    },
+    "1001": {
+      "opco": "opcosante"
+    },
+    "1007": {
+      "opco": "opco2i"
+    },
+    "1016": {
+      "opco": "afdas"
+    },
+    "1017": {
+      "opco": "akto"
+    },
+    "1031": {
+      "opco": "uniformation"
+    },
+    "1043": {
+      "opco": "opcoep"
+    },
+    "1044": {
+      "opco": "opco2i"
+    },
+    "1049": {
+      "opco": "constructys"
+    },
+    "1057": {
+      "opco": "opcomobilites"
+    },
+    "1059": {
+      "opco": "opco2i"
+    },
+    "1060": {
+      "opco": "opco2i"
+    },
+    "1062": {
+      "opco": "constructys"
+    },
+    "1077": {
+      "opco": "ocapiat"
+    },
+    "1090": {
+      "opco": "opcomobilites"
+    },
+    "1113": {
+      "opco": "akto"
+    },
+    "1140": {
+      "opco": "akto"
+    },
+    "1147": {
+      "opco": "opcoep"
+    },
+    "1159": {
+      "opco": "opco2i"
+    },
+    "1164": {
+      "opco": "opco2i"
+    },
+    "1170": {
+      "opco": "opco2i"
+    },
+    "1182": {
+      "opco": "opcomobilites"
+    },
+    "1194": {
+      "opco": "afdas"
+    },
+    "1203": {
+      "opco": "opcommerce"
+    },
+    "1225": {
+      "opco": "opcommerce"
+    },
+    "1232": {
+      "opco": "akto"
+    },
+    "1237": {
+      "opco": "atlas"
+    },
+    "1240": {
+      "opco": "opcommerce"
+    },
+    "1247": {
+      "opco": "opcomobilites"
+    },
+    "1256": {
+      "opco": "opco2i"
+    },
+    "1257": {
+      "opco": "opcoep"
+    },
+    "1260": {
+      "opco": "akto"
+    },
+    "1261": {
+      "opco": "uniformation"
+    },
+    "1266": {
+      "opco": "akto"
+    },
+    "1267": {
+      "opco": "opcoep"
+    },
+    "1274": {
+      "opco": "opco2i"
+    },
+    "1278": {
+      "opco": "uniformation"
+    },
+    "1281": {
+      "opco": "afdas"
+    },
+    "1285": {
+      "opco": "afdas"
+    },
+    "1286": {
+      "opco": "opcoep"
+    },
+    "1307": {
+      "opco": "afdas"
+    },
+    "1311": {
+      "opco": "akto"
+    },
+    "1314": {
+      "opco": "opcommerce"
+    },
+    "1315": {
+      "opco": "opco2i"
+    },
+    "1316": {
+      "opco": "uniformation"
+    },
+    "1320": {
+      "opco": "akto"
+    },
+    "1326": {
+      "opco": "akto"
+    },
+    "1334": {
+      "opco": "akto"
+    },
+    "1341": {
+      "opco": "ocapiat"
+    },
+    "1351": {
+      "opco": "akto"
+    },
+    "1353": {
+      "opco": "opco2i"
+    },
+    "1365": {
+      "opco": "opco2i"
+    },
+    "1369": {
+      "opco": "opco2i"
+    },
+    "1383": {
+      "opco": "akto"
+    },
+    "1384": {
+      "opco": "ocapiat"
+    },
+    "1387": {
+      "opco": "opco2i"
+    },
+    "1388": {
+      "opco": "opco2i"
+    },
+    "1391": {
+      "opco": "akto"
+    },
+    "1396": {
+      "opco": "ocapiat"
+    },
+    "1402": {
+      "opco": "constructys"
+    },
+    "1404": {
+      "opco": "opcoep"
+    },
+    "1405": {
+      "opco": "ocapiat"
+    },
+    "1406": {
+      "opco": "opcommerce"
+    },
+    "1408": {
+      "opco": "opcoep"
+    },
+    "1411": {
+      "opco": "opco2i"
+    },
+    "1412": {
+      "opco": "opcoep"
+    },
+    "1413": {
+      "opco": "akto"
+    },
+    "1415": {
+      "opco": "opcommerce"
+    },
+    "1420": {
+      "opco": "uniformation"
+    },
+    "1423": {
+      "opco": "opco2i"
+    },
+    "1424": {
+      "opco": "opcomobilites"
+    },
+    "1431": {
+      "opco": "opcommerce"
+    },
+    "1446": {
+      "opco": "akto"
+    },
+    "1465": {
+      "opco": "afdas"
+    },
+    "1468": {
+      "opco": "atlas",
+      "atlasBranch": "credit-mutuel"
+    },
+    "1472": {
+      "opco": "opco2i"
+    },
+    "1480": {
+      "opco": "afdas"
+    },
+    "1483": {
+      "opco": "opcoep"
+    },
+    "1486": {
+      "opco": "atlas",
+      "atlasBranch": "bet"
+    },
+    "1487": {
+      "opco": "opcommerce"
+    },
+    "1492": {
+      "opco": "opco2i"
+    },
+    "1495": {
+      "opco": "opco2i"
+    },
+    "1499": {
+      "opco": "opcoep"
+    },
+    "1501": {
+      "opco": "akto"
+    },
+    "1504": {
+      "opco": "opcoep"
+    },
+    "1505": {
+      "opco": "opcommerce"
+    },
+    "1512": {
+      "opco": "opcoep"
+    },
+    "1513": {
+      "opco": "ocapiat"
+    },
+    "1516": {
+      "opco": "akto"
+    },
+    "1517": {
+      "opco": "opcommerce"
+    },
+    "1518": {
+      "opco": "uniformation"
+    },
+    "1525": {
+      "opco": "opco2i"
+    },
+    "1527": {
+      "opco": "opcoep"
+    },
+    "1534": {
+      "opco": "ocapiat"
+    },
+    "1536": {
+      "opco": "opcomobilites"
+    },
+    "1539": {
+      "opco": "opcommerce"
+    },
+    "1543": {
+      "opco": "ocapiat"
+    },
+    "1555": {
+      "opco": "opco2i"
+    },
+    "1557": {
+      "opco": "opcommerce"
+    },
+    "1558": {
+      "opco": "opco2i"
+    },
+    "1560": {
+      "opco": "opco2i"
+    },
+    "1561": {
+      "opco": "opco2i"
+    },
+    "1563": {
+      "opco": "afdas"
+    },
+    "1564": {
+      "opco": "opco2i"
+    },
+    "1565": {
+      "opco": "uniformation"
+    },
+    "1572": {
+      "opco": "opco2i"
+    },
+    "1576": {
+      "opco": "opco2i"
+    },
+    "1577": {
+      "opco": "opco2i"
+    },
+    "1578": {
+      "opco": "opco2i"
+    },
+    "1580": {
+      "opco": "opco2i"
+    },
+    "1586": {
+      "opco": "ocapiat"
+    },
+    "1588": {
+      "opco": "uniformation"
+    },
+    "1589": {
+      "opco": "opcoep"
+    },
+    "1591": {
+      "opco": "opcoep"
+    },
+    "1592": {
+      "opco": "opco2i"
+    },
+    "1596": {
+      "opco": "constructys"
+    },
+    "1597": {
+      "opco": "constructys"
+    },
+    "1604": {
+      "opco": "opco2i"
+    },
+    "1605": {
+      "opco": "opcoep"
+    },
+    "1606": {
+      "opco": "opcommerce"
+    },
+    "1607": {
+      "opco": "opco2i"
+    },
+    "1611": {
+      "opco": "opcoep"
+    },
+    "1612": {
+      "opco": "opco2i"
+    },
+    "1618": {
+      "opco": "opcommerce"
+    },
+    "1619": {
+      "opco": "opcoep"
+    },
+    "1621": {
+      "opco": "opcoep"
+    },
+    "1624": {
+      "opco": "akto"
+    },
+    "1626": {
+      "opco": "opco2i"
+    },
+    "1627": {
+      "opco": "opco2i"
+    },
+    "1628": {
+      "opco": "opco2i"
+    },
+    "1631": {
+      "opco": "afdas"
+    },
+    "1634": {
+      "opco": "opco2i"
+    },
+    "1635": {
+      "opco": "opco2i"
+    },
+    "1638": {
+      "opco": "constructys"
+    },
+    "1659": {
+      "opco": "ocapiat"
+    },
+    "1668": {
+      "opco": "constructys"
+    },
+    "1671": {
+      "opco": "akto"
+    },
+    "1672": {
+      "opco": "atlas",
+      "atlasBranch": "societes-assurances"
+    },
+    "1679": {
+      "opco": "atlas"
+    },
+    "1686": {
+      "opco": "opcommerce"
+    },
+    "1700": {
+      "opco": "ocapiat"
+    },
+    "1702": {
+      "opco": "constructys"
+    },
+    "1710": {
+      "opco": "opcomobilites"
+    },
+    "1722": {
+      "opco": "constructys"
+    },
+    "1726": {
+      "opco": "atlas"
+    },
+    "1732": {
+      "opco": "opco2i"
+    },
+    "1734": {
+      "opco": "afdas"
+    },
+    "1740": {
+      "opco": "constructys"
+    },
+    "1747": {
+      "opco": "ocapiat"
+    },
+    "1758": {
+      "opco": "constructys"
+    },
+    "1759": {
+      "opco": "constructys"
+    },
+    "1760": {
+      "opco": "opcommerce"
+    },
+    "1761": {
+      "opco": "akto"
+    },
+    "1779": {
+      "opco": "constructys"
+    },
+    "1780": {
+      "opco": "constructys"
+    },
+    "1785": {
+      "opco": "constructys"
+    },
+    "1790": {
+      "opco": "afdas"
+    },
+    "1794": {
+      "opco": "uniformation"
+    },
+    "1800": {
+      "opco": "opco2i"
+    },
+    "1801": {
+      "opco": "atlas",
+      "atlasBranch": "societes-assistance"
+    },
+    "1809": {
+      "opco": "opco2i"
+    },
+    "1810": {
+      "opco": "akto"
+    },
+    "1813": {
+      "opco": "opco2i"
+    },
+    "1821": {
+      "opco": "opco2i"
+    },
+    "1843": {
+      "opco": "constructys"
+    },
+    "1850": {
+      "opco": "opcoep"
+    },
+    "1867": {
+      "opco": "opco2i"
+    },
+    "1871": {
+      "opco": "afdas"
+    },
+    "1874": {
+      "opco": "afdas"
+    },
+    "1875": {
+      "opco": "opcoep"
+    },
+    "1876": {
+      "opco": "constructys"
+    },
+    "1880": {
+      "opco": "opcommerce"
+    },
+    "1885": {
+      "opco": "opco2i"
+    },
+    "1886": {
+      "opco": "constructys"
+    },
+    "1888": {
+      "opco": "constructys"
+    },
+    "1895": {
+      "opco": "afdas"
+    },
+    "1902": {
+      "opco": "opco2i"
+    },
+    "1903": {
+      "opco": "afdas"
+    },
+    "1909": {
+      "opco": "afdas"
+    },
+    "1912": {
+      "opco": "opco2i"
+    },
+    "1921": {
+      "opco": "opcoep"
+    },
+    "1922": {
+      "opco": "afdas"
+    },
+    "1923": {
+      "opco": "opcomobilites"
+    },
+    "1930": {
+      "opco": "ocapiat"
+    },
+    "1938": {
+      "opco": "ocapiat"
+    },
+    "1942": {
+      "opco": "opco2i"
+    },
+    "1944": {
+      "opco": "akto"
+    },
+    "1945": {
+      "opco": "opco2i"
+    },
+    "1947": {
+      "opco": "constructys"
+    },
+    "1951": {
+      "opco": "opcoep"
+    },
+    "1960": {
+      "opco": "opco2i"
+    },
+    "1961": {
+      "opco": "opcoep"
+    },
+    "1966": {
+      "opco": "opco2i"
+    },
+    "1967": {
+      "opco": "opco2i"
+    },
+    "1970": {
+      "opco": "opcommerce"
+    },
+    "1974": {
+      "opco": "opcomobilites"
+    },
+    "1978": {
+      "opco": "opcoep"
+    },
+    "1979": {
+      "opco": "akto"
+    },
+    "1980": {
+      "opco": "opcomobilites"
+    },
+    "1982": {
+      "opco": "opcoep"
+    },
+    "1987": {
+      "opco": "ocapiat"
+    },
+    "1996": {
+      "opco": "opcoep"
+    },
+    "2002": {
+      "opco": "akto"
+    },
+    "2003": {
+      "opco": "opco2i"
+    },
+    "2014": {
+      "opco": "afdas"
+    },
+    "2021": {
+      "opco": "afdas"
+    },
+    "2025": {
+      "opco": "opco2i"
+    },
+    "2032": {
+      "opco": "constructys"
+    },
+    "2033": {
+      "opco": "constructys"
+    },
+    "2034": {
+      "opco": "constructys"
+    },
+    "2046": {
+      "opco": "opcosante"
+    },
+    "2060": {
+      "opco": "akto"
+    },
+    "2070": {
+      "opco": "atlas"
+    },
+    "2075": {
+      "opco": "ocapiat"
+    },
+    "2089": {
+      "opco": "opco2i"
+    },
+    "2098": {
+      "opco": "opcoep"
+    },
+    "2101": {
+      "opco": "akto"
+    },
+    "2104": {
+      "opco": "opcosante"
+    },
+    "2111": {
+      "opco": "opcoep"
+    },
+    "2120": {
+      "opco": "atlas",
+      "atlasBranch": "banque"
+    },
+    "2121": {
+      "opco": "afdas"
+    },
+    "2126": {
+      "opco": "opco2i"
+    },
+    "2128": {
+      "opco": "uniformation"
+    },
+    "2145": {
+      "opco": "constructys"
+    },
+    "2147": {
+      "opco": "akto"
+    },
+    "2148": {
+      "opco": "afdas"
+    },
+    "2149": {
+      "opco": "akto"
+    },
+    "2150": {
+      "opco": "uniformation"
+    },
+    "2152": {
+      "opco": "akto"
+    },
+    "2156": {
+      "opco": "opcommerce"
+    },
+    "2162": {
+      "opco": "opcommerce"
+    },
+    "2174": {
+      "opco": "opcomobilites"
+    },
+    "2190": {
+      "opco": "uniformation"
+    },
+    "2194": {
+      "opco": "constructys"
+    },
+    "2195": {
+      "opco": "constructys"
+    },
+    "2198": {
+      "opco": "opcommerce"
+    },
+    "2205": {
+      "opco": "opcoep"
+    },
+    "2216": {
+      "opco": "opcommerce"
+    },
+    "2219": {
+      "opco": "opcoep"
+    },
+    "2221": {
+      "opco": "opco2i"
+    },
+    "2230": {
+      "opco": "atlas"
+    },
+    "2247": {
+      "opco": "atlas"
+    },
+    "2250": {
+      "opco": "opcoep"
+    },
+    "2257": {
+      "opco": "afdas"
+    },
+    "2264": {
+      "opco": "opcosante"
+    },
+    "2266": {
+      "opco": "opco2i"
+    },
+    "2267": {
+      "opco": "constructys"
+    },
+    "2272": {
+      "opco": "opcoep"
+    },
+    "2294": {
+      "opco": "opco2i"
+    },
+    "2306": {
+      "opco": "opco2i"
+    },
+    "2310": {
+      "opco": "afdas"
+    },
+    "2328": {
+      "opco": "constructys"
+    },
+    "2329": {
+      "opco": "opcoep"
+    },
+    "2332": {
+      "opco": "opcoep"
+    },
+    "2335": {
+      "opco": "atlas"
+    },
+    "2336": {
+      "opco": "uniformation"
+    },
+    "2344": {
+      "opco": "opco2i"
+    },
+    "2345": {
+      "opco": "opcomobilites"
+    },
+    "2354": {
+      "opco": "constructys"
+    },
+    "2357": {
+      "opco": "atlas"
+    },
+    "2360": {
+      "opco": "opcomobilites"
+    },
+    "2372": {
+      "opco": "afdas"
+    },
+    "2378": {
+      "opco": "akto"
+    },
+    "2389": {
+      "opco": "constructys"
+    },
+    "2395": {
+      "opco": "opcoep"
+    },
+    "2397": {
+      "opco": "afdas"
+    },
+    "2405": {
+      "opco": "opcosante"
+    },
+    "2408": {
+      "opco": "akto"
+    },
+    "2409": {
+      "opco": "constructys"
+    },
+    "2410": {
+      "opco": "ocapiat"
+    },
+    "2411": {
+      "opco": "afdas"
+    },
+    "2412": {
+      "opco": "afdas"
+    },
+    "2420": {
+      "opco": "constructys"
+    },
+    "2489": {
+      "opco": "opco2i"
+    },
+    "2494": {
+      "opco": "ocapiat"
+    },
+    "2511": {
+      "opco": "afdas"
+    },
+    "2519": {
+      "opco": "afdas"
+    },
+    "2526": {
+      "opco": "uniformation"
+    },
+    "2528": {
+      "opco": "opco2i"
+    },
+    "2534": {
+      "opco": "ocapiat"
+    },
+    "2535": {
+      "opco": "ocapiat"
+    },
+    "2542": {
+      "opco": "opco2i"
+    },
+    "2543": {
+      "opco": "atlas",
+      "atlasBranch": "geometres"
+    },
+    "2564": {
+      "opco": "opcoep"
+    },
+    "2579": {
+      "opco": "opco2i"
+    },
+    "2582": {
+      "opco": "constructys"
+    },
+    "2583": {
+      "opco": "akto"
+    },
+    "2584": {
+      "opco": "constructys"
+    },
+    "2585": {
+      "opco": "constructys"
+    },
+    "2596": {
+      "opco": "opcoep"
+    },
+    "2603": {
+      "opco": "uniformation"
+    },
+    "2609": {
+      "opco": "constructys"
+    },
+    "2614": {
+      "opco": "constructys"
+    },
+    "2615": {
+      "opco": "opco2i"
+    },
+    "2625": {
+      "opco": "constructys"
+    },
+    "2630": {
+      "opco": "opco2i"
+    },
+    "2631": {
+      "opco": "afdas"
+    },
+    "2636": {
+      "opco": "akto"
+    },
+    "2642": {
+      "opco": "afdas"
+    },
+    "2658": {
+      "opco": "akto"
+    },
+    "2666": {
+      "opco": "uniformation"
+    },
+    "2667": {
+      "opco": "constructys"
+    },
+    "2683": {
+      "opco": "afdas"
+    },
+    "2691": {
+      "opco": "akto"
+    },
+    "2697": {
+      "opco": "opcoep"
+    },
+    "2700": {
+      "opco": "opco2i"
+    },
+    "2701": {
+      "opco": "atlas"
+    },
+    "2702": {
+      "opco": "atlas"
+    },
+    "2704": {
+      "opco": "atlas"
+    },
+    "2706": {
+      "opco": "opcoep"
+    },
+    "2707": {
+      "opco": "constructys"
+    },
+    "2717": {
+      "opco": "afdas"
+    },
+    "2728": {
+      "opco": "ocapiat"
+    },
+    "2754": {
+      "opco": "opcommerce"
+    },
+    "2755": {
+      "opco": "opco2i"
+    },
+    "2770": {
+      "opco": "afdas"
+    },
+    "2785": {
+      "opco": "opcoep"
+    },
+    "2793": {
+      "opco": "uniformation"
+    },
+    "2847": {
+      "opco": "uniformation"
+    },
+    "2870": {
+      "opco": "constructys"
+    },
+    "2931": {
+      "opco": "atlas",
+      "atlasBranch": "marches-financiers"
+    },
+    "2941": {
+      "opco": "uniformation"
+    },
+    "2964": {
+      "opco": "opcomobilites"
+    },
+    "2972": {
+      "opco": "opcomobilites"
+    },
+    "2978": {
+      "opco": "opcoep"
+    },
+    "2980": {
+      "opco": "opco2i"
+    },
+    "2992": {
+      "opco": "opco2i"
+    },
+    "3013": {
+      "opco": "opcoep"
+    },
+    "3016": {
+      "opco": "uniformation"
+    },
+    "3017": {
+      "opco": "opcomobilites"
+    },
+    "3028": {
+      "opco": "opcomobilites"
+    },
+    "3032": {
+      "opco": "opcoep"
+    },
+    "3035": {
+      "opco": "opcoep"
+    },
+    "3043": {
+      "opco": "akto"
+    },
+    "3053": {
+      "opco": "opco2i"
+    },
+    "3090": {
+      "opco": "afdas"
+    },
+    "3097": {
+      "opco": "afdas"
+    },
+    "3105": {
+      "opco": "uniformation"
+    },
+    "3107": {
+      "opco": "constructys"
+    },
+    "3109": {
+      "opco": "ocapiat"
+    },
+    "3123": {
+      "opco": "opcomobilites"
+    },
+    "3127": {
+      "opco": "opcoep"
+    },
+    "3128": {
+      "opco": "constructys"
+    },
+    "3144": {
+      "opco": "constructys"
+    },
+    "3160": {
+      "opco": "atlas"
+    },
+    "3168": {
+      "opco": "opcommerce"
+    },
+    "3201": {
+      "opco": "afdas"
+    },
+    "3202": {
+      "opco": "afdas"
+    },
+    "3204": {
+      "opco": "constructys"
+    },
+    "3205": {
+      "opco": "opcommerce"
+    },
+    "3206": {
+      "opco": "opcoep"
+    },
+    "3207": {
+      "opco": "opcomobilites"
+    },
+    "3209": {
+      "opco": "opco2i"
+    },
+    "3210": {
+      "opco": "atlas"
+    },
+    "3211": {
+      "opco": "akto"
+    },
+    "3212": {
+      "opco": "constructys"
+    },
+    "3213": {
+      "opco": "atlas"
+    },
+    "3216": {
+      "opco": "constructys"
+    },
+    "3217": {
+      "opco": "opcomobilites"
+    },
+    "3218": {
+      "opco": "akto"
+    },
+    "3219": {
+      "opco": "akto"
+    },
+    "3220": {
+      "opco": "uniformation"
+    },
+    "3221": {
+      "opco": "afdas"
+    },
+    "3222": {
+      "opco": "opco2i"
+    },
+    "3223": {
+      "opco": "opcomobilites"
+    },
+    "3224": {
+      "opco": "opco2i"
+    },
+    "3225": {
+      "opco": "afdas"
+    },
+    "3227": {
+      "opco": "opco2i"
+    },
+    "3228": {
+      "opco": "opcomobilites"
+    },
+    "3229": {
+      "opco": "opcomobilites"
+    },
+    "3230": {
+      "opco": "afdas"
+    },
+    "3231": {
+      "opco": "opco2i"
+    },
+    "3232": {
+      "opco": "uniformation"
+    },
+    "3233": {
+      "opco": "opco2i"
+    },
+    "3235": {
+      "opco": "opcoep"
+    },
+    "3236": {
+      "opco": "opco2i"
+    },
+    "3237": {
+      "opco": "opcommerce"
+    },
+    "3238": {
+      "opco": "opco2i"
+    },
+    "3239": {
+      "opco": "opcoep"
+    },
+    "3241": {
+      "opco": "afdas"
+    },
+    "3242": {
+      "opco": "afdas"
+    },
+    "3243": {
+      "opco": "akto"
+    },
+    "3244": {
+      "opco": "opcoep"
+    },
+    "3245": {
+      "opco": "opcomobilites"
+    },
+    "3248": {
+      "opco": "opco2i"
+    },
+    "3249": {
+      "opco": "opco2i"
+    },
+    "3250": {
+      "opco": "opcoep"
+    },
+    "3251": {
+      "opco": "opco2i"
+    },
+    "3252": {
+      "opco": "afdas"
+    },
+    "3253": {
+      "opco": "opcoep"
+    },
+    "3254": {
+      "opco": "opcoep"
+    },
+    "3255": {
+      "opco": "ocapiat"
+    },
+    "5001": {
+      "opco": "opco2i"
+    },
+    "5002": {
+      "opco": "uniformation"
+    },
+    "5005": {
+      "opco": "atlas",
+      "atlasBranch": "caisse-epargne"
+    },
+    "5010": {
+      "opco": "opcoep"
+    },
+    "5011": {
+      "opco": "akto"
+    },
+    "5014": {
+      "opco": "opcomobilites"
+    },
+    "5017": {
+      "opco": "akto"
+    },
+    "5018": {
+      "opco": "atlas"
+    },
+    "5019": {
+      "opco": "ocapiat"
+    },
+    "5020": {
+      "opco": "opcomobilites"
+    },
+    "5023": {
+      "opco": "ocapiat"
+    },
+    "5024": {
+      "opco": "akto"
+    },
+    "5025": {
+      "opco": "atlas"
+    },
+    "5203": {
+      "opco": "afdas"
+    },
+    "5502": {
+      "opco": "opcosante"
+    },
+    "5503": {
+      "opco": "akto"
+    },
+    "5505": {
+      "opco": "opco2i"
+    },
+    "5506": {
+      "opco": "atlas"
+    },
+    "5507": {
+      "opco": "afdas"
+    },
+    "5509": {
+      "opco": "ocapiat"
+    },
+    "5513": {
+      "opco": "opco2i"
+    },
+    "5516": {
+      "opco": "opcoep"
+    },
+    "5519": {
+      "opco": "uniformation"
+    },
+    "5520": {
+      "opco": "opcomobilites"
+    },
+    "5521": {
+      "opco": "opcomobilites"
+    },
+    "5522": {
+      "opco": "opcosante"
+    },
+    "5524": {
+      "opco": "opcosante"
+    },
+    "5526": {
+      "opco": "afdas"
+    },
+    "5530": {
+      "opco": "uniformation"
+    },
+    "5531": {
+      "opco": "ocapiat"
+    },
+    "5532": {
+      "opco": "opcosante"
+    },
+    "5533": {
+      "opco": "uniformation"
+    },
+    "5539": {
+      "opco": "akto"
+    },
+    "5541": {
+      "opco": "afdas"
+    },
+    "5542": {
+      "opco": "afdas"
+    },
+    "5545": {
+      "opco": "akto"
+    },
+    "5546": {
+      "opco": "opco2i"
+    },
+    "5548": {
+      "opco": "uniformation"
+    },
+    "5550": {
+      "opco": "uniformation"
+    },
+    "5553": {
+      "opco": "uniformation"
+    },
+    "5554": {
+      "opco": "opcomobilites"
+    },
+    "5555": {
+      "opco": "opcomobilites"
+    },
+    "5558": {
+      "opco": "opcoep"
+    },
+    "5562": {
+      "opco": "opco2i"
+    },
+    "5564": {
+      "opco": "uniformation"
+    },
+    "5566": {
+      "opco": "opcoep"
+    },
+    "5568": {
+      "opco": "ocapiat"
+    },
+    "5569": {
+      "opco": "afdas"
+    },
+    "5570": {
+      "opco": "afdas"
+    },
+    "5571": {
+      "opco": "opcosante"
+    },
+    "5572": {
+      "opco": "opcoep"
+    },
+    "5573": {
+      "opco": "akto"
+    },
+    "5574": {
+      "opco": "afdas"
+    },
+    "5579": {
+      "opco": "afdas"
+    },
+    "5580": {
+      "opco": "afdas"
+    },
+    "5583": {
+      "opco": "opcomobilites"
+    },
+    "5584": {
+      "opco": "atlas"
+    },
+    "5593": {
+      "opco": "ocapiat"
+    },
+    "5598": {
+      "opco": "opcomobilites"
+    },
+    "5600": {
+      "opco": "atlas"
+    },
+    "5601": {
+      "opco": "opcosante"
+    },
+    "5604": {
+      "opco": "akto"
+    },
+    "5606": {
+      "opco": "atlas"
+    },
+    "5610": {
+      "opco": "afdas"
+    },
+    "5613": {
+      "opco": "afdas"
+    },
+    "5614": {
+      "opco": "ocapiat"
+    },
+    "5618": {
+      "opco": "uniformation"
+    },
+    "5619": {
+      "opco": "ocapiat"
+    },
+    "5623": {
+      "opco": "ocapiat"
+    },
+    "5629": {
+      "opco": "uniformation"
+    },
+    "5633": {
+      "opco": "constructys"
+    },
+    "5634": {
+      "opco": "akto"
+    },
+    "7001": {
+      "opco": "ocapiat"
+    },
+    "7002": {
+      "opco": "ocapiat"
+    },
+    "7003": {
+      "opco": "ocapiat"
+    },
+    "7004": {
+      "opco": "ocapiat"
+    },
+    "7005": {
+      "opco": "ocapiat"
+    },
+    "7006": {
+      "opco": "ocapiat"
+    },
+    "7007": {
+      "opco": "ocapiat"
+    },
+    "7008": {
+      "opco": "ocapiat"
+    },
+    "7009": {
+      "opco": "ocapiat"
+    },
+    "7010": {
+      "opco": "ocapiat"
+    },
+    "7012": {
+      "opco": "ocapiat"
+    },
+    "7013": {
+      "opco": "ocapiat"
+    },
+    "7014": {
+      "opco": "ocapiat"
+    },
+    "7015": {
+      "opco": "ocapiat"
+    },
+    "7016": {
+      "opco": "ocapiat"
+    },
+    "7017": {
+      "opco": "ocapiat"
+    },
+    "7018": {
+      "opco": "ocapiat"
+    },
+    "7019": {
+      "opco": "ocapiat"
+    },
+    "7020": {
+      "opco": "ocapiat"
+    },
+    "7021": {
+      "opco": "ocapiat"
+    },
+    "7023": {
+      "opco": "ocapiat"
+    },
+    "7024": {
+      "opco": "ocapiat"
+    },
+    "7025": {
+      "opco": "ocapiat"
+    },
+    "7026": {
+      "opco": "ocapiat"
+    },
+    "7027": {
+      "opco": "ocapiat"
+    },
+    "7028": {
+      "opco": "ocapiat"
+    },
+    "7501": {
+      "opco": "ocapiat"
+    },
+    "7502": {
+      "opco": "ocapiat"
+    },
+    "7503": {
+      "opco": "ocapiat"
+    },
+    "7508": {
+      "opco": "ocapiat"
+    },
+    "7509": {
+      "opco": "akto"
+    },
+    "7511": {
+      "opco": "ocapiat"
+    },
+    "7513": {
+      "opco": "ocapiat"
+    },
+    "7514": {
+      "opco": "ocapiat"
+    },
+    "7515": {
+      "opco": "ocapiat"
+    },
+    "7520": {
+      "opco": "akto"
+    },
+    "8112": {
+      "opco": "ocapiat"
+    },
+    "8113": {
+      "opco": "ocapiat"
+    },
+    "8115": {
+      "opco": "ocapiat"
+    },
+    "8116": {
+      "opco": "ocapiat"
+    },
+    "8117": {
+      "opco": "ocapiat"
+    },
+    "8212": {
+      "opco": "akto"
+    },
+    "8214": {
+      "opco": "ocapiat"
+    },
+    "8216": {
+      "opco": "ocapiat"
+    },
+    "8221": {
+      "opco": "ocapiat"
+    },
+    "8233": {
+      "opco": "ocapiat"
+    },
+    "8234": {
+      "opco": "ocapiat"
+    },
+    "8243": {
+      "opco": "ocapiat"
+    },
+    "8244": {
+      "opco": "ocapiat"
+    },
+    "8252": {
+      "opco": "ocapiat"
+    },
+    "8262": {
+      "opco": "ocapiat"
+    },
+    "8313": {
+      "opco": "ocapiat"
+    },
+    "8414": {
+      "opco": "ocapiat"
+    },
+    "8416": {
+      "opco": "ocapiat"
+    },
+    "8422": {
+      "opco": "ocapiat"
+    },
+    "8433": {
+      "opco": "ocapiat"
+    },
+    "8434": {
+      "opco": "ocapiat"
+    },
+    "8435": {
+      "opco": "ocapiat"
+    },
+    "8523": {
+      "opco": "ocapiat"
+    },
+    "8525": {
+      "opco": "ocapiat"
+    },
+    "8526": {
+      "opco": "ocapiat"
+    },
+    "8532": {
+      "opco": "ocapiat"
+    },
+    "8534": {
+      "opco": "ocapiat"
+    },
+    "8535": {
+      "opco": "ocapiat"
+    },
+    "8542": {
+      "opco": "ocapiat"
+    },
+    "8723": {
+      "opco": "ocapiat"
+    },
+    "8733": {
+      "opco": "ocapiat"
+    },
+    "8734": {
+      "opco": "ocapiat"
+    },
+    "8825": {
+      "opco": "ocapiat"
+    },
+    "8826": {
+      "opco": "ocapiat"
+    },
+    "8832": {
+      "opco": "ocapiat"
+    },
+    "8912": {
+      "opco": "ocapiat"
+    },
+    "9011": {
+      "opco": "ocapiat"
+    },
+    "9021": {
+      "opco": "ocapiat"
+    },
+    "9031": {
+      "opco": "ocapiat"
+    },
+    "9032": {
+      "opco": "ocapiat"
+    },
+    "9041": {
+      "opco": "ocapiat"
+    },
+    "9051": {
+      "opco": "ocapiat"
+    },
+    "9061": {
+      "opco": "ocapiat"
+    },
+    "9071": {
+      "opco": "ocapiat"
+    },
+    "9081": {
+      "opco": "ocapiat"
+    },
+    "9091": {
+      "opco": "ocapiat"
+    },
+    "9101": {
+      "opco": "ocapiat"
+    },
+    "9111": {
+      "opco": "ocapiat"
+    },
+    "9112": {
+      "opco": "ocapiat"
+    },
+    "9121": {
+      "opco": "ocapiat"
+    },
+    "9131": {
+      "opco": "ocapiat"
+    },
+    "9141": {
+      "opco": "ocapiat"
+    },
+    "9142": {
+      "opco": "ocapiat"
+    },
+    "9151": {
+      "opco": "ocapiat"
+    },
+    "9161": {
+      "opco": "ocapiat"
+    },
+    "9171": {
+      "opco": "ocapiat"
+    },
+    "9181": {
+      "opco": "ocapiat"
+    },
+    "9182": {
+      "opco": "ocapiat"
+    },
+    "9191": {
+      "opco": "ocapiat"
+    },
+    "9201": {
+      "opco": "ocapiat"
+    },
+    "9202": {
+      "opco": "ocapiat"
+    },
+    "9221": {
+      "opco": "ocapiat"
+    },
+    "9222": {
+      "opco": "ocapiat"
+    },
+    "9231": {
+      "opco": "ocapiat"
+    },
+    "9232": {
+      "opco": "ocapiat"
+    },
+    "9241": {
+      "opco": "ocapiat"
+    },
+    "9261": {
+      "opco": "ocapiat"
+    },
+    "9272": {
+      "opco": "ocapiat"
+    },
+    "9273": {
+      "opco": "ocapiat"
+    },
+    "9281": {
+      "opco": "ocapiat"
+    },
+    "9283": {
+      "opco": "ocapiat"
+    },
+    "9291": {
+      "opco": "ocapiat"
+    },
+    "9292": {
+      "opco": "ocapiat"
+    },
+    "9301": {
+      "opco": "ocapiat"
+    },
+    "9302": {
+      "opco": "ocapiat"
+    },
+    "9311": {
+      "opco": "ocapiat"
+    },
+    "9321": {
+      "opco": "ocapiat"
+    },
+    "9331": {
+      "opco": "ocapiat"
+    },
+    "9341": {
+      "opco": "ocapiat"
+    },
+    "9351": {
+      "opco": "ocapiat"
+    },
+    "9352": {
+      "opco": "ocapiat"
+    },
+    "9361": {
+      "opco": "ocapiat"
+    },
+    "9362": {
+      "opco": "ocapiat"
+    },
+    "9371": {
+      "opco": "ocapiat"
+    },
+    "9372": {
+      "opco": "ocapiat"
+    },
+    "9374": {
+      "opco": "ocapiat"
+    },
+    "9381": {
+      "opco": "ocapiat"
+    },
+    "9383": {
+      "opco": "ocapiat"
+    },
+    "9401": {
+      "opco": "ocapiat"
+    },
+    "9411": {
+      "opco": "ocapiat"
+    },
+    "9412": {
+      "opco": "ocapiat"
+    },
+    "9413": {
+      "opco": "ocapiat"
+    },
+    "9421": {
+      "opco": "ocapiat"
+    },
+    "9422": {
+      "opco": "ocapiat"
+    },
+    "9441": {
+      "opco": "ocapiat"
+    },
+    "9442": {
+      "opco": "ocapiat"
+    },
+    "9444": {
+      "opco": "ocapiat"
+    },
+    "9451": {
+      "opco": "ocapiat"
+    },
+    "9452": {
+      "opco": "ocapiat"
+    },
+    "9453": {
+      "opco": "ocapiat"
+    },
+    "9454": {
+      "opco": "ocapiat"
+    },
+    "9455": {
+      "opco": "ocapiat"
+    },
+    "9456": {
+      "opco": "ocapiat"
+    },
+    "9461": {
+      "opco": "ocapiat"
+    },
+    "9471": {
+      "opco": "ocapiat"
+    },
+    "9472": {
+      "opco": "ocapiat"
+    },
+    "9491": {
+      "opco": "ocapiat"
+    },
+    "9492": {
+      "opco": "ocapiat"
+    },
+    "9493": {
+      "opco": "ocapiat"
+    },
+    "9494": {
+      "opco": "ocapiat"
+    },
+    "9497": {
+      "opco": "ocapiat"
+    },
+    "9501": {
+      "opco": "ocapiat"
+    },
+    "9502": {
+      "opco": "ocapiat"
+    },
+    "9521": {
+      "opco": "ocapiat"
+    },
+    "9531": {
+      "opco": "ocapiat"
+    },
+    "9532": {
+      "opco": "ocapiat"
+    },
+    "9541": {
+      "opco": "ocapiat"
+    },
+    "9553": {
+      "opco": "ocapiat"
+    },
+    "9561": {
+      "opco": "ocapiat"
+    },
+    "9562": {
+      "opco": "ocapiat"
+    },
+    "9573": {
+      "opco": "ocapiat"
+    },
+    "9591": {
+      "opco": "ocapiat"
+    },
+    "9592": {
+      "opco": "ocapiat"
+    },
+    "9601": {
+      "opco": "ocapiat"
+    },
+    "9603": {
+      "opco": "ocapiat"
+    },
+    "9612": {
+      "opco": "ocapiat"
+    },
+    "9613": {
+      "opco": "ocapiat"
+    },
+    "9621": {
+      "opco": "ocapiat"
+    },
+    "9622": {
+      "opco": "ocapiat"
+    },
+    "9631": {
+      "opco": "ocapiat"
+    },
+    "9641": {
+      "opco": "ocapiat"
+    },
+    "9651": {
+      "opco": "ocapiat"
+    },
+    "9661": {
+      "opco": "ocapiat"
+    },
+    "9691": {
+      "opco": "ocapiat"
+    },
+    "9712": {
+      "opco": "ocapiat"
+    },
+    "9721": {
+      "opco": "ocapiat"
+    },
+    "9722": {
+      "opco": "ocapiat"
+    },
+    "9723": {
+      "opco": "ocapiat"
+    },
+    "9761": {
+      "opco": "ocapiat"
+    },
+    "9762": {
+      "opco": "ocapiat"
+    },
+    "9771": {
+      "opco": "ocapiat"
+    },
+    "9791": {
+      "opco": "ocapiat"
+    },
+    "9802": {
+      "opco": "ocapiat"
+    },
+    "9811": {
+      "opco": "ocapiat"
+    },
+    "9821": {
+      "opco": "ocapiat"
+    },
+    "9831": {
+      "opco": "ocapiat"
+    },
+    "9841": {
+      "opco": "ocapiat"
+    },
+    "9851": {
+      "opco": "ocapiat"
+    },
+    "9852": {
+      "opco": "ocapiat"
+    },
+    "9853": {
+      "opco": "ocapiat"
+    },
+    "9871": {
+      "opco": "ocapiat"
+    },
+    "9881": {
+      "opco": "ocapiat"
+    },
+    "9882": {
+      "opco": "ocapiat"
+    },
+    "9971": {
+      "opco": "ocapiat"
+    },
+    "9972": {
+      "opco": "ocapiat"
+    }
+  }
+}

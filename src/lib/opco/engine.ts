@@ -119,7 +119,7 @@ export function estimate(input: EstimateInput): EstimateResult {
   } else if (input.opco === "atlas") {
     const branchKey = atlasBranchFromIdcc(input.idcc);
     const branch = branchKey
-      ? (rules.opcos.atlas.branches as Record<string, (typeof rules.opcos.atlas.branches)["bet"]>)[branchKey]
+      ? (rules.opcos.atlas.branches as unknown as Record<string, (typeof rules.opcos.atlas.branches)["bet"]>)[branchKey]
       : undefined;
     if (!branch) {
       return toConfirm(

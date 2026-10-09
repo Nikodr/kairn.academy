@@ -1,6 +1,7 @@
 import type { EstimateResult, ScenarioResult } from '../types';
 import { formatEuroHt, formatHours, formatRangeHt, pluralize } from './format';
 import { withBonus, type BonusInfo } from './bonus';
+import type { NoFundingInfo } from './no-funding';
 import type { GenericEstimate } from './generic';
 
 export interface ScenarioView {
@@ -106,9 +107,17 @@ export function buildResultView(result: EstimateResult, priceFor?: PriceFor, bon
 }
 
 /** Résumé en une ligne du résultat affiché, pour l'enregistrement du lead. */
-export function summarizeResult(result: EstimateResult, priceFor?: PriceFor, quoteHt?: number, bonus?: BonusInfo | null): string {
+export function summarizeResult(
+  result: EstimateResult,
+  priceFor?: PriceFor,
+  quoteHt?: number,
+  bonus?: BonusInfo | null,
+  noFunding?: NoFundingInfo | null,
+): string {
   if (result.status === 'to_confirm') {
-    const base = `Barème à confirmer (${result.reason})`;
+    const base = noFunding
+      ? `Pas de financement PDC ${result.opcoLabel} (${noFunding.label} : PDC réservé aux entreprises de moins de ${noFunding.publicBelow} salariés)`
+      : `Barème à confirmer (${result.reason})`;
     return bonus ? `${base} ; Autre prise en charge : bonus « Transition écologique » de ${formatEuroHt(bonus.amountHt)} par an (sous condition d'un module d'IA durable)` : base;
   }
   return result.scenarios
@@ -183,6 +192,7 @@ export function summarizeDisplayed(
   priceFor?: PriceFor,
   quoteHt?: number,
   bonus?: BonusInfo | null,
+  noFunding?: NoFundingInfo | null,
 ): string {
   if (result.status === 'to_confirm' && generic) {
     const ranges = generic.scenarios
@@ -200,5 +210,5 @@ export function summarizeDisplayed(
       .join(' | ');
     return `Estimation générique (${result.reason}) : ${ranges}`;
   }
-  return summarizeResult(result, priceFor, quoteHt, bonus);
+  return summarizeResult(result, priceFor, quoteHt, bonus, noFunding);
 }

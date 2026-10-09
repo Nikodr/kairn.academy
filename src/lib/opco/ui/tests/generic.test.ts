@@ -291,7 +291,7 @@ describe('autre prise en charge (bonus Transition écologique) dans le lead', ()
     const { buildLeadPayload } = await import('../leads');
     const result = estimate({ opco: 'atlas', sizeBand: '300+', idcc: '1486', participants: 4, durationsHours: [7, 14] });
     const p = buildLeadPayload({ ...common, opco: 'atlas', sizeBand: '300+', idcc: '1486', result, generic: null });
-    expect(p).toMatchObject({ resultType: 'À confirmer', otherCoverageHt: 4500, remaining7hHt: null, remaining14hHt: null });
+    expect(p).toMatchObject({ resultType: 'Aucun financement PDC', otherCoverageHt: 4500, remaining7hHt: null, remaining14hHt: null });
   });
 
   it('autre OPCO ou autre convention : champ vide, résultats inchangés', async () => {
@@ -300,5 +300,56 @@ describe('autre prise en charge (bonus Transition écologique) dans le lead', ()
     const p = buildLeadPayload({ ...common, opco: 'afdas', sizeBand: '11-49', result, generic: null });
     expect(p.otherCoverageHt).toBeNull();
     expect(toFormBody(p).get('otherCoverageHt')).toBe('');
+  });
+});
+
+describe('branches Atlas banque / assurance / finance et absence de PDC à 50 salariés et plus', () => {
+  const base = { participants: 5, durationsHours: [7, 14] };
+
+  it('chiffre le plafond annuel des branches relevées (moins de 50 salariés)', () => {
+    const banque = estimate({ ...base, opco: 'atlas', sizeBand: '11-49', idcc: '2120' });
+    expect(banque.status).toBe('estimated');
+    if (banque.status === 'estimated') expect(banque.scenarios.map((s) => s.maxCoverageHt)).toEqual([5600, 5600]);
+    const assur = estimate({ ...base, opco: 'atlas', sizeBand: 'lt11', idcc: '1672' });
+    if (assur.status === 'estimated') expect(assur.scenarios[0].maxCoverageHt).toBe(9000);
+    const credit = estimate({ ...base, opco: 'atlas', sizeBand: 'lt11', idcc: '1468' });
+    if (credit.status === 'estimated') expect(credit.scenarios[0].maxCoverageHt).toBe(1500);
+  });
+
+  it('50 salariés et plus : « pas de financement PDC », pas « barème à confirmer »', async () => {
+    const { noFundingFor, noFundingForResult } = await import('../no-funding');
+    const { buildLeadPayload } = await import('../leads');
+    const input = { opco: 'atlas' as const, idcc: '2120', sizeBand: '50-299' as const };
+    const result = estimate({ ...base, ...input });
+    expect(result.status).toBe('to_confirm');
+    expect(noFundingForResult(input, result)?.publicBelow).toBe(50);
+    expect(noFundingFor({ ...input, sizeBand: '11-49' })).toBeNull();
+
+    const payload = buildLeadPayload({ firstName: 'A', email: 'a@b.fr', companyName: 'X', participants: 5, turnstileToken: 't', ...input, result, generic: null });
+    expect(payload.resultType).toBe('Aucun financement PDC');
+    expect(plain(payload.resultSummary)).toContain('Pas de financement PDC Atlas (Banque : PDC réservé aux entreprises de moins de 50 salariés)');
+    expect(payload).toMatchObject({ coverage7hHt: null, remaining7hHt: null, otherCoverageHt: null });
+  });
+
+  it('BET : PDC jusqu\'à 299 salariés, aucun à 300 et plus (le bonus reste affiché)', async () => {
+    const { noFundingFor } = await import('../no-funding');
+    const { buildLeadPayload } = await import('../leads');
+    expect(noFundingFor({ opco: 'atlas', idcc: '1486', sizeBand: '50-299' })).toBeNull();
+    const input = { opco: 'atlas' as const, idcc: '1486', sizeBand: '300+' as const };
+    const result = estimate({ ...base, ...input });
+    const payload = buildLeadPayload({ firstName: 'A', email: 'a@b.fr', companyName: 'X', participants: 5, turnstileToken: 't', ...input, result, generic: null });
+    expect(payload).toMatchObject({ resultType: 'Aucun financement PDC', otherCoverageHt: 4500 });
+    expect(plain(payload.resultSummary)).toMatch(/Pas de financement PDC Atlas \(.*moins de 300 salariés\).*Autre prise en charge : bonus/);
+  });
+
+  it('ne conclut jamais « pas de financement » quand la fiche couvre la taille ou n\'est pas relevée', async () => {
+    const { noFundingFor } = await import('../no-funding');
+    // Courtage (2247) et agents généraux (2335) : « tous les salariés ; toutes les entreprises ».
+    expect(noFundingFor({ opco: 'atlas', idcc: '2247', sizeBand: '50-299' })).toBeNull();
+    expect(noFundingFor({ opco: 'atlas', idcc: '2335', sizeBand: '300+' })).toBeNull();
+    // Banque populaire (3210) : fiche non relevée ; autre OPCO ; sans IDCC.
+    expect(noFundingFor({ opco: 'atlas', idcc: '3210', sizeBand: '50-299' })).toBeNull();
+    expect(noFundingFor({ opco: 'afdas', idcc: '2120', sizeBand: '50-299' })).toBeNull();
+    expect(noFundingFor({ opco: 'atlas', sizeBand: '50-299' })).toBeNull();
   });
 });

@@ -22,6 +22,7 @@ import { isOpcoId, isSizeBand, opcoLabel, sizeLabel } from './options';
 import { hoursFor, priceResolver } from './pricing';
 import { mountTurnstile, type TurnstileHandle } from './turnstile';
 import { bonusFor, type BonusInfo } from './bonus';
+import { noFundingForResult } from './no-funding';
 import { buildGenericView, buildResultView, type GenericScenarioView, type ScenarioView } from './viewmodel';
 
 type StepId = 'company' | 'unlock' | 'result';
@@ -901,15 +902,32 @@ export function initSimulator(): void {
         return;
       }
       const standalone = bonus && !generic ? bonusNotes(bonus, true) : [];
+      const none = noFundingForResult(profile, result);
       body.replaceChildren(
         ...nodes(
           noticeEl,
-          h(
-            'div',
-            { class: 'opco-confirm' },
-            h('h3', {}, 'Barème à confirmer'),
-            h('p', {}, reason === 'branch_not_covered' ? `${why} Nous la confirmons avec ${view.opcoLabel} lors de l'étude de votre dossier.` : view.message),
-          ),
+          none
+            ? h(
+                'div',
+                { class: 'opco-confirm' },
+                h('h3', {}, `Pas de financement PDC ${view.opcoLabel}`),
+                h(
+                  'p',
+                  {},
+                  `Selon les critères ${view.opcoLabel}, le plan de développement des compétences de la branche « ${none.label} » finance uniquement les entreprises de moins de ${none.publicBelow} salariés. `,
+                  `Avec ${sizeLabel(profile.sizeBand).toLowerCase()}, votre entreprise n'y est pas éligible. `,
+                  'Cela ne préjuge pas d\'autres dispositifs, que nous pouvons étudier avec vous. ',
+                  `Critères mis à jour le ${formatDateFr(none.updatedAt)} : `,
+                  h('a', { attrs: { href: none.sourceUrl, target: '_blank', rel: 'noopener noreferrer' } }, `critères de financement ${view.opcoLabel}`),
+                  '.',
+                ),
+              )
+            : h(
+                'div',
+                { class: 'opco-confirm' },
+                h('h3', {}, 'Barème à confirmer'),
+                h('p', {}, reason === 'branch_not_covered' ? `${why} Nous la confirmons avec ${view.opcoLabel} lors de l'étude de votre dossier.` : view.message),
+              ),
           standalone.length
             ? h(
                 'div',
@@ -918,7 +936,7 @@ export function initSimulator(): void {
                 h('ul', { class: 'opco-meta' }, ...standalone),
               )
             : null,
-          canRefine ? idccRecalc(profile, intro) : null,
+          canRefine && !none ? idccRecalc(profile, intro) : null,
         ),
       );
       return;

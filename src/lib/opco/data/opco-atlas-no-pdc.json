@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-09",
+  "note": "Branches Atlas dont le PDC ne finance pas les entreprises au-delà d'un effectif (champ « Public » de la fiche). Relevé sur les pages de critères Atlas.",
+  "branches": [
+    {
+      "id": "bet",
+      "label": "Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils",
+      "idcc": [
+        "1486"
+      ],
+      "publicBelow": 300,
+      "updatedAt": "2026-01-05",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/bureaux-detudes-techniques-ingenieurs-et-conseils"
+    },
+    {
+      "id": "banque",
+      "label": "Banque",
+      "idcc": [
+        "2120"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-01-05",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/banque"
+    },
+    {
+      "id": "caisse-epargne",
+      "label": "Caisses d'épargne",
+      "idcc": [
+        "5005"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-01-05",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/caisse-depargne"
+    },
+    {
+      "id": "credit-mutuel",
+      "label": "Crédit mutuel",
+      "idcc": [
+        "1468"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-07-07",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/credit-mutuel"
+    },
+    {
+      "id": "marches-financiers",
+      "label": "Marchés financiers",
+      "idcc": [
+        "2931"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-04-30",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/marches-financiers"
+    },
+    {
+      "id": "societes-financieres",
+      "label": "Sociétés financières",
+      "idcc": [
+        "0478"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-01-05",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/societes-financieres"
+    },
+    {
+      "id": "societes-assurances",
+      "label": "Sociétés d'assurances",
+      "idcc": [
+        "1672"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-07-17",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/societes-dassurances"
+    },
+    {
+      "id": "societes-assistance",
+      "label": "Sociétés d'assistance",
+      "idcc": [
+        "1801"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-09-23",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/societes-dassistance"
+    },
+    {
+      "id": "geometres",
+      "label": "Géomètres-experts, géomètres-topographes",
+      "idcc": [
+        "2543"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-07-07",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/geometres"
+    },
+    {
+      "id": "experts-comptables",
+      "label": "Experts-comptables et commissaires aux comptes",
+      "idcc": [
+        "0787"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-01-05",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/experts-comptables-et-commissaires-aux-comptes"
+    },
+    {
+      "id": "economistes",
+      "label": "Économistes de la construction et métreurs-vérificateurs",
+      "idcc": [
+        "3213"
+      ],
+      "publicBelow": 50,
+      "updatedAt": "2026-01-05",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/economistes-de-la-construction"
+    }
+  ]
+}

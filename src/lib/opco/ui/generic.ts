@@ -29,7 +29,11 @@ interface Reference {
 /** Les barèmes réellement chiffrés par le moteur : la fourchette générique ne s'appuie sur rien d'autre. */
 const REFERENCES: Reference[] = [
   { label: rules.opcos.afdas.label, opco: 'afdas' },
-  ...Object.entries(rules.opcos.atlas.branches).map(([key, branch]) => ({
+  // Seule la branche BET sert de repère : les barèmes banque / assurance / finance sont propres à leur secteur et élargiraient
+  // la fourchette (jusqu'à 12 000 €) au-delà de ce que l'on peut dire d'un OPCO ou d'une branche inconnus.
+  ...Object.entries(rules.opcos.atlas.branches)
+    .filter(([key]) => key === 'bet')
+    .map(([key, branch]) => ({
     label: `${rules.opcos.atlas.label}, branche ${key.toUpperCase()}`,
     opco: 'atlas' as const,
     idcc: branch.idcc[0],
