@@ -2,11 +2,18 @@
 interface Props {
   label: string;
   href: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
 }
 
-const { label, href } = Astro.props;
+const { label, href, secondaryLabel, secondaryHref } = Astro.props;
+const dual = Boolean(secondaryLabel && secondaryHref);
 ---
-<div class="m-sticky-cta">
-  <span>Financement OPCO possible.</span>
+<div class:list={['m-sticky-cta', { 'm-sticky-cta--dual': dual }]}>
+  {dual ? (
+    <a href={secondaryHref} class="m-sticky-cta__secondary">{secondaryLabel}</a>
+  ) : (
+    <span>Financement OPCO possible.</span>
+  )}
   <a href={href}>{label}</a>
 </div>

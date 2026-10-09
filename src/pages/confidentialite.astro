@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CONTACT_EMAIL, PROVIDER, RETENTION_MONTHS } from '../lib/opco/ui/config';
+
+const sections = [
+  {
+    title: 'Responsable du traitement',
+    body: [
+      `${PROVIDER.name} (SIREN 884 731 514) est responsable du traitement des données collectées par le simulateur de prise en charge OPCO, accessible depuis kairn.academy. ${PROVIDER.name} dispense et facture les formations concernées.`,
+      `Pour toute question : ${CONTACT_EMAIL}.`,
+    ],
+  },
+  {
+    title: 'Données collectées',
+    body: [
+      "Lorsque vous affichez votre estimation, nous enregistrons : votre prénom, votre email professionnel, le nom de votre structure (et son SIREN s'il est connu), son OPCO, sa tranche d'effectif, sa convention collective (IDCC) si elle est renseignée, le nombre de participants, le montant de votre devis si vous l'avez saisi, et le résultat de la simulation qui vous est affiché.",
+      "Nous ne collectons aucune donnée de dirigeant. Pendant la recherche de votre structure, le texte que vous saisissez est envoyé depuis votre navigateur à l'annuaire public des entreprises (recherche-entreprises.api.gouv.fr), qui renvoie des informations publiques sur la structure.",
+    ],
+  },
+  {
+    title: 'Finalité et base légale',
+    body: [
+      "Ces données servent uniquement à vous recontacter au sujet de votre prise en charge OPCO (devis et dossier de financement). Elles sont traitées sur la base de votre consentement, recueilli par la case à cocher avant l'affichage de l'estimation. Vous pouvez retirer ce consentement à tout moment.",
+    ],
+  },
+  {
+    title: 'Durée de conservation',
+    body: [`Vos données sont conservées ${RETENTION_MONTHS} mois, puis supprimées.`],
+  },
+  {
+    title: 'Destinataires et prestataires',
+    body: [
+      `Les données sont accessibles à l'équipe de ${PROVIDER.name} et de kairn.academy chargée du suivi. Elles sont enregistrées dans un outil de gestion des demandes (Airtable). Le formulaire est protégé contre les robots par Cloudflare Turnstile.`,
+    ],
+  },
+  {
+    title: 'Vos droits',
+    body: [
+      `Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de limitation du traitement, ainsi que du droit de retirer votre consentement. Pour les exercer, écrivez à ${CONTACT_EMAIL}.`,
+      "Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (cnil.fr).",
+    ],
+  },
+  {
+    title: 'Cookies',
+    body: ["Ce site n'utilise pas de cookies de mesure d'audience ni de publicité."],
+  },
+];
+---
+<Layout
+  title="Politique de confidentialité | kairn.academy"
+  description="Données collectées par le simulateur de prise en charge OPCO de kairn.academy : finalité, durée de conservation et exercice de vos droits."
+  path="/confidentialite"
+  noindex={true}
+>
+  <div class="page-shell" style="background: rgb(255, 255, 255); color: var(--plum-900); min-width: 1240px;">
+
+    <Header active="simulateur" />
+
+    <main>
+    <div class="bg-dots m-section-tight" style="color: rgb(255, 255, 255); padding: 72px 64px 56px;">
+      <h1 class="m-h1" style="font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; margin: 0px; color: rgb(255, 255, 255); max-width: 900px; text-wrap: balance;">Politique de confidentialité</h1>
+      <p class="m-body-lg" style="margin: 18px 0px 0px; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 720px;">Simulateur de prise en charge OPCO. Dernière mise à jour : 8 octobre 2026.</p>
+    </div>
+
+    <div class="m-section" style="background: rgb(255, 255, 255); padding: 64px 64px 96px;">
+      <div style="max-width: 760px; display: flex; flex-direction: column; gap: 36px;">
+        {sections.map((section) => (
+          <section>
+            <h2 class="m-h3" style="font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.01em; margin: 0px 0px 12px;">{section.title}</h2>
+            {section.body.map((paragraph) => (
+              <p class="m-body" style="margin: 0px 0px 12px; font-size: 16px; line-height: 1.7; color: var(--plum-600);">{paragraph}</p>
+            ))}
+          </section>
+        ))}
+      </div>
+    </div>
+    </main>
+
+    <Footer variant="full" />
+  </div>
+</Layout>
