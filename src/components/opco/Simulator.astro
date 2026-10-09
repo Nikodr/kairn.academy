@@ -1,5 +1,5 @@
 ---
-import { MAX_PARTICIPANTS_PER_SESSION, PRIVACY_PATH, PROVIDER, QUALIOPI_TEXT, RETENTION_MONTHS } from '../../lib/opco/ui/config';
+import { MAX_PARTICIPANTS_PER_SESSION, PRIVACY_PATH, PROVIDER, QUALIOPI_TEXT, RETENTION_YEARS } from '../../lib/opco/ui/config';
 import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
 
 ---
@@ -164,7 +164,7 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
             <label class="opco-consent__label">
               <input type="checkbox" data-field="consent" aria-describedby="opco-consent-error" />
               <span>
-                J'accepte que {PROVIDER.name}, qui dispense et facture les formations, utilise mon prénom, mon email professionnel et les informations de cette simulation pour me recontacter au sujet de ma prise en charge OPCO, pendant {RETENTION_MONTHS} mois. Je peux exercer mes droits selon la <a href={PRIVACY_PATH} target="_blank" rel="noopener">politique de confidentialité</a>.
+                J'accepte que {PROVIDER.name}, qui dispense et facture les formations, utilise mon prénom, mon email professionnel et les informations de cette simulation pour me recontacter au sujet de ma prise en charge OPCO, pendant {RETENTION_YEARS} ans. Je peux exercer mes droits selon la <a href={PRIVACY_PATH} target="_blank" rel="noopener">politique de confidentialité</a>.
               </span>
             </label>
             <p class="opco-error" id="opco-consent-error" data-error="consent" hidden></p>

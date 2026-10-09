@@ -28,10 +28,10 @@ export const TRAINING_PRICE_HT: Record<number, number> = { 7: 3000, 14: 6000 };
 export const MAX_PARTICIPANTS_PER_SESSION = 12;
 
 /** À faire valider par TGC (responsable du traitement) : doit être identique dans la politique de confidentialité. */
-export const RETENTION_MONTHS = 36;
+export const RETENTION_YEARS = 3;
 
 /** À incrémenter à chaque changement du texte de consentement, pour savoir à quelle version chaque personne a consenti. */
-export const CONSENT_VERSION = '2026-10-08';
+export const CONSENT_VERSION = '2026-10-09';
 
 export const CONTACT_EMAIL = 'nicolas@kairn.academy';
 export const CONTACT_PATH = '/contact';

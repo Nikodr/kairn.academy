@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { CONTACT_EMAIL, PROVIDER, RETENTION_MONTHS } from '../lib/opco/ui/config';
+import { CONTACT_EMAIL, PROVIDER, RETENTION_YEARS } from '../lib/opco/ui/config';
 
 const sections = [
   {
@@ -27,7 +27,7 @@ const sections = [
   },
   {
     title: 'Durée de conservation',
-    body: [`Vos données sont conservées ${RETENTION_MONTHS} mois, puis supprimées.`],
+    body: [`Vos données sont conservées ${RETENTION_YEARS} ans, puis supprimées.`],
   },
   {
     title: 'Destinataires et prestataires',
@@ -52,7 +52,6 @@ const sections = [
   title="Politique de confidentialité | kairn.academy"
   description="Données collectées par le simulateur de prise en charge OPCO de kairn.academy : finalité, durée de conservation et exercice de vos droits."
   path="/confidentialite"
-  noindex={true}
 >
   <div class="page-shell" style="background: rgb(255, 255, 255); color: var(--plum-900); min-width: 1240px;">
 
@@ -61,7 +60,7 @@ const sections = [
     <main>
     <div class="bg-dots m-section-tight" style="color: rgb(255, 255, 255); padding: 72px 64px 56px;">
       <h1 class="m-h1" style="font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; margin: 0px; color: rgb(255, 255, 255); max-width: 900px; text-wrap: balance;">Politique de confidentialité</h1>
-      <p class="m-body-lg" style="margin: 18px 0px 0px; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 720px;">Simulateur de prise en charge OPCO. Dernière mise à jour : 8 octobre 2026.</p>
+      <p class="m-body-lg" style="margin: 18px 0px 0px; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 720px;">Simulateur de prise en charge OPCO. Dernière mise à jour : 9 octobre 2026.</p>
     </div>
 
     <div class="m-section" style="background: rgb(255, 255, 255); padding: 64px 64px 96px;">
