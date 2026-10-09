@@ -94,5 +94,8 @@ export function inseeLabel(code: string | null | undefined): string | undefined 
   return code ? INSEE_LABELS[code] : undefined;
 }
 
+/** 10.5 -> "10,5" */
+export const formatHours = (hours: number): string => String(hours).replace('.', ',');
+
 export const pluralize = (n: number, one: string, many: string): string =>
   `${n} ${n > 1 ? many : one}`;
