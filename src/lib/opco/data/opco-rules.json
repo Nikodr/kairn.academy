@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "year": 2026,
+  "opcos": {
+    "afdas": {
+      "label": "Afdas",
+      "scheme": "PDC moins de 50 salariés",
+      "status": "verified",
+      "verifiedAt": "2026-10-08",
+      "sourceUrl": "https://www.afdas.com/actualites/entreprise/criteres-de-financements-2026-ce-qui-change-pour-les-entreprises.html",
+      "bands": {
+        "lt11": {
+          "annualCapPerCompany": 1100,
+          "hourlyCapPerTrainee": 40
+        },
+        "11-49": {
+          "annualCapPerCompany": 1800,
+          "hourlyCapPerTrainee": 40
+        }
+      },
+      "notes": [
+        "Coûts pédagogiques uniquement (frais annexes non pris en charge hors DROM).",
+        "Des fonds conventionnels propres à votre branche peuvent s'ajouter, selon votre convention collective."
+      ],
+      "outOfScopeMessage": {
+        "50-299": "Chez l'Afdas, le plan de développement des compétences mutualisé ne finance que les entreprises de moins de 50 salariés. Pour 50 salariés et plus, le financement passe par le plan conventionnel de votre branche et dépend de votre contribution conventionnelle."
+      }
+    },
+    "atlas": {
+      "label": "Atlas",
+      "scheme": "PDC moins de 50 salariés (barème par branche)",
+      "status": "partial",
+      "verifiedAt": "2026-10-08",
+      "sourceUrl": "https://www.opco-atlas.fr/criteres-financement",
+      "branches": {
+        "bet": {
+          "label": "Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils",
+          "idcc": [
+            "1486"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/bureaux-detudes-techniques-ingenieurs-et-conseils",
+          "updatedAt": "2026-01-05",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 2500
+            },
+            "11-49": {
+              "annualCapPerCompany": 3000
+            },
+            "50-299": {
+              "annualCapPerCompany": 4000
+            }
+          },
+          "notes": [
+            "Certains dispositifs de la branche sont cofinancés par la contribution conventionnelle : il faut être à jour de son versement pour les mobiliser.",
+            "Plafond annuel par entreprise, sans plafond horaire affiché pour cette branche.",
+            "Exclus : permis de conduire, formations à l'anglais, reste à charge CPF.",
+            "Le dossier doit être déposé avant le début de la formation."
+          ]
+        }
+      },
+      "notes": [
+        "Barème Atlas défini branche par branche : seules les branches listées ci-dessus sont chiffrées."
+      ]
+    }
+  },
+  "unverifiedOpcos": [
+    "akto",
+    "constructys",
+    "ocapiat",
+    "opco2i",
+    "opcoep",
+    "opcomobilites",
+    "opcosante",
+    "opcommerce",
+    "uniformation"
+  ],
+  "labels": {
+    "akto": "AKTO",
+    "constructys": "Constructys",
+    "ocapiat": "OCAPIAT",
+    "opco2i": "OPCO 2i",
+    "opcoep": "OPCO EP",
+    "opcomobilites": "OPCO Mobilités",
+    "opcosante": "OPCO Santé",
+    "opcommerce": "L'Opcommerce",
+    "uniformation": "Uniformation"
+  }
+}

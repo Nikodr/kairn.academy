@@ -1,0 +1,391 @@
+---
+import { MAX_PARTICIPANTS_PER_SESSION, PRIVACY_PATH, PROVIDER, QUALIOPI_TEXT, RETENTION_MONTHS } from '../../lib/opco/ui/config';
+import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
+
+---
+<section id="opco-sim" class="opco-sim" aria-label="Simulateur de prise en charge OPCO">
+  <div class="opco-card">
+    <div class="opco-card__head" data-progress>
+      <div class="opco-card__head-row">
+        <span class="opco-card__step" data-progress-label>Étape 1 sur 2</span>
+        <span class="opco-card__name" data-progress-name>Mon entreprise</span>
+      </div>
+      <div class="opco-progress" role="progressbar" aria-label="Progression" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1" data-progress-track>
+        <span data-progress-bar style="width: 50%;"></span>
+      </div>
+    </div>
+
+    <!-- Étape 1 : entreprise -->
+    <form class="opco-step" data-step="company" novalidate>
+      <h2 class="opco-title" tabindex="-1" data-focus>Identifions votre structure.</h2>
+      <p class="opco-lead">Nous utilisons uniquement les informations publiques nécessaires pour préremplir le calcul.</p>
+
+      <div class="opco-field" data-block="search">
+        <label for="opco-q" class="opco-label">Nom de société, SIREN ou SIRET</label>
+        <p class="opco-hint" id="opco-q-hint">Sélectionnez votre structure pour préremplir les informations utiles au calcul.</p>
+        <div class="opco-combo">
+          <svg class="opco-combo__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input
+            id="opco-q"
+            class="opco-input opco-input--search"
+            type="text"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="opco-q-list"
+            aria-autocomplete="list"
+            aria-describedby="opco-q-hint opco-q-status"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Ex. The Green Compagnon ou 884 731 514"
+            data-field="query"
+          />
+          <span class="opco-combo__check" aria-hidden="true" data-check hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span>
+          <ul class="opco-list" id="opco-q-list" role="listbox" aria-label="Structures trouvées" hidden data-list></ul>
+        </div>
+        <p class="opco-status" id="opco-q-status" role="status" aria-live="polite" data-search-status></p>
+        <p class="opco-error" data-error="company" hidden></p>
+      </div>
+
+      <button type="button" class="opco-link" data-action="toggle-manual">Je ne trouve pas ma structure, saisir manuellement</button>
+
+      <div class="opco-fiche" data-fiche hidden>
+        <div class="opco-fiche__head">
+          <div class="opco-fiche__id">
+            <h3 class="opco-fiche__name" data-fiche-name></h3>
+            <div class="opco-field opco-fiche__manual" data-manual-only hidden>
+              <label for="opco-name" class="opco-label">Nom de la structure</label>
+              <input id="opco-name" class="opco-input" type="text" autocomplete="organization" maxlength="120" data-field="manualName" />
+              <p class="opco-error" data-error="manualName" hidden></p>
+            </div>
+            <p class="opco-fiche__meta" data-fiche-meta></p>
+          </div>
+          <span class="opco-badge" data-fiche-badge>REGISTRE PUBLIC</span>
+        </div>
+
+        <div class="opco-grid">
+          <div class="opco-field">
+            <label for="opco-size" class="opco-label">Effectif <span class="opco-optional" data-size-required>à confirmer</span></label>
+            <select id="opco-size" class="opco-input opco-select" data-field="sizeBand" aria-describedby="opco-size-hint">
+              <option value="">Sélectionnez une tranche</option>
+              {SIZE_OPTIONS.map((o) => <option value={o.id}>{o.label}</option>)}
+            </select>
+            <p class="opco-hint" id="opco-size-hint" data-hint="sizeBand">Effectif de l'entreprise, tous établissements confondus.</p>
+            <p class="opco-error" data-error="sizeBand" hidden></p>
+          </div>
+
+          <div class="opco-field">
+            <label for="opco-opco" class="opco-label">OPCO</label>
+            <select id="opco-opco" class="opco-input opco-select" data-field="opco" aria-describedby="opco-opco-hint">
+              <option value="">Sélectionnez votre OPCO</option>
+              {OPCO_OPTIONS.map((o) => <option value={o.id}>{o.label}</option>)}
+            </select>
+            <p class="opco-hint" id="opco-opco-hint" data-hint="opco">Si vous ne le connaissez pas, il dépend de votre convention collective ou de votre activité.</p>
+            <p class="opco-error" data-error="opco" hidden></p>
+          </div>
+
+          <div class="opco-field">
+            <label for="opco-idcc" class="opco-label">Convention collective (IDCC) <span class="opco-optional">facultatif</span></label>
+            <input id="opco-idcc" class="opco-input" type="text" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="Ex. 1486" data-field="idcc" aria-describedby="opco-idcc-hint" />
+            <div class="opco-chips" data-idcc-chips hidden></div>
+            <p class="opco-hint" id="opco-idcc-hint" data-hint="idcc">Numéro à 4 chiffres, indiqué sur votre bulletin de paie. Il détermine le barème de certains OPCO.</p>
+            <p class="opco-error" data-error="idcc" hidden></p>
+            <button type="button" class="opco-link opco-link--small" data-action="toggle-idcc-help" aria-expanded="false" aria-controls="opco-idcc-help">Je ne connais pas mon IDCC</button>
+            <div id="opco-idcc-help" data-idcc-help hidden></div>
+          </div>
+
+          <div class="opco-field">
+            <label for="opco-participants" class="opco-label">Nombre de personnes à former par session <span class="opco-optional">max {MAX_PARTICIPANTS_PER_SESSION} pers</span></label>
+            <input id="opco-participants" class="opco-input" type="number" inputmode="numeric" min="1" max={MAX_PARTICIPANTS_PER_SESSION} step="1" value="1" data-field="participants" />
+            <p class="opco-error" data-error="participants" hidden></p>
+          </div>
+
+          <div class="opco-field opco-field--wide" data-manual-only hidden>
+            <label for="opco-siren" class="opco-label">SIREN <span class="opco-optional">facultatif</span></label>
+            <input id="opco-siren" class="opco-input" type="text" inputmode="numeric" maxlength="11" autocomplete="off" placeholder="9 chiffres" data-field="siren" />
+            <p class="opco-error" data-error="siren" hidden></p>
+          </div>
+
+          <div class="opco-field opco-field--wide">
+            <label for="opco-quote" class="opco-label">Montant de votre devis (HT) <span class="opco-optional">facultatif</span></label>
+            <div class="opco-suffix">
+              <input id="opco-quote" class="opco-input" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex. 1490" data-field="quote" aria-describedby="opco-quote-hint" />
+              <span aria-hidden="true">€</span>
+            </div>
+            <p class="opco-hint" id="opco-quote-hint">Total pour tous les participants. Si vous le renseignez, nous affichons aussi le montant couvert et le reste à charge.</p>
+            <p class="opco-error" data-error="quote" hidden></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="opco-banner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.01"></path></svg>
+        <span>Les données du registre peuvent être anciennes. Confirmez l'effectif, la convention et l'OPCO avant de poursuivre.</span>
+      </p>
+
+      <div class="opco-footer">
+        <span></span>
+        <button type="submit" class="opco-btn opco-btn--primary btn-orange">Continuer <span aria-hidden="true">›</span></button>
+      </div>
+    </form>
+
+    <!-- Étape 2 : déverrouiller -->
+    <form class="opco-step" data-step="unlock" novalidate hidden>
+      <h2 class="opco-title" tabindex="-1" data-focus>Déverrouillez votre estimation.</h2>
+      <p class="opco-lead">Votre estimation s'affiche à l'écran juste après l'enregistrement de votre demande.</p>
+
+      <div class="opco-unlock">
+        <aside class="opco-summary" aria-label="Récapitulatif de votre simulation">
+          <p class="opco-summary__kicker">VOTRE SIMULATION</p>
+          <p class="opco-summary__name" data-sum="name"></p>
+          <dl class="opco-summary__rows">
+            <div><dt>Effectif</dt><dd data-sum="size"></dd></div>
+            <div><dt>OPCO</dt><dd data-sum="opco"></dd></div>
+            <div><dt>Participants par session</dt><dd data-sum="participants"></dd></div>
+            <div data-sum-quote-row hidden><dt>Devis HT</dt><dd data-sum="quote"></dd></div>
+          </dl>
+          <p class="opco-summary__note">Le résultat est une estimation indicative et ne constitue pas un accord de financement.</p>
+        </aside>
+
+        <div class="opco-unlock__form">
+          <div class="opco-grid opco-grid--tight">
+            <div class="opco-field">
+              <label for="opco-first" class="opco-label">Prénom</label>
+              <input id="opco-first" class="opco-input" type="text" autocomplete="given-name" maxlength="80" data-field="firstName" />
+              <p class="opco-error" data-error="firstName" hidden></p>
+            </div>
+            <div class="opco-field">
+              <label for="opco-email" class="opco-label">Email professionnel</label>
+              <input id="opco-email" class="opco-input" type="email" autocomplete="email" maxlength="160" placeholder="vous@entreprise.fr" data-field="email" />
+              <p class="opco-error" data-error="email" hidden></p>
+            </div>
+          </div>
+
+          <div class="opco-consent">
+            <label class="opco-consent__label">
+              <input type="checkbox" data-field="consent" aria-describedby="opco-consent-error" />
+              <span>
+                J'accepte que {PROVIDER.name}, qui dispense et facture les formations, utilise mon prénom, mon email professionnel et les informations de cette simulation pour me recontacter au sujet de ma prise en charge OPCO, pendant {RETENTION_MONTHS} mois. Je peux exercer mes droits selon la <a href={PRIVACY_PATH} target="_blank" rel="noopener">politique de confidentialité</a>.
+              </span>
+            </label>
+            <p class="opco-error" id="opco-consent-error" data-error="consent" hidden></p>
+          </div>
+
+          <div class="opco-antibot">
+            <div data-turnstile></div>
+            <p class="opco-status" role="status" aria-live="polite" data-turnstile-status></p>
+            <p class="opco-error" data-error="turnstile" hidden></p>
+          </div>
+
+          <p class="opco-fine">Responsable du traitement : {PROVIDER.name}. Finalité : vous recontacter au sujet de cette simulation. Aucune donnée de dirigeant n'est collectée.</p>
+          <p class="opco-error opco-error--box" role="alert" data-error="submit" hidden></p>
+        </div>
+      </div>
+
+      <div class="opco-footer">
+        <button type="button" class="opco-btn opco-btn--ghost" data-action="back-to-company"><span aria-hidden="true">‹</span> Retour</button>
+        <button type="submit" class="opco-btn opco-btn--primary btn-orange" data-submit>Afficher mon estimation</button>
+      </div>
+    </form>
+
+    <!-- Résultat -->
+    <div class="opco-step opco-result" data-step="result" hidden>
+      <h2 class="opco-title" tabindex="-1" data-focus data-result-title>Votre estimation de prise en charge</h2>
+      <p class="opco-lead" data-result-recap></p>
+      <div data-result-body></div>
+
+      <div class="opco-cta bg-dots">
+        <div>
+          <p class="opco-cta__title">Passez de l'estimation au dossier.</p>
+          <p class="opco-cta__text">Nous vous envoyons un devis et préparons avec vous le dossier de prise en charge, à déposer avant le début de la formation.</p>
+        </div>
+        <div class="opco-cta__actions">
+          <a class="opco-btn opco-btn--primary btn-orange" href="/contact" data-cta>Recevoir mon devis et mon dossier de prise en charge</a>
+          <button type="button" class="opco-btn opco-btn--ghost-dark" data-action="edit">Modifier ma simulation</button>
+        </div>
+      </div>
+
+      <p class="opco-fine opco-fine--result">
+        Estimation indicative : montants HT, sous réserve de fonds disponibles. Seul l'accord écrit de votre OPCO fixe le montant pris en charge.
+        Formation dispensée et facturée par {PROVIDER.name}, organisme de formation {QUALIOPI_TEXT}.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .opco-sim { --opco-border: #a07a98; max-width: 1000px; margin: 0 auto; color: var(--plum-900); scroll-margin-top: 96px; }
+  .opco-sim [hidden] { display: none !important; }
+  .opco-card { background: #fff; border: 1px solid var(--plum-200); border-radius: 18px; box-shadow: 0 8px 40px rgba(63, 4, 52, 0.12); overflow: hidden; }
+
+  .opco-card__head { background: var(--plum-50); border-bottom: 1px solid var(--plum-200); padding: 18px 40px 20px; }
+  .opco-card__head-row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+  .opco-card__step { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+  .opco-card__name { font-size: 14px; color: var(--plum-600); }
+  .opco-progress { height: 8px; border-radius: 999px; background: var(--plum-200); margin-top: 12px; overflow: hidden; }
+  .opco-progress > span { display: block; height: 100%; background: var(--orange-500); border-radius: 999px; transition: width 0.3s ease; }
+
+  .opco-step { padding: 44px 40px 36px; }
+  .opco-title { font-family: var(--font-display); font-weight: 800; font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 12px; outline: none; text-wrap: balance; }
+  .opco-lead { margin: 0 0 30px; font-size: 16.5px; line-height: 1.6; color: var(--plum-600); max-width: 720px; text-wrap: pretty; }
+
+  .opco-field { margin-bottom: 22px; min-width: 0; }
+  .opco-label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 6px; }
+  .opco-optional { font-weight: 500; color: var(--plum-600); font-size: 13.5px; }
+  .opco-hint { margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--plum-600); }
+  .opco-field > .opco-hint:first-of-type { margin-top: 0; }
+  .opco-label + .opco-hint { margin: 0 0 10px; }
+  .opco-status { margin: 8px 0 0; min-height: 1px; font-size: 13.5px; color: var(--plum-600); }
+  .opco-error { margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: #c0392b; font-weight: 600; }
+  .opco-error--box { margin: 14px 0 0; padding: 12px 14px; border: 1px solid #c0392b; border-radius: 10px; background: #fdf1ef; }
+
+  .opco-input { display: block; width: 100%; font-family: Figtree, system-ui, sans-serif; font-size: 15.5px; line-height: 1.4; padding: 14px 16px; border: 1px solid var(--opco-border); border-radius: 10px; background: #fff; color: var(--plum-900); outline: none; }
+  .opco-input::placeholder { color: var(--plum-600); opacity: 0.8; }
+  .opco-input[aria-invalid='true'] { border-color: #c0392b; }
+  .opco-select { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233F0434' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+  .opco-suffix { position: relative; }
+  .opco-suffix .opco-input { padding-right: 40px; }
+  .opco-suffix > span { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--plum-600); font-weight: 600; }
+
+  .opco-combo { position: relative; }
+  .opco-input--search { padding-left: 46px; padding-right: 46px; }
+  .opco-combo__icon { position: absolute; left: 16px; top: 16px; color: var(--plum-600); pointer-events: none; }
+  .opco-combo__check { position: absolute; right: 16px; top: 15px; display: flex; color: #2d7d46; pointer-events: none; }
+  .opco-list { position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 6px); margin: 0; padding: 6px; list-style: none; background: #fff; border: 1px solid var(--opco-border); border-radius: 12px; box-shadow: 0 12px 32px rgba(63, 4, 52, 0.18); max-height: 340px; overflow-y: auto; }
+  .opco-option { padding: 10px 12px; border-radius: 8px; cursor: pointer; }
+  .opco-option[aria-selected='true'], .opco-option:hover { background: var(--plum-50); }
+  .opco-option__name { display: block; font-weight: 700; font-size: 15px; }
+  .opco-option__meta { display: block; margin-top: 2px; font-size: 13px; color: var(--plum-600); }
+
+  .opco-link { display: inline-block; margin: 4px 0 24px; padding: 0; background: none; border: none; font: inherit; font-weight: 700; font-size: 14.5px; color: var(--plum-800); border-bottom: 2px solid var(--orange-500); cursor: pointer; }
+
+  .opco-link--small { margin: 8px 0 0; font-size: 13.5px; }
+  .opco-finder { margin-top: 12px; padding: 18px; background: #fff; border: 1px solid var(--plum-200); border-radius: 12px; }
+  .opco-finder__tips { margin: 0 0 16px; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 13.5px; line-height: 1.5; color: var(--plum-600); }
+  .opco-finder__tips li { display: flex; gap: 8px; }
+  .opco-finder__tips li::before { content: '▸'; color: var(--orange-500); flex: 0 0 auto; }
+  .opco-finder__results { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .opco-finder__results:empty { display: none; }
+  .opco-finder__pick { display: grid; grid-template-columns: 56px 1fr; gap: 2px 12px; width: 100%; text-align: left; padding: 10px 12px; font: inherit; font-size: 14px; line-height: 1.4; color: var(--plum-900); background: #fff; border: 1px solid var(--plum-200); border-radius: 10px; cursor: pointer; }
+  .opco-finder__pick:hover { background: var(--plum-50); border-color: var(--orange-500); }
+  .opco-finder__pick strong { grid-row: span 2; font-family: var(--font-mono); font-size: 14px; }
+  .opco-finder__pick em { font-style: normal; font-size: 12.5px; color: var(--plum-600); }
+  .opco-fiche { background: var(--plum-50); border: 1px solid var(--plum-200); border-radius: 14px; padding: 26px 28px 8px; margin-bottom: 22px; }
+  .opco-fiche__head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 22px; }
+  .opco-fiche__id { flex: 1; min-width: 0; }
+  .opco-fiche__name { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; margin: 0; text-transform: uppercase; overflow-wrap: anywhere; }
+  .opco-fiche__name:empty { display: none; }
+  .opco-fiche__meta { margin: 4px 0 0; font-size: 14px; color: var(--plum-600); }
+  .opco-fiche__meta:empty { display: none; }
+  .opco-fiche__manual { margin: 0; max-width: 480px; }
+  .opco-badge { flex: 0 0 auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; padding: 6px 12px; border: 1px solid var(--plum-200); border-radius: 999px; background: #fff; color: var(--plum-800); }
+
+  .opco-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  .opco-field--wide { grid-column: 1 / -1; }
+  .opco-grid--tight { column-gap: 20px; }
+  .opco-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .opco-chip { padding: 5px 12px; border: 1px solid var(--opco-border); border-radius: 999px; background: #fff; font: inherit; font-family: var(--font-mono); font-size: 13px; color: var(--plum-900); cursor: pointer; }
+  .opco-chip[aria-pressed='true'] { background: var(--plum-900); border-color: var(--plum-900); color: #fff; }
+
+  .opco-banner { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 24px; padding: 14px 16px; background: var(--plum-50); border: 1px solid var(--plum-200); border-radius: 10px; font-size: 14px; line-height: 1.5; color: var(--plum-600); }
+  .opco-banner svg { flex: 0 0 auto; margin-top: 2px; color: var(--plum-800); }
+
+  .opco-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--plum-200); }
+  .opco-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: inherit; font-weight: 700; font-size: 16.5px; line-height: 1.3; padding: 15px 30px; border-radius: 12px; border: 2px solid transparent; cursor: pointer; text-align: center; }
+  .opco-btn--primary { background: var(--orange-500); color: #fff; }
+  .opco-btn--ghost { background: #fff; color: var(--plum-900); border-color: var(--plum-900); }
+  .opco-btn--ghost:hover { background: var(--plum-50); }
+  .opco-btn--ghost-dark { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+  .opco-btn--ghost-dark:hover { background: rgba(255, 255, 255, 0.1); }
+  .opco-btn:disabled { opacity: 0.65; cursor: progress; }
+
+  .opco-unlock { display: grid; grid-template-columns: 340px 1fr; gap: 32px; align-items: start; }
+  .opco-summary { background: var(--plum-900); color: #fff; border-radius: 14px; padding: 28px; }
+  .opco-summary__kicker { margin: 0 0 14px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; color: var(--orange-300); }
+  .opco-summary__name { margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: 20px; line-height: 1.2; text-transform: uppercase; overflow-wrap: anywhere; }
+  .opco-summary__rows { margin: 0; }
+  .opco-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 14.5px; }
+  .opco-summary__rows dt { color: rgba(255, 255, 255, 0.7); }
+  .opco-summary__rows dd { margin: 0; font-weight: 700; text-align: right; }
+  .opco-summary__note { margin: 16px 0 0; font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, 0.7); }
+
+  .opco-consent { background: var(--plum-50); border: 1px solid var(--plum-200); border-radius: 12px; padding: 16px 18px; margin-bottom: 18px; }
+  .opco-consent__label { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.55; color: var(--plum-700); cursor: pointer; }
+  .opco-consent__label input { flex: 0 0 auto; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--plum-800); cursor: pointer; }
+  .opco-consent a { font-weight: 700; color: var(--plum-900); border-bottom: 2px solid var(--orange-500); }
+  .opco-antibot { min-height: 70px; margin-bottom: 14px; }
+  .opco-fine { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--plum-600); }
+
+  .opco-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .opco-scn { border: 1px solid var(--plum-200); border-top: 4px solid var(--orange-500); border-radius: 14px; padding: 26px 28px 24px; background: #fff; box-shadow: 0 2px 8px rgba(63, 4, 52, 0.08); }
+  .opco-scn__kicker { margin: 0 0 4px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: var(--orange-700); text-transform: uppercase; }
+  .opco-scn__title { margin: 0 0 18px; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+  .opco-scn__price { margin: -8px 0 16px; line-height: 1.4; font-size: 14.5px; color: var(--plum-600); }
+  .opco-scn__price strong { color: var(--plum-900); }
+  .opco-scn__price-note { display: block; margin-top: 2px; font-size: 12.5px; }
+  .opco-scn__label { margin: 0; font-size: 13.5px; color: var(--plum-600); }
+  .opco-scn__amount { margin: 2px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; }
+  .opco-scn__remaining { margin: 10px 0 0; font-size: 15px; color: var(--plum-800); }
+  .opco-scn__remaining strong { color: var(--plum-900); }
+  .opco-scn__context { margin: 4px 0 0; font-size: 14.5px; color: var(--plum-600); }
+  .opco-scn__split { margin: 8px 0 0; font-size: 14.5px; font-weight: 600; }
+  .opco-scn__limit { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--plum-200); font-size: 14px; line-height: 1.55; color: var(--plum-600); }
+  .opco-scn__quote { margin: 16px 0 0; padding: 14px 16px; border-radius: 10px; background: var(--plum-50); }
+  .opco-scn__quote > div { display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; padding: 3px 0; }
+  .opco-scn__quote dt { color: var(--plum-600); }
+  .opco-scn__quote dd { margin: 0; font-weight: 700; }
+  .opco-scn__quote p { margin: 8px 0 0; font-size: 13.5px; color: #2d7d46; font-weight: 600; }
+
+  .opco-confirm { border: 1px solid var(--plum-200); border-left: 4px solid var(--orange-500); border-radius: 14px; padding: 26px 28px; background: var(--plum-50); margin-bottom: 24px; }
+  .opco-confirm h3 { margin: 0 0 10px; font-family: var(--font-display); font-weight: 800; font-size: 24px; }
+  .opco-confirm p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--plum-700); }
+  .opco-confirm .opco-btn { margin-top: 18px; }
+
+  .opco-notice { margin: 0 0 20px; padding: 12px 16px; border-radius: 10px; background: var(--plum-50); border: 1px solid var(--plum-200); font-size: 14.5px; font-weight: 600; color: var(--plum-800); }
+  .opco-pill { display: inline-block; margin-bottom: 10px; padding: 5px 12px; border-radius: 999px; background: var(--plum-900); color: #fff; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .opco-confirm--generic p { font-size: 15.5px; }
+  .opco-scn--generic { border-top-color: var(--plum-500); }
+  .opco-scn__amount--range { font-size: 32px; }
+  .opco-recalc { margin: 4px 0 24px; padding: 22px 24px; border: 1px solid var(--plum-200); border-left: 4px solid var(--orange-500); border-radius: 14px; background: #fff; }
+  .opco-recalc__intro { margin: 0 0 14px; font-size: 15px; line-height: 1.55; color: var(--plum-600); }
+  .opco-recalc__row { display: flex; gap: 12px; align-items: stretch; }
+  .opco-recalc__row .opco-input { max-width: 180px; }
+  .opco-meta { margin: 0 0 24px; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14.5px; line-height: 1.55; color: var(--plum-600); }
+  .opco-meta li { display: flex; gap: 10px; }
+  .opco-meta li::before { content: '▸'; color: var(--orange-500); flex: 0 0 auto; }
+  .opco-meta a { font-weight: 700; color: var(--plum-900); border-bottom: 2px solid var(--orange-500); }
+
+  .opco-cta { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: 30px 32px; border-radius: 14px; color: #fff; margin-top: 8px; }
+  .opco-cta__title { margin: 0 0 6px; font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1.2; }
+  .opco-cta__text { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.78); max-width: 480px; }
+  .opco-cta__actions { display: flex; flex-direction: column; gap: 10px; flex: 0 0 auto; max-width: 340px; }
+  .opco-fine--result { margin-top: 22px; }
+
+  @media (max-width: 768px) {
+    .opco-card__head { padding: 16px 20px 18px; }
+    .opco-step { padding: 28px 20px 24px; }
+    .opco-title { font-size: 28px; }
+    .opco-lead { font-size: 15.5px; margin-bottom: 24px; }
+    .opco-fiche { padding: 20px 18px 4px; }
+    .opco-fiche__head { flex-direction: column-reverse; gap: 12px; }
+    .opco-grid, .opco-unlock, .opco-scenarios { grid-template-columns: 1fr; }
+    .opco-unlock { gap: 24px; }
+    .opco-footer { flex-direction: column-reverse; align-items: stretch; }
+    .opco-footer .opco-btn { width: 100%; }
+    .opco-scn__amount { font-size: 38px; }
+    .opco-scn__amount--range { font-size: 28px; }
+    .opco-recalc__row { flex-direction: column; }
+    .opco-recalc__row .opco-input { max-width: none; }
+    .opco-cta { flex-direction: column; align-items: stretch; padding: 24px 20px; gap: 20px; }
+    .opco-cta__actions { max-width: none; }
+    .opco-cta .opco-btn { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .opco-progress > span { transition: none; }
+  }
+</style>
+
+<script>
+  import { initSimulator } from '../../lib/opco/ui/simulator';
+  initSimulator();
+</script>

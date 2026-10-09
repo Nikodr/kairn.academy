@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active: 'accueil' | 'formations' | 'studio' | 'contact';
+  active: 'accueil' | 'formations' | 'studio' | 'contact' | 'simulateur';
 }
 
 const { active } = Astro.props;
@@ -13,6 +13,7 @@ const { active } = Astro.props;
   <nav class="m-hide" style="display: flex; gap: 28px; margin-left: auto; font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.78);">
     <a href="/" style={active === 'accueil' ? 'color: rgb(255, 255, 255); border-bottom: 2px solid var(--orange-500); padding-bottom: 2px;' : 'color: inherit;'}>Accueil</a>
     <a href="/offre" style={active === 'formations' ? 'color: rgb(255, 255, 255); border-bottom: 2px solid var(--orange-500); padding-bottom: 2px;' : 'color: inherit;'}>Nos formations</a>
+    <a href="/simulateur-opco" style={active === 'simulateur' ? 'color: rgb(255, 255, 255); border-bottom: 2px solid var(--orange-500); padding-bottom: 2px;' : 'color: inherit;'}>Simulateur OPCO</a>
   </nav>
   <a href="/studio" class="m-hide" style={active === 'studio'
     ? 'font-size: 12.5px; color: rgb(255, 255, 255); border-left: 1px solid rgba(255, 255, 255, 0.15); padding-left: 28px;'
@@ -39,6 +40,7 @@ const { active } = Astro.props;
   <nav>
     <a href="/" class:list={{ 'is-active': active === 'accueil' }}>Accueil{active === 'accueil' && <span style="color: var(--orange-500);"> ·</span>}</a>
     <a href="/offre" class:list={{ 'is-active': active === 'formations' }}>Nos formations{active === 'formations' && <span style="color: var(--orange-500);"> ·</span>}</a>
+    <a href="/simulateur-opco" class:list={{ 'is-active': active === 'simulateur' }}>Simulateur OPCO{active === 'simulateur' && <span style="color: var(--orange-500);"> ·</span>}</a>
     <a href="/studio" class:list={{ 'is-active': active === 'studio' }}>Kairn Studio{active === 'studio' && <span style="color: var(--orange-500);"> ·</span>}</a>
   </nav>
   <a href="/contact" class="menu-cta">Cadrer votre besoin</a>

@@ -25,6 +25,9 @@ jobs:
       - uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm run build
+        env:
+          PUBLIC_OPCO_LEADS_ENDPOINT: ${{ vars.PUBLIC_OPCO_LEADS_ENDPOINT }}
+          PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

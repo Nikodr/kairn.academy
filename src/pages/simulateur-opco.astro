@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Simulator from '../components/opco/Simulator.astro';
+import { PROVIDER, QUALIOPI_TEXT } from '../lib/opco/ui/config';
+
+---
+<Layout
+  title="Simulateur de prise en charge OPCO | kairn.academy"
+  description="Estimez en deux étapes le plafond de financement que votre OPCO peut prendre en charge pour une formation IA de 7 h ou de 14 h."
+  path="/simulateur-opco"
+  noindex={true}
+>
+  <div class="page-shell" style="background: rgb(255, 255, 255); color: var(--plum-900); min-width: 1240px;">
+
+    <Header active="simulateur" />
+
+    <main>
+    <div class="bg-dots m-section-tight" style="color: rgb(255, 255, 255); padding: 72px 64px 64px;">
+      <div class="m-terminal" style="font-family: var(--font-mono); font-size: 15px; color: var(--orange-500); margin-bottom: 24px;">Estimez votre prise en charge<span style="display: inline-block; width: 10px; height: 19px; background: var(--orange-500); vertical-align: -3px; margin-left: 7px; animation: 1.1s step-end 0s infinite normal none running ada-blink;"></span></div>
+      <h1 class="m-h1" style="font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1.06; letter-spacing: -0.025em; margin: 0px; color: rgb(255, 255, 255); max-width: 900px; text-wrap: balance;">Simulateur de prise en charge OPCO</h1>
+      <p class="m-body-lg" style="margin: 22px 0px 0px; font-size: 17px; line-height: 1.6; color: rgba(255, 255, 255, 0.72); max-width: 720px; text-wrap: pretty;">Découvrez en deux étapes le plafond que votre OPCO peut financer pour une formation IA de 7 h ou de 14 h.</p>
+      <p class="m-body" style="margin: 18px 0px 0px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.65);">2 étapes · Résultat immédiat · Sans engagement</p>
+    </div>
+
+    <div class="m-section" style="background: var(--plum-50); padding: 48px 64px 96px; border-bottom: 1px solid var(--plum-200);">
+      <p class="m-body" style="max-width: 1000px; margin: 0px auto 20px; font-size: 14px; line-height: 1.6; color: var(--plum-600);">Estimation indicative : montants HT, sous réserve de fonds disponibles. Seul l'accord écrit de l'OPCO fixe le montant pris en charge, et le dossier doit être déposé avant le début de la formation. Les formations sont dispensées et facturées par {PROVIDER.name}, organisme de formation {QUALIOPI_TEXT}.</p>
+      <Simulator />
+    </div>
+    </main>
+
+    <Footer variant="full" />
+  </div>
+</Layout>

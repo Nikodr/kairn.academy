@@ -86,6 +86,14 @@ button { font-family: inherit; }
   background: var(--orange-700) !important;
 }
 
+.btn-ghost-light {
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
 .btn-plum {
   transition: background 0.15s ease;
 }
@@ -421,6 +429,23 @@ body.menu-open {
     padding: 13px 20px;
     border-radius: 10px;
     white-space: nowrap;
+  }
+  .m-sticky-cta--dual {
+    gap: 10px;
+  }
+  .m-sticky-cta--dual a {
+    flex: 1 1 0;
+    margin-left: 0;
+    padding: 11px 10px;
+    font-size: 13.5px;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
+  }
+  .m-sticky-cta--dual .m-sticky-cta__secondary {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    padding: 9.5px 10px;
   }
 }
 
