@@ -21,6 +21,7 @@ import { buildLeadPayload, sendLead } from './leads';
 import { isOpcoId, isSizeBand, opcoLabel, sizeLabel } from './options';
 import { hoursFor, priceResolver } from './pricing';
 import { mountTurnstile, type TurnstileHandle } from './turnstile';
+import { bonusFor, type BonusInfo } from './bonus';
 import { buildGenericView, buildResultView, type GenericScenarioView, type ScenarioView } from './viewmodel';
 
 type StepId = 'company' | 'unlock' | 'result';
@@ -713,7 +714,37 @@ export function initSimulator(): void {
       remainingLine(s.estimatedRemaining),
       s.perParticipant && h('p', { class: 'opco-scn__split' }, s.perParticipant),
       h('p', { class: 'opco-scn__limit' }, s.limit),
+      s.bonus && bonusBlock(s.bonus),
       s.quote?.fullyCovered && h('p', { class: 'opco-scn__covered' }, 'Votre devis serait couvert en totalité, dans la limite du plafond.'),
+    );
+  }
+
+  function bonusNotes(bonus: BonusInfo, standalone = false): HTMLElement[] {
+    return [
+      item(
+        h('strong', {}, `${bonus.label} (+${formatEuroHt(bonus.amountHt)} par an et par entreprise). `),
+        'Pour l\'obtenir, la formation IA doit inclure un module d\'IA durable, qui apprend à réduire l\'impact environnemental de l\'IA. ',
+        (standalone ? 'Ce bonus peut être activé individuellement, sans dossier de plan de développement des compétences. ' : 'Ce bonus est cumulable avec le plafond annuel ci-dessus. ') +
+          'Il est réservé aux entreprises à jour de leur contribution conventionnelle et ne finance que le coût pédagogique. ',
+        ...(standalone
+          ? [
+              `Mise à jour Atlas du ${formatDateFr(bonus.updatedAt)}, `,
+              h('a', { attrs: { href: bonus.sourceUrl, target: '_blank', rel: 'noopener noreferrer' } }, 'critères de financement Atlas'),
+              '.',
+            ]
+          : [`Mise à jour Atlas du ${formatDateFr(bonus.updatedAt)}.`]),
+      ),
+    ];
+  }
+
+  function bonusBlock(b: NonNullable<ScenarioView['bonus']>): HTMLElement {
+    return h(
+      'div',
+      { class: 'opco-bonus' },
+      h('p', { class: 'opco-bonus__title' }, `${b.label} : +${b.amount} possibles`),
+      h('p', { class: 'opco-bonus__total' }, 'Prise en charge jusqu\'à ', h('strong', {}, b.total), ' avec le bonus'),
+      b.remaining ? h('p', { class: 'opco-bonus__remaining' }, 'Reste à charge estimé avec le bonus : ', h('strong', {}, b.remaining)) : null,
+      h('p', { class: 'opco-bonus__condition' }, 'Condition : ', b.condition),
     );
   }
 
@@ -820,7 +851,8 @@ export function initSimulator(): void {
 
   function renderResult(profile: Profile, result: EstimateResult, generic: GenericEstimate | null, notice?: string): void {
     const priceFor = priceResolver(profile.quoteHt);
-    const view = buildResultView(result, priceFor);
+    const bonus = bonusFor(profile);
+    const view = buildResultView(result, priceFor, bonus);
     $('[data-result-recap]').textContent = [
       profile.name,
       view.opcoLabel,
@@ -868,6 +900,7 @@ export function initSimulator(): void {
         );
         return;
       }
+      const standalone = bonus && !generic ? bonusNotes(bonus, true) : [];
       body.replaceChildren(
         ...nodes(
           noticeEl,
@@ -877,6 +910,14 @@ export function initSimulator(): void {
             h('h3', {}, 'Barème à confirmer'),
             h('p', {}, reason === 'branch_not_covered' ? `${why} Nous la confirmons avec ${view.opcoLabel} lors de l'étude de votre dossier.` : view.message),
           ),
+          standalone.length
+            ? h(
+                'div',
+                { class: 'opco-bonus opco-bonus--standalone' },
+                h('p', { class: 'opco-bonus__title' }, `${bonus!.label} : jusqu'à ${formatEuroHt(bonus!.amountHt)} par an`),
+                h('ul', { class: 'opco-meta' }, ...standalone),
+              )
+            : null,
           canRefine ? idccRecalc(profile, intro) : null,
         ),
       );
@@ -891,6 +932,7 @@ export function initSimulator(): void {
           { class: 'opco-meta' },
           item(`Barème appliqué : ${view.opcoLabel}, ${view.scheme}.`),
           ...view.notes.map((note) => item(note)),
+          ...(view.bonus ? bonusNotes(view.bonus) : []),
           item(
             'Source officielle : ',
             h('a', { attrs: { href: view.sourceUrl, target: '_blank', rel: 'noopener noreferrer' } }, `critères de financement ${view.opcoLabel}`),

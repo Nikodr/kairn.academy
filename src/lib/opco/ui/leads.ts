@@ -3,6 +3,7 @@ import { CONSENT_VERSION, DURATIONS_HOURS, LEADS_ENDPOINT } from './config';
 import type { GenericEstimate } from './generic';
 import { opcoLabel, sizeLabel } from './options';
 import { priceResolver } from './pricing';
+import { bonusFor } from './bonus';
 import { remainingAfterCoverage, summarizeDisplayed } from './viewmodel';
 
 export type ResultType = 'Chiffré' | 'Fourchette générique' | 'À confirmer';
@@ -30,6 +31,8 @@ export interface LeadPayload {
   remaining14hHt: number | null;
   quoteCoverageHt: number | null;
   quoteRemainingHt: number | null;
+  /** Autre prise en charge (bonus Transition écologique, sous condition) : montant HT par an et par entreprise. */
+  otherCoverageHt: number | null;
   resultType: ResultType;
   resultSummary: string;
   turnstileToken: string;
@@ -62,10 +65,10 @@ function coverageFor(result: EstimateResult, hours: number): number | null {
 }
 
 /** Reste à charge estimé d'une session, seulement quand un barème officiel a été appliqué. */
-function remainingFor(result: EstimateResult, hours: number, quoteHt?: number): number | null {
+function remainingFor(result: EstimateResult, hours: number, quoteHt?: number, otherCoverageHt = 0): number | null {
   const coverage = coverageFor(result, hours);
   const price = priceResolver(quoteHt)(hours);
-  return coverage === null || price === undefined ? null : remainingAfterCoverage(price, coverage);
+  return coverage === null || price === undefined ? null : remainingAfterCoverage(price, coverage + otherCoverageHt);
 }
 
 /**
@@ -73,18 +76,21 @@ function remainingFor(result: EstimateResult, hours: number, quoteHt?: number): 
  * Pour une fourchette générique, on enregistre le cas le plus prudent : prise en charge basse et reste à charge haut
  * (le "Type de résultat" indique qu'il s'agit d'une fourchette).
  */
-function quoteAmounts(input: LeadInput): { covered: number | null; remaining: number | null } {
+function quoteAmounts(input: LeadInput, otherCoverageHt = 0): { covered: number | null; remaining: number | null } {
   if (input.quoteHt === undefined) return { covered: null, remaining: null };
   if (input.result.status === 'estimated') {
     const scenario = input.result.scenarios[0];
-    return { covered: scenario?.coveredHt ?? null, remaining: scenario?.remainingHt ?? null };
+    if (scenario?.coveredHt === undefined || scenario.remainingHt === undefined) return { covered: null, remaining: null };
+    return { covered: scenario.coveredHt, remaining: otherCoverageHt ? remainingAfterCoverage(input.quoteHt, scenario.maxCoverageHt + otherCoverageHt) : scenario.remainingHt };
   }
   const generic = input.generic?.scenarios[0];
   return { covered: generic?.coveredLowHt ?? null, remaining: generic?.remainingHighHt ?? null };
 }
 
 export function buildLeadPayload(input: LeadInput): LeadPayload {
-  const quote = quoteAmounts(input);
+  const bonus = bonusFor(input);
+  const other = bonus?.amountHt ?? 0;
+  const quote = quoteAmounts(input, other);
   const [short, long] = DURATIONS_HOURS;
   return {
     source: 'kairn.academy/simulateur-opco',
@@ -100,12 +106,13 @@ export function buildLeadPayload(input: LeadInput): LeadPayload {
     quoteHt: input.quoteHt ?? null,
     coverage7hHt: coverageFor(input.result, short),
     coverage14hHt: coverageFor(input.result, long),
-    remaining7hHt: remainingFor(input.result, short, input.quoteHt),
-    remaining14hHt: remainingFor(input.result, long, input.quoteHt),
+    remaining7hHt: remainingFor(input.result, short, input.quoteHt, other),
+    remaining14hHt: remainingFor(input.result, long, input.quoteHt, other),
     quoteCoverageHt: quote.covered,
     quoteRemainingHt: quote.remaining,
+    otherCoverageHt: bonus?.amountHt ?? null,
     resultType: resultTypeOf(input),
-    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt), input.quoteHt),
+    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt), input.quoteHt, bonus),
     turnstileToken: input.turnstileToken,
   };
 }

@@ -10,6 +10,9 @@ import {
 } from '../format';
 import { OPCO_OPTIONS, isOpcoId, sizeLabel } from '../options';
 import { buildResultView, summarizeResult } from '../viewmodel';
+import { bonusFor } from '../bonus';
+import { priceResolver } from '../pricing';
+import type { SizeBand } from '../../types';
 
 /** Intl utilise des espaces insécables : on les ramène à de simples espaces. */
 const plain = (s: string) => s.replace(/[\s  ]+/g, ' ');
@@ -120,5 +123,46 @@ describe('viewmodel', () => {
     expect(summarizeResult(estimate({ ...base, opco: 'opco2i', sizeBand: 'lt11' }))).toBe(
       'Barème à confirmer (opco_not_covered)',
     );
+  });
+});
+
+describe('bonus Transition écologique (Atlas BET)', () => {
+  const atlas = (sizeBand: SizeBand, idcc = '1486') => ({ opco: 'atlas' as const, idcc, sizeBand });
+
+  it('2 000 € HT sous 50 salariés, 3 000 € HT de 50 à 299, uniquement pour la branche BET', () => {
+    expect(bonusFor(atlas('lt11'))?.amountHt).toBe(2000);
+    expect(bonusFor(atlas('11-49'))?.amountHt).toBe(2000);
+    expect(bonusFor(atlas('50-299'))?.amountHt).toBe(3000);
+    expect(bonusFor(atlas('300+'))?.amountHt).toBe(4500);
+    expect(bonusFor(atlas('11-49', '1501'))).toBeNull();
+    expect(bonusFor({ opco: 'atlas', sizeBand: '11-49' })).toBeNull();
+    expect(bonusFor({ opco: 'afdas', sizeBand: '11-49' })).toBeNull();
+  });
+
+  it('cumule le bonus au plafond annuel et recalcule le reste à charge', () => {
+    const bonus = bonusFor(atlas('11-49'))!;
+    const result = estimate({ opco: 'atlas', sizeBand: '11-49', idcc: '1486', participants: 5, durationsHours: [14], quoteHt: 6000 });
+    const view = buildResultView(result, priceResolver(6000), bonus);
+    if (view.kind !== 'estimated') throw new Error('attendu : chiffré');
+    expect(view.scenarios[0].bonus?.total).toBe(formatEuroHt(5000));
+    expect(view.scenarios[0].bonus?.remaining).toBe(formatEuroHt(1000));
+    expect(view.scenarios[0].bonus?.condition).toMatch(/module d'IA durable/);
+    expect(summarizeResult(result, priceResolver(6000), 6000, bonus).replace(/[\u202f\u00a0]/g, ' ')).toMatch(/hors bonus ; Autre prise en charge : bonus « Transition écologique » de 2 000 € HT.*jusqu'à 5 000 € HT, reste à charge total 1 000 € HT/);
+  });
+
+  it('300 salariés et plus : barème PDC à confirmer, mais le bonus est signalé dans le résumé', () => {
+    const bonus = bonusFor(atlas('300+'))!;
+    const result = estimate({ opco: 'atlas', sizeBand: '300+', idcc: '1486', participants: 5, durationsHours: [7] });
+    expect(result.status).toBe('to_confirm');
+    expect(summarizeResult(result, undefined, undefined, bonus).replace(/[\u202f\u00a0]/g, ' ')).toBe(
+      "Barème à confirmer (size_not_covered) ; Autre prise en charge : bonus « Transition écologique » de 4 500 € HT par an (sous condition d'un module d'IA durable)",
+    );
+  });
+
+  it('ne change rien sans bonus', () => {
+    const result = estimate({ opco: 'atlas', sizeBand: '11-49', idcc: '1486', participants: 5, durationsHours: [7] });
+    const view = buildResultView(result, undefined, null);
+    if (view.kind !== 'estimated') throw new Error('attendu : chiffré');
+    expect(view.scenarios[0].bonus).toBeUndefined();
   });
 });
