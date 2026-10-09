@@ -4,9 +4,10 @@ import type { GenericEstimate } from './generic';
 import { opcoLabel, sizeLabel } from './options';
 import { priceResolver } from './pricing';
 import { bonusFor } from './bonus';
+import { noFundingForResult } from './no-funding';
 import { remainingAfterCoverage, summarizeDisplayed } from './viewmodel';
 
-export type ResultType = 'Chiffré' | 'Fourchette générique' | 'À confirmer';
+export type ResultType = 'Chiffré' | 'Fourchette générique' | 'À confirmer' | 'Aucun financement PDC';
 
 /**
  * Données envoyées à l'automatisation Airtable (webhook) qui crée la ligne dans « Simulation OPCO ».
@@ -55,6 +56,7 @@ export interface LeadInput {
 
 function resultTypeOf(input: LeadInput): ResultType {
   if (input.result.status === 'estimated') return 'Chiffré';
+  if (noFundingForResult(input, input.result)) return 'Aucun financement PDC';
   return input.generic ? 'Fourchette générique' : 'À confirmer';
 }
 
@@ -112,7 +114,7 @@ export function buildLeadPayload(input: LeadInput): LeadPayload {
     quoteRemainingHt: quote.remaining,
     otherCoverageHt: bonus?.amountHt ?? null,
     resultType: resultTypeOf(input),
-    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt), input.quoteHt, bonus),
+    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt), input.quoteHt, bonus, noFundingForResult(input, input.result)),
     turnstileToken: input.turnstileToken,
   };
 }

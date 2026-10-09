@@ -57,6 +57,198 @@
             "Exclus : permis de conduire, formations à l'anglais, reste à charge CPF.",
             "Le dossier doit être déposé avant le début de la formation."
           ]
+        },
+        "banque": {
+          "label": "Banque",
+          "idcc": [
+            "2120"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/banque",
+          "updatedAt": "2026-01-05",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 3200
+            },
+            "11-49": {
+              "annualCapPerCompany": 5600
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel."
+          ]
+        },
+        "caisse-epargne": {
+          "label": "Caisses d'épargne",
+          "idcc": [
+            "5005"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/caisse-depargne",
+          "updatedAt": "2026-01-05",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 2800
+            },
+            "11-49": {
+              "annualCapPerCompany": 2800
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel."
+          ]
+        },
+        "credit-mutuel": {
+          "label": "Crédit mutuel",
+          "idcc": [
+            "1468"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/credit-mutuel",
+          "updatedAt": "2026-07-07",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 1500
+            },
+            "11-49": {
+              "annualCapPerCompany": 1500
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel."
+          ]
+        },
+        "marches-financiers": {
+          "label": "Marchés financiers",
+          "idcc": [
+            "2931"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/marches-financiers",
+          "updatedAt": "2026-04-30",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 2500
+            },
+            "11-49": {
+              "annualCapPerCompany": 4000
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel."
+          ]
+        },
+        "societes-financieres": {
+          "label": "Sociétés financières",
+          "idcc": [
+            "0478"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/societes-financieres",
+          "updatedAt": "2026-01-05",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 1000
+            },
+            "11-49": {
+              "annualCapPerCompany": 7000
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel.",
+            "Seules les thématiques définies par la branche sont éligibles (liste de formacodes génériques) : à vérifier avant dépôt."
+          ]
+        },
+        "societes-assurances": {
+          "label": "Sociétés d'assurances",
+          "idcc": [
+            "1672"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/societes-dassurances",
+          "updatedAt": "2026-07-17",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 9000
+            },
+            "11-49": {
+              "annualCapPerCompany": 12000
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel."
+          ]
+        },
+        "societes-assistance": {
+          "label": "Sociétés d'assistance",
+          "idcc": [
+            "1801"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/societes-dassistance",
+          "updatedAt": "2026-09-23",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 9000
+            },
+            "11-49": {
+              "annualCapPerCompany": 12000
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel.",
+            "Inclus dans le plafond : financement de la certification « mise en œuvre d'une solution dans le cadre d'un contrat d'assistance » (35 €/h)."
+          ]
+        },
+        "geometres": {
+          "label": "Géomètres-experts, géomètres-topographes",
+          "idcc": [
+            "2543"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/geometres",
+          "updatedAt": "2026-07-07",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 5000
+            },
+            "11-49": {
+              "annualCapPerCompany": 10000
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel."
+          ]
+        },
+        "experts-comptables": {
+          "label": "Experts-comptables et commissaires aux comptes",
+          "idcc": [
+            "0787"
+          ],
+          "sourceUrl": "https://www.opco-atlas.fr/criteres-financement/experts-comptables-et-commissaires-aux-comptes",
+          "updatedAt": "2026-01-05",
+          "bands": {
+            "lt11": {
+              "annualCapPerCompany": 2800
+            },
+            "11-49": {
+              "annualCapPerCompany": 9000
+            }
+          },
+          "notes": [
+            "Plan de développement des compétences : coût pédagogique des entreprises de moins de 50 salariés, plafond annuel par entreprise.",
+            "Aucun plafond horaire affiché pour cette branche.",
+            "Prise en charge de la modalité AFEST : 20 € HT/h limitée à 150 h par formation, dans le cadre du plafond annuel.",
+            "Stage DEC CAC : plafond par salarié de 1 000 € HT/an."
+          ]
         }
       },
       "notes": [
