@@ -1,7 +1,7 @@
 import { atlasBranchFromIdcc, estimate, opcoFromIdcc } from '../index';
 import type { EstimateResult, OpcoId, SizeBand } from '../types';
 import { cleanQuery, searchRegistry, type CompanyHit } from './company-search';
-import { CONTACT_EMAIL, DURATIONS_HOURS, MAX_PARTICIPANTS_PER_SESSION, TRAINING_PRICE_HT, TURNSTILE_SITE_KEY } from './config';
+import { CONTACT_EMAIL, MAX_PARTICIPANTS_PER_SESSION, TRAINING_PRICE_HT, TURNSTILE_SITE_KEY } from './config';
 import { h } from './dom';
 import { genericEstimate, type GenericEstimate } from './generic';
 import { createIdccFinder } from './idcc-finder';
@@ -10,6 +10,7 @@ import {
   formatDateFr,
   formatSiren,
   formatEuroHt,
+  formatHours,
   inseeLabel,
   isValidIdcc,
   normalizeIdcc,
@@ -18,6 +19,7 @@ import {
 } from './format';
 import { buildLeadPayload, sendLead } from './leads';
 import { isOpcoId, isSizeBand, opcoLabel, sizeLabel } from './options';
+import { hoursFor, priceResolver } from './pricing';
 import { mountTurnstile, type TurnstileHandle } from './turnstile';
 import { buildGenericView, buildResultView, type GenericScenarioView, type ScenarioView } from './viewmodel';
 
@@ -31,6 +33,8 @@ interface Profile {
   idcc?: string;
   participants: number;
   quoteHt?: number;
+  /** Durée du devis : toujours renseignée avec le montant. */
+  quoteHours?: number;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -83,6 +87,9 @@ export function initSimulator(): void {
   const idccChips = $('[data-idcc-chips]');
   const participantsInput = field<HTMLInputElement>('participants');
   const quoteInput = field<HTMLInputElement>('quote');
+  const quoteHoursInput = field<HTMLInputElement>('quoteHours');
+  const offerInputs = root.querySelectorAll<HTMLInputElement>('[data-offer]');
+  const quoteFields = root.querySelectorAll<HTMLElement>('[data-quote-field]');
   const sizeHint = $('[data-hint="sizeBand"]');
   const opcoHint = $('[data-hint="opco"]');
   const idccHint = $('[data-hint="idcc"]');
@@ -433,6 +440,24 @@ export function initSimulator(): void {
     applyOpcoFromIdcc();
   });
 
+  /* ---------- Étape 1 : catalogue ou devis ---------- */
+
+  function currentOffer(): 'catalog' | 'quote' {
+    return Array.from(offerInputs).find((input) => input.checked)?.value === 'quote' ? 'quote' : 'catalog';
+  }
+
+  function syncOffer(): void {
+    const quote = currentOffer() === 'quote';
+    quoteFields.forEach((el) => {
+      el.hidden = !quote;
+    });
+    if (!quote) {
+      setError('quote', null, quoteInput);
+      setError('quoteHours', null, quoteHoursInput);
+    }
+  }
+  offerInputs.forEach((input) => input.addEventListener('change', syncOffer));
+
   /* ---------- Étape 1 : validation ---------- */
 
   function readProfile(): Profile | null {
@@ -450,6 +475,7 @@ export function initSimulator(): void {
       ['idcc', idccInput],
       ['participants', participantsInput],
       ['quote', quoteInput],
+      ['quoteHours', quoteHoursInput],
     ] as const) {
       setError(key, null, input);
     }
@@ -484,9 +510,18 @@ export function initSimulator(): void {
       fail('participants', `Indiquez un nombre entier de participants par session, entre 1 et ${MAX_PARTICIPANTS_PER_SESSION}.`, participantsInput);
     }
 
-    const quote = parseAmount(quoteInput.value);
-    if (quote !== undefined && Number.isNaN(quote)) {
-      fail('quote', 'Saisissez un montant en euros, par exemple 1490.', quoteInput);
+    // Formation catalogue : on ignore le devis. Devis fourni : durée et prix par session sont obligatoires.
+    let quote: number | undefined;
+    let quoteHours: number | undefined;
+    if (currentOffer() === 'quote') {
+      quote = parseAmount(quoteInput.value);
+      if (quote === undefined || Number.isNaN(quote) || quote <= 0) {
+        fail('quote', 'Saisissez le montant HT de votre devis, par session (ex. 4800).', quoteInput);
+      }
+      quoteHours = parseAmount(quoteHoursInput.value);
+      if (quoteHours === undefined || Number.isNaN(quoteHours) || quoteHours <= 0 || quoteHours > 500) {
+        fail('quoteHours', "Saisissez le nombre d'heures par session de votre devis (ex. 14).", quoteHoursInput);
+      }
     }
 
     if (invalid.length) {
@@ -501,6 +536,7 @@ export function initSimulator(): void {
       idcc: idcc || undefined,
       participants,
       quoteHt: quote,
+      quoteHours,
     };
   }
 
@@ -526,7 +562,9 @@ export function initSimulator(): void {
     set('participants', String(profile.participants));
     const quoteRow = $('[data-sum-quote-row]');
     quoteRow.hidden = profile.quoteHt === undefined;
-    if (profile.quoteHt !== undefined) set('quote', formatEuroHt(profile.quoteHt).replace(' HT', ''));
+    if (profile.quoteHt !== undefined && profile.quoteHours !== undefined) {
+      set('quote', `${formatEuroHt(profile.quoteHt).replace(' HT', '')} · ${formatHours(profile.quoteHours)} h`);
+    }
   }
 
   async function ensureTurnstile(): Promise<void> {
@@ -557,7 +595,7 @@ export function initSimulator(): void {
       sizeBand: profile.sizeBand,
       idcc: profile.idcc,
       participants: profile.participants,
-      durationsHours: DURATIONS_HOURS,
+      durationsHours: hoursFor(profile.quoteHt, profile.quoteHours),
       quoteHt: profile.quoteHt,
     });
     const genericAllowed =
@@ -566,7 +604,7 @@ export function initSimulator(): void {
       ? genericEstimate({
           sizeBand: profile.sizeBand,
           participants: profile.participants,
-          durationsHours: DURATIONS_HOURS,
+          durationsHours: hoursFor(profile.quoteHt, profile.quoteHours),
           quoteHt: profile.quoteHt,
         })
       : null;
@@ -663,26 +701,19 @@ export function initSimulator(): void {
 
   /* ---------- Résultat ---------- */
 
-  function scenarioCard(s: ScenarioView): HTMLElement {
+  function scenarioCard(s: ScenarioView, profile: Profile): HTMLElement {
     return h(
       'article',
       { class: 'opco-scn' },
       h('p', { class: 'opco-scn__kicker' }, 'Prise en charge maximale estimée'),
       h('h3', { class: 'opco-scn__title' }, s.title),
-      priceLine(s.hours),
+      priceLine(s.hours, profile),
       h('p', { class: 'opco-scn__amount' }, s.amount),
       h('p', { class: 'opco-scn__context' }, s.context),
       remainingLine(s.estimatedRemaining),
       s.perParticipant && h('p', { class: 'opco-scn__split' }, s.perParticipant),
       h('p', { class: 'opco-scn__limit' }, s.limit),
-      s.quote &&
-        h(
-          'dl',
-          { class: 'opco-scn__quote' },
-          h('div', {}, h('dt', {}, 'Montant couvert sur votre devis'), h('dd', {}, s.quote.covered)),
-          h('div', {}, h('dt', {}, 'Reste à charge sur votre devis'), h('dd', {}, s.quote.remaining)),
-          s.quote.fullyCovered && h('p', {}, 'Votre devis serait couvert en totalité, dans la limite du plafond.'),
-        ),
+      s.quote?.fullyCovered && h('p', { class: 'opco-scn__covered' }, 'Votre devis serait couvert en totalité, dans la limite du plafond.'),
     );
   }
 
@@ -690,13 +721,14 @@ export function initSimulator(): void {
   const item = (...children: (Node | string)[]) => h('li', {}, h('span', {}, ...children));
   const nodes = (...list: (HTMLElement | null)[]): HTMLElement[] => list.filter((n): n is HTMLElement => n !== null);
 
-  const priceFor = (hours: number) => TRAINING_PRICE_HT[hours];
-
   function remainingLine(remaining?: string): HTMLElement | null {
     return remaining ? h('p', { class: 'opco-scn__remaining' }, 'Reste à charge estimé : ', h('strong', {}, remaining)) : null;
   }
 
-  function priceLine(hours: number): HTMLElement | null {
+  function priceLine(hours: number, profile: Profile): HTMLElement | null {
+    if (profile.quoteHt !== undefined) {
+      return h('p', { class: 'opco-scn__price' }, 'Montant du devis : ', h('strong', {}, formatEuroHt(profile.quoteHt)));
+    }
     const price = TRAINING_PRICE_HT[hours];
     return price === undefined
       ? null
@@ -709,23 +741,19 @@ export function initSimulator(): void {
         );
   }
 
-  function genericCard(s: GenericScenarioView): HTMLElement {
+  /** Un seul bloc (devis saisi) : on ne l'étire pas sur toute la largeur. */
+  const scenariosClass = (count: number) => (count === 1 ? 'opco-scenarios opco-scenarios--single' : 'opco-scenarios');
+
+  function genericCard(s: GenericScenarioView, profile: Profile): HTMLElement {
     return h(
       'article',
       { class: 'opco-scn opco-scn--generic' },
       h('p', { class: 'opco-scn__kicker' }, 'Ordre de grandeur générique'),
       h('h3', { class: 'opco-scn__title' }, s.title),
-      priceLine(s.hours),
+      priceLine(s.hours, profile),
       h('p', { class: 'opco-scn__amount opco-scn__amount--range' }, s.amount),
       h('p', { class: 'opco-scn__context' }, s.context),
       remainingLine(s.estimatedRemaining),
-      s.quote &&
-        h(
-          'dl',
-          { class: 'opco-scn__quote' },
-          h('div', {}, h('dt', {}, 'Montant couvert sur votre devis'), h('dd', {}, s.quote.covered)),
-          h('div', {}, h('dt', {}, 'Reste à charge sur votre devis'), h('dd', {}, s.quote.remaining)),
-        ),
     );
   }
 
@@ -791,6 +819,7 @@ export function initSimulator(): void {
   }
 
   function renderResult(profile: Profile, result: EstimateResult, generic: GenericEstimate | null, notice?: string): void {
+    const priceFor = priceResolver(profile.quoteHt);
     const view = buildResultView(result, priceFor);
     $('[data-result-recap]').textContent = [
       profile.name,
@@ -825,7 +854,7 @@ export function initSimulator(): void {
               h('span', { class: 'opco-pill' }, 'Estimation générique'),
               h('p', {}, `${why} Voici un ordre de grandeur générique, pas le barème de votre OPCO.`),
             ),
-            h('div', { class: 'opco-scenarios' }, ...g.scenarios.map(genericCard)),
+                h('div', { class: scenariosClass(g.scenarios.length) }, ...g.scenarios.map((sc) => genericCard(sc, profile))),
             h(
               'ul',
               { class: 'opco-meta' },
@@ -856,7 +885,7 @@ export function initSimulator(): void {
     body.replaceChildren(
       ...nodes(
         noticeEl,
-        h('div', { class: 'opco-scenarios' }, ...view.scenarios.map(scenarioCard)),
+        h('div', { class: scenariosClass(view.scenarios.length) }, ...view.scenarios.map((sc) => scenarioCard(sc, profile))),
         h(
           'ul',
           { class: 'opco-meta' },

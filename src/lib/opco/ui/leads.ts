@@ -1,7 +1,8 @@
 import type { EstimateResult, OpcoId, SizeBand } from '../types';
-import { CONSENT_VERSION, DURATIONS_HOURS, LEADS_ENDPOINT, TRAINING_PRICE_HT } from './config';
+import { CONSENT_VERSION, DURATIONS_HOURS, LEADS_ENDPOINT } from './config';
 import type { GenericEstimate } from './generic';
 import { opcoLabel, sizeLabel } from './options';
+import { priceResolver } from './pricing';
 import { remainingAfterCoverage, summarizeDisplayed } from './viewmodel';
 
 export type ResultType = 'Chiffré' | 'Fourchette générique' | 'À confirmer';
@@ -59,9 +60,9 @@ function coverageFor(result: EstimateResult, hours: number): number | null {
 }
 
 /** Reste à charge estimé d'une session, seulement quand un barème officiel a été appliqué. */
-function remainingFor(result: EstimateResult, hours: number): number | null {
+function remainingFor(result: EstimateResult, hours: number, quoteHt?: number): number | null {
   const coverage = coverageFor(result, hours);
-  const price = TRAINING_PRICE_HT[hours];
+  const price = priceResolver(quoteHt)(hours);
   return coverage === null || price === undefined ? null : remainingAfterCoverage(price, coverage);
 }
 
@@ -81,10 +82,10 @@ export function buildLeadPayload(input: LeadInput): LeadPayload {
     quoteHt: input.quoteHt ?? null,
     coverage7hHt: coverageFor(input.result, short),
     coverage14hHt: coverageFor(input.result, long),
-    remaining7hHt: remainingFor(input.result, short),
-    remaining14hHt: remainingFor(input.result, long),
+    remaining7hHt: remainingFor(input.result, short, input.quoteHt),
+    remaining14hHt: remainingFor(input.result, long, input.quoteHt),
     resultType: resultTypeOf(input),
-    resultSummary: summarizeDisplayed(input.result, input.generic, (hours) => TRAINING_PRICE_HT[hours]),
+    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt)),
     turnstileToken: input.turnstileToken,
   };
 }

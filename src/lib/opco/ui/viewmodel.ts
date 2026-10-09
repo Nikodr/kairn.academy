@@ -1,5 +1,5 @@
 import type { EstimateResult, ScenarioResult } from '../types';
-import { formatEuroHt, formatRangeHt, pluralize } from './format';
+import { formatEuroHt, formatHours, formatRangeHt, pluralize } from './format';
 import type { GenericEstimate } from './generic';
 
 export interface ScenarioView {
@@ -49,7 +49,7 @@ export type PriceFor = (hours: number) => number | undefined;
 export function buildScenarioView(s: ScenarioResult, priceFor?: PriceFor): ScenarioView {
   const view: ScenarioView = {
     hours: s.hours,
-    title: `Formation de ${s.hours} h`,
+    title: `Formation de ${formatHours(s.hours)} h`,
     amount: formatEuroHt(s.maxCoverageHt),
     context: `pour ${pluralize(s.participants, 'participant', 'participants')} par session`,
     limit: limitSentence(s),
@@ -95,7 +95,7 @@ export function summarizeResult(result: EstimateResult, priceFor?: PriceFor): st
   if (result.status === 'to_confirm') return `Barème à confirmer (${result.reason})`;
   return result.scenarios
     .map((s) => {
-      const price = priceFor?.(s.hours);
+      const price = s.coveredHt === undefined ? priceFor?.(s.hours) : undefined;
       const remaining = price !== undefined ? `, reste à charge estimé ${formatEuroHt(remainingAfterCoverage(price, s.maxCoverageHt))}` : '';
       const base = `${s.hours} h : jusqu'à ${formatEuroHt(s.maxCoverageHt)} (${s.limitedBy === 'hourly' ? 'plafond horaire' : 'plafond annuel'})${remaining}`;
       return s.coveredHt !== undefined && s.remainingHt !== undefined
@@ -126,7 +126,7 @@ export function buildGenericView(generic: GenericEstimate, priceFor?: PriceFor):
     scenarios: generic.scenarios.map((s) => {
       const view: GenericScenarioView = {
         hours: s.hours,
-        title: `Formation de ${s.hours} h`,
+        title: `Formation de ${formatHours(s.hours)} h`,
         amount: formatRangeHt(s.lowHt, s.highHt),
         context: `pour ${pluralize(s.participants, 'participant', 'participants')} par session`,
       };

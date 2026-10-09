@@ -194,3 +194,47 @@ describe('reste à charge dans le lead', () => {
     expect(plain(generic.resultSummary)).toContain('reste à charge estimé 500 € à 2 720 € HT');
   });
 });
+
+describe('devis saisi avec son nombre d\'heures', () => {
+  it('ne simule que la durée du devis et prend son montant exact comme prix de la session', async () => {
+    const { hoursFor, priceResolver } = await import('../pricing');
+    expect(hoursFor()).toEqual([7, 14]);
+    expect(hoursFor(4800, 21)).toEqual([21]);
+    expect(priceResolver()(7)).toBe(3000);
+    expect(priceResolver(4800)(21)).toBe(4800);
+  });
+
+  it('Atlas BET sur un devis de 4 800 € / 21 h : un seul scénario, reste à charge sur le devis', async () => {
+    const { hoursFor, priceResolver } = await import('../pricing');
+    const { buildResultView } = await import('../viewmodel');
+    const result = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: hoursFor(4800, 21), quoteHt: 4800 });
+    const view = buildResultView(result, priceResolver(4800));
+    if (view.kind !== 'estimated') throw new Error('attendu : estimated');
+    expect(view.scenarios).toHaveLength(1);
+    expect(view.scenarios[0].title).toBe('Formation de 21 h');
+    expect(plain(view.scenarios[0].amount)).toBe('2 500 € HT');
+    expect(plain(view.scenarios[0].estimatedRemaining ?? '')).toBe('2 300 € HT');
+  });
+
+  it('heures décimales lisibles et fourchette sur une seule durée', async () => {
+    const { formatHours } = await import('../format');
+    expect(formatHours(10.5)).toBe('10,5');
+    const g = genericEstimate({ participants: 1, durationsHours: [21], sizeBand: 'lt11', quoteHt: 4800 });
+    expect(g?.scenarios).toHaveLength(1);
+    expect(g?.scenarios[0]).toMatchObject({ hours: 21, lowHt: 840, highHt: 2500, remainingLowHt: 2300, remainingHighHt: 3960 });
+  });
+
+  it('le lead enregistre le reste à charge du devis, et seulement pour 7 h ou 14 h', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const { hoursFor } = await import('../pricing');
+    const common = { firstName: 'A', email: 'a@b.fr', companyName: 'X', opco: 'atlas' as const, sizeBand: 'lt11' as const, idcc: '1486', participants: 1, quoteHt: 4800, generic: null, turnstileToken: 't' };
+    const r14 = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: hoursFor(4800, 14), quoteHt: 4800 });
+    expect(buildLeadPayload({ ...common, result: r14 })).toMatchObject({ coverage14hHt: 2500, remaining14hHt: 2300, coverage7hHt: null, remaining7hHt: null, quoteHt: 4800 });
+    const r21 = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: hoursFor(4800, 21), quoteHt: 4800 });
+    const payload = buildLeadPayload({ ...common, result: r21 });
+    expect(payload).toMatchObject({ coverage7hHt: null, coverage14hHt: null, remaining7hHt: null, remaining14hHt: null });
+    expect(plain(payload.resultSummary)).toContain('21 h : jusqu\'à 2 500 € HT');
+    expect(plain(payload.resultSummary)).toContain('reste à charge 2 300 € HT');
+    expect(plain(payload.resultSummary).match(/reste à charge/g)).toHaveLength(1);
+  });
+});

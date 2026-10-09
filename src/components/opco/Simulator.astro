@@ -1,5 +1,6 @@
 ---
-import { MAX_PARTICIPANTS_PER_SESSION, PRIVACY_PATH, PROVIDER, QUALIOPI_TEXT, RETENTION_YEARS } from '../../lib/opco/ui/config';
+import { DURATIONS_HOURS, MAX_PARTICIPANTS_PER_SESSION, PRIVACY_PATH, PROVIDER, QUALIOPI_TEXT, RETENTION_YEARS, TRAINING_PRICE_HT } from '../../lib/opco/ui/config';
+import { formatEuroHt } from '../../lib/opco/ui/format';
 import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
 
 ---
@@ -105,14 +106,43 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
             <p class="opco-error" data-error="siren" hidden></p>
           </div>
 
-          <div class="opco-field opco-field--wide">
-            <label for="opco-quote" class="opco-label">Montant de votre devis (HT) <span class="opco-optional">facultatif</span></label>
+          <fieldset class="opco-offer opco-field--wide">
+            <legend class="opco-label">Quelle formation voulez-vous financer ?</legend>
+            <p class="opco-hint">Estimez le financement OPCO de nos formations de 7 h et 14 h, ou partez du devis que vous avez reçu.</p>
+            <div class="opco-offer__options">
+              <label class="opco-choice">
+                <input type="radio" name="opco-offer" value="catalog" data-offer checked />
+                <span>
+                  <span class="opco-choice__title">Formation catalogue</span>
+                  <span class="opco-choice__text">Prix par session, {MAX_PARTICIPANTS_PER_SESSION} personnes max</span>
+                  {DURATIONS_HOURS.map((hours) => (
+                    <span class="opco-choice__text"><strong>{hours} h</strong> · {formatEuroHt(TRAINING_PRICE_HT[hours])} / session</span>
+                  ))}
+                </span>
+              </label>
+              <label class="opco-choice">
+                <input type="radio" name="opco-offer" value="quote" data-offer />
+                <span>
+                  <span class="opco-choice__title">Devis fourni</span>
+                  <span class="opco-choice__text">Saisissez la durée et le prix HT d'une session de votre devis.</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="opco-field" data-quote-field hidden>
+            <label for="opco-quote" class="opco-label">Montant de votre devis (HT) par session</label>
             <div class="opco-suffix">
-              <input id="opco-quote" class="opco-input" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex. 1490" data-field="quote" aria-describedby="opco-quote-hint" />
+              <input id="opco-quote" class="opco-input" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex. 4800" data-field="quote" />
               <span aria-hidden="true">€</span>
             </div>
-            <p class="opco-hint" id="opco-quote-hint">Total pour tous les participants. Si vous le renseignez, nous affichons aussi le montant couvert et le reste à charge.</p>
             <p class="opco-error" data-error="quote" hidden></p>
+          </div>
+
+          <div class="opco-field" data-quote-field hidden>
+            <label for="opco-quote-hours" class="opco-label">Nombre d'heures par session du devis</label>
+            <input id="opco-quote-hours" class="opco-input" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex. 14" data-field="quoteHours" />
+            <p class="opco-error" data-error="quoteHours" hidden></p>
           </div>
         </div>
       </div>
@@ -258,6 +288,15 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
 
   .opco-link { display: inline-block; margin: 4px 0 24px; padding: 0; background: none; border: none; font: inherit; font-weight: 700; font-size: 14.5px; color: var(--plum-800); border-bottom: 2px solid var(--orange-500); cursor: pointer; }
 
+  .opco-offer { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+  .opco-offer legend { padding: 0; }
+  .opco-offer__options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .opco-choice { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--opco-border); border-radius: 12px; background: #fff; cursor: pointer; }
+  .opco-choice:has(input:checked) { border-color: var(--orange-500); background: var(--orange-50); box-shadow: 0 0 0 3px rgba(241, 107, 82, 0.2); }
+  .opco-choice input { flex: 0 0 auto; width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--plum-800); cursor: pointer; }
+  .opco-choice__title { display: block; font-weight: 700; font-size: 15px; }
+  .opco-choice__text { display: block; margin-top: 4px; font-size: 13.5px; line-height: 1.5; color: var(--plum-600); }
+  .opco-choice__text strong { color: var(--plum-900); }
   .opco-link--small { margin: 8px 0 0; font-size: 13.5px; }
   .opco-finder { margin-top: 12px; padding: 18px; background: #fff; border: 1px solid var(--plum-200); border-radius: 12px; }
   .opco-finder__tips { margin: 0 0 16px; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 13.5px; line-height: 1.5; color: var(--plum-600); }
@@ -317,6 +356,7 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
   .opco-fine { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--plum-600); }
 
   .opco-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .opco-scenarios--single { grid-template-columns: minmax(0, 520px); }
   .opco-scn { border: 1px solid var(--plum-200); border-top: 4px solid var(--orange-500); border-radius: 14px; padding: 26px 28px 24px; background: #fff; box-shadow: 0 2px 8px rgba(63, 4, 52, 0.08); }
   .opco-scn__kicker { margin: 0 0 4px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: var(--orange-700); text-transform: uppercase; }
   .opco-scn__title { margin: 0 0 18px; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
@@ -325,6 +365,7 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
   .opco-scn__price-note { display: block; margin-top: 2px; font-size: 12.5px; }
   .opco-scn__label { margin: 0; font-size: 13.5px; color: var(--plum-600); }
   .opco-scn__amount { margin: 2px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; }
+  .opco-scn__covered { margin: 12px 0 0; font-size: 14px; font-weight: 600; color: #2d7d46; }
   .opco-scn__remaining { margin: 10px 0 0; font-size: 15px; color: var(--plum-800); }
   .opco-scn__remaining strong { color: var(--plum-900); }
   .opco-scn__context { margin: 4px 0 0; font-size: 14.5px; color: var(--plum-600); }
@@ -368,7 +409,7 @@ import { OPCO_OPTIONS, SIZE_OPTIONS } from '../../lib/opco/ui/options';
     .opco-lead { font-size: 15.5px; margin-bottom: 24px; }
     .opco-fiche { padding: 20px 18px 4px; }
     .opco-fiche__head { flex-direction: column-reverse; gap: 12px; }
-    .opco-grid, .opco-unlock, .opco-scenarios { grid-template-columns: 1fr; }
+    .opco-grid, .opco-unlock, .opco-scenarios, .opco-offer__options { grid-template-columns: 1fr; }
     .opco-unlock { gap: 24px; }
     .opco-footer { flex-direction: column-reverse; align-items: stretch; }
     .opco-footer .opco-btn { width: 100%; }
