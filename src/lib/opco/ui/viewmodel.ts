@@ -91,10 +91,14 @@ export function buildResultView(result: EstimateResult, priceFor?: PriceFor): Re
 }
 
 /** Résumé en une ligne du résultat affiché, pour l'enregistrement du lead. */
-export function summarizeResult(result: EstimateResult, priceFor?: PriceFor): string {
+export function summarizeResult(result: EstimateResult, priceFor?: PriceFor, quoteHt?: number): string {
   if (result.status === 'to_confirm') return `Barème à confirmer (${result.reason})`;
   return result.scenarios
     .map((s) => {
+      if (quoteHt !== undefined && s.coveredHt !== undefined && s.remainingHt !== undefined) {
+        const cap = `plafond ${s.limitedBy === 'hourly' ? 'horaire' : 'annuel'} de ${formatEuroHt(s.maxCoverageHt)}`;
+        return `Devis ${formatEuroHt(quoteHt)} sur ${formatHours(s.hours)} h : prise en charge ${formatEuroHt(s.coveredHt)} (${cap}), reste à charge ${formatEuroHt(s.remainingHt)}`;
+      }
       const price = s.coveredHt === undefined ? priceFor?.(s.hours) : undefined;
       const remaining = price !== undefined ? `, reste à charge estimé ${formatEuroHt(remainingAfterCoverage(price, s.maxCoverageHt))}` : '';
       const base = `${s.hours} h : jusqu'à ${formatEuroHt(s.maxCoverageHt)} (${s.limitedBy === 'hourly' ? 'plafond horaire' : 'plafond annuel'})${remaining}`;
@@ -150,10 +154,18 @@ export function buildGenericView(generic: GenericEstimate, priceFor?: PriceFor):
 }
 
 /** Résumé de ce qui est réellement affiché (barème chiffré, fourchette générique ou « à confirmer »). */
-export function summarizeDisplayed(result: EstimateResult, generic: GenericEstimate | null, priceFor?: PriceFor): string {
+export function summarizeDisplayed(
+  result: EstimateResult,
+  generic: GenericEstimate | null,
+  priceFor?: PriceFor,
+  quoteHt?: number,
+): string {
   if (result.status === 'to_confirm' && generic) {
     const ranges = generic.scenarios
       .map((s) => {
+        if (quoteHt !== undefined && s.coveredLowHt !== undefined && s.coveredHighHt !== undefined && s.remainingLowHt !== undefined && s.remainingHighHt !== undefined) {
+          return `Devis ${formatEuroHt(quoteHt)} sur ${formatHours(s.hours)} h : prise en charge ${formatRangeHt(s.coveredLowHt, s.coveredHighHt)}, reste à charge ${formatRangeHt(s.remainingLowHt, s.remainingHighHt)}`;
+        }
         const price = priceFor?.(s.hours);
         const remaining =
           price !== undefined
@@ -164,5 +176,5 @@ export function summarizeDisplayed(result: EstimateResult, generic: GenericEstim
       .join(' | ');
     return `Estimation générique (${result.reason}) : ${ranges}`;
   }
-  return summarizeResult(result, priceFor);
+  return summarizeResult(result, priceFor, quoteHt);
 }

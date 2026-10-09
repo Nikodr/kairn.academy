@@ -68,11 +68,19 @@ function remainingFor(result: EstimateResult, hours: number, quoteHt?: number): 
   return coverage === null || price === undefined ? null : remainingAfterCoverage(price, coverage);
 }
 
-/** Avec un devis : ce que l'OPCO couvre sur ce devis (plafond appliqué) et le reste à charge, si un barème officiel s'applique. */
+/**
+ * Avec un devis : ce que l'OPCO couvre sur ce devis (plafond appliqué) et le reste à charge.
+ * Pour une fourchette générique, on enregistre le cas le plus prudent : prise en charge basse et reste à charge haut
+ * (le "Type de résultat" indique qu'il s'agit d'une fourchette).
+ */
 function quoteAmounts(input: LeadInput): { covered: number | null; remaining: number | null } {
-  if (input.quoteHt === undefined || input.result.status !== 'estimated') return { covered: null, remaining: null };
-  const scenario = input.result.scenarios[0];
-  return { covered: scenario?.coveredHt ?? null, remaining: scenario?.remainingHt ?? null };
+  if (input.quoteHt === undefined) return { covered: null, remaining: null };
+  if (input.result.status === 'estimated') {
+    const scenario = input.result.scenarios[0];
+    return { covered: scenario?.coveredHt ?? null, remaining: scenario?.remainingHt ?? null };
+  }
+  const generic = input.generic?.scenarios[0];
+  return { covered: generic?.coveredLowHt ?? null, remaining: generic?.remainingHighHt ?? null };
 }
 
 export function buildLeadPayload(input: LeadInput): LeadPayload {
@@ -97,7 +105,7 @@ export function buildLeadPayload(input: LeadInput): LeadPayload {
     quoteCoverageHt: quote.covered,
     quoteRemainingHt: quote.remaining,
     resultType: resultTypeOf(input),
-    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt)),
+    resultSummary: summarizeDisplayed(input.result, input.generic, priceResolver(input.quoteHt), input.quoteHt),
     turnstileToken: input.turnstileToken,
   };
 }

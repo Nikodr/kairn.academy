@@ -233,9 +233,7 @@ describe('devis saisi avec son nombre d\'heures', () => {
     const r21 = estimate({ opco: 'atlas', sizeBand: 'lt11', idcc: '1486', participants: 1, durationsHours: hoursFor(4800, 21), quoteHt: 4800 });
     const payload = buildLeadPayload({ ...common, result: r21 });
     expect(payload).toMatchObject({ coverage7hHt: null, coverage14hHt: null, remaining7hHt: null, remaining14hHt: null });
-    expect(plain(payload.resultSummary)).toContain('21 h : jusqu\'à 2 500 € HT');
-    expect(plain(payload.resultSummary)).toContain('reste à charge 2 300 € HT');
-    expect(plain(payload.resultSummary).match(/reste à charge/g)).toHaveLength(1);
+    expect(plain(payload.resultSummary)).toBe('Devis 4 800 € HT sur 21 h : prise en charge 2 500 € HT (plafond annuel de 2 500 € HT), reste à charge 2 300 € HT');
   });
 });
 
@@ -251,13 +249,30 @@ describe('lead avec devis : prise en charge et reste à charge sur le devis', ()
     expect(buildLeadPayload({ ...common, idcc: '1486', quoteHt: 1490, result: small })).toMatchObject({ quoteCoverageHt: 1490, quoteRemainingHt: 0 });
   });
 
-  it('reste vide sans devis ou sans barème officiel', async () => {
+  it('reste vide sans devis, et prudent (bornes basse / haute) pour une fourchette générique', async () => {
     const { buildLeadPayload } = await import('../leads');
     const catalog = estimate({ ...base, opco: 'atlas', sizeBand: 'lt11', idcc: '1486' });
     expect(buildLeadPayload({ ...common, idcc: '1486', result: catalog })).toMatchObject({ quoteHt: null, quoteCoverageHt: null, quoteRemainingHt: null });
 
     const noScale = estimate({ opco: 'atlas', sizeBand: 'lt11', participants: 1, durationsHours: [14], quoteHt: 4800 });
     const generic = genericEstimate({ participants: 1, durationsHours: [14], sizeBand: 'lt11', quoteHt: 4800 });
-    expect(buildLeadPayload({ ...common, quoteHt: 4800, result: noScale, generic })).toMatchObject({ quoteHt: 4800, quoteCoverageHt: null, quoteRemainingHt: null });
+    // fourchette générique : cas le plus prudent (prise en charge basse, reste à charge haut)
+    expect(buildLeadPayload({ ...common, quoteHt: 4800, result: noScale, generic })).toMatchObject({ quoteHt: 4800, quoteCoverageHt: 560, quoteRemainingHt: 4240, resultType: 'Fourchette générique' });
+  });
+});
+
+describe('résumé du lead quand le devis donne une fourchette générique', () => {
+  it('Atlas sans IDCC, 11 à 49 salariés, 8 participants, devis 4 800 € sur 14 h', async () => {
+    const { buildLeadPayload } = await import('../leads');
+    const durations = [14];
+    const result = estimate({ opco: 'atlas', sizeBand: '11-49', participants: 8, durationsHours: durations, quoteHt: 4800 });
+    const generic = genericEstimate({ sizeBand: '11-49', participants: 8, durationsHours: durations, quoteHt: 4800 });
+    const payload = buildLeadPayload({
+      firstName: 'A', email: 'a@b.fr', companyName: 'OPENCLIMAT', opco: 'atlas', sizeBand: '11-49', participants: 8, quoteHt: 4800, result, generic, turnstileToken: 't',
+    });
+    expect(payload).toMatchObject({ resultType: 'Fourchette générique', quoteHt: 4800, quoteCoverageHt: 1800, quoteRemainingHt: 3000 });
+    expect(plain(payload.resultSummary)).toBe(
+      'Estimation générique (branch_not_covered) : Devis 4 800 € HT sur 14 h : prise en charge 1 800 € à 3 000 € HT, reste à charge 1 800 € à 3 000 € HT',
+    );
   });
 });
