@@ -8,8 +8,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Studio is a partners-only page (noindex) — keep it out of the sitemap.
-      // The OPCO simulator and its privacy page stay unlisted until lead capture is wired up.
-      filter: (page) => !['/studio', '/simulateur-opco', '/confidentialite'].some((p) => page.includes(p)),
+      filter: (page) => !page.includes('/studio'),
     }),
   ],
 });
