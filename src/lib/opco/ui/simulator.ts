@@ -720,14 +720,14 @@ export function initSimulator(): void {
     );
   }
 
-  function bonusNotes(bonus: BonusInfo, standalone = false): HTMLElement[] {
+  function bonusNotes(bonus: BonusInfo, standalone = false, withLink = true): HTMLElement[] {
     return [
       item(
         h('strong', {}, `${bonus.label} (+${formatEuroHt(bonus.amountHt)} par an et par entreprise). `),
         'Pour l\'obtenir, la formation IA doit inclure un module d\'IA durable, qui apprend à réduire l\'impact environnemental de l\'IA. ',
         (standalone ? 'Ce bonus peut être activé individuellement, sans dossier de plan de développement des compétences. ' : 'Ce bonus est cumulable avec le plafond annuel ci-dessus. ') +
           'Il est réservé aux entreprises à jour de leur contribution conventionnelle et ne finance que le coût pédagogique. ',
-        ...(standalone
+        ...(standalone && withLink
           ? [
               `Mise à jour Atlas du ${formatDateFr(bonus.updatedAt)}, `,
               h('a', { attrs: { href: bonus.sourceUrl, target: '_blank', rel: 'noopener noreferrer' } }, 'critères de financement Atlas'),
@@ -901,8 +901,8 @@ export function initSimulator(): void {
         );
         return;
       }
-      const standalone = bonus && !generic ? bonusNotes(bonus, true) : [];
       const none = noFundingForResult(profile, result);
+      const standalone = bonus && !generic ? bonusNotes(bonus, true, !none) : [];
       body.replaceChildren(
         ...nodes(
           noticeEl,
@@ -917,9 +917,7 @@ export function initSimulator(): void {
                   `Selon les critères ${view.opcoLabel}, le plan de développement des compétences de la branche « ${none.label} » finance uniquement les entreprises de moins de ${none.publicBelow} salariés. `,
                   `Avec ${sizeLabel(profile.sizeBand).toLowerCase()}, votre entreprise n'y est pas éligible. `,
                   'Cela ne préjuge pas d\'autres dispositifs, que nous pouvons étudier avec vous. ',
-                  `Critères mis à jour le ${formatDateFr(none.updatedAt)} : `,
-                  h('a', { attrs: { href: none.sourceUrl, target: '_blank', rel: 'noopener noreferrer' } }, `critères de financement ${view.opcoLabel}`),
-                  '.',
+                  `Critères ${view.opcoLabel} mis à jour le ${formatDateFr(none.updatedAt)}.`,
                 ),
               )
             : h(
@@ -928,6 +926,17 @@ export function initSimulator(): void {
                 h('h3', {}, 'Barème à confirmer'),
                 h('p', {}, reason === 'branch_not_covered' ? `${why} Nous la confirmons avec ${view.opcoLabel} lors de l'étude de votre dossier.` : view.message),
               ),
+          none
+            ? h(
+                'ul',
+                { class: 'opco-meta' },
+                item(
+                  'Source officielle : ',
+                  h('a', { attrs: { href: none.sourceUrl, target: '_blank', rel: 'noopener noreferrer' } }, `critères de financement ${view.opcoLabel}`),
+                  `, vérifiée le ${formatDateFr(none.verifiedAt)}.`,
+                ),
+              )
+            : null,
           standalone.length
             ? h(
                 'div',

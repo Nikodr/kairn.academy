@@ -6,6 +6,7 @@ export interface NoFundingInfo {
   /** Le PDC Atlas de la branche ne finance que les entreprises de moins de N salariés. */
   publicBelow: number;
   updatedAt: string;
+  verifiedAt: string;
   sourceUrl: string;
 }
 
@@ -20,7 +21,7 @@ export function noFundingFor(input: { opco: OpcoId; idcc?: string; sizeBand: Siz
   if (input.opco !== 'atlas' || !input.idcc) return null;
   const branch = data.branches.find((b) => b.idcc.includes(input.idcc as string));
   if (!branch || BAND_MIN[input.sizeBand] < branch.publicBelow) return null;
-  return { label: branch.label, publicBelow: branch.publicBelow, updatedAt: branch.updatedAt, sourceUrl: branch.sourceUrl };
+  return { label: branch.label, publicBelow: branch.publicBelow, updatedAt: branch.updatedAt, verifiedAt: data.verifiedAt, sourceUrl: branch.sourceUrl };
 }
 
 /** Seulement quand le moteur n'a pas de barème pour cette taille : un résultat chiffré reste chiffré. */
