@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votre résultat · Diagnostic express · kairn.academy</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Fredoka:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/diagnostic/assets/diagnostic.css?v=20261027b">
+</head>
+<body>
+<div class="testbar" id="testbar" hidden></div>
+
+<header class="wrap top">
+  <a class="logo" href="/"><img src="/assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a>
+  <nav class="top-nav" aria-label="Navigation principale">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <ul class="nav-links" id="menu">
+      <li class="has-sub">
+        <button class="top-link sub-toggle" type="button" aria-expanded="false" aria-controls="sub-formations">Formations<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="sub" id="sub-formations">
+          <li><a href="/formations.html">Toutes les formations<small>Product et tech, ensemble</small></a></li>
+          <li><a href="/formations-product.html">Product<small>PMs et designers</small></a></li>
+          <li><a href="/formations-developpeurs.html">Développeurs<small>Équipes de développement</small></a></li>
+        </ul>
+      </li>
+      <li><a class="top-link" href="/formations-kickstart.html">Kickstart</a></li>
+      <li><a class="top-link" href="/dojo-ia.html">Dojo IA</a></li>
+      <li><a class="top-link" href="/diagnostic/" aria-current="page">Diagnostic</a></li>
+      <li><a class="top-link" href="/simulateur-opco.html">Simulateur OPCO</a></li>
+    </ul>
+    <a class="top-cta" href="/#rdv">Cadrer mon besoin</a>
+  </nav>
+</header>
+
+<main class="col result" id="contenu">
+  <!-- Sans réponses valides : aucun profil (US-3, « Accès sans réponses ») -->
+  <section class="empty" id="vide" hidden aria-labelledby="vide-titre">
+    <h1 id="vide-titre"></h1>
+    <a class="btn btn-primary" id="vide-lien" href="/diagnostic/"></a>
+  </section>
+
+  <article id="resultat" hidden>
+    <!-- 1. Profil et phrase de lecture -->
+    <section class="profile" aria-labelledby="profil-nom">
+      <h1 id="profil-nom"><span class="mark" id="profil-nom-texte"></span></h1>
+      <p class="reading" id="profil-lecture"></p>
+      <p class="description" id="profil-description"></p>
+    </section>
+
+    <!-- 2. Écart avec la perception (Q1) -->
+    <section class="perception" aria-label="Votre lecture et vos réponses">
+      <p id="perception"></p>
+      <p class="why" id="perception-explication" hidden></p>
+    </section>
+
+    <!-- 3. Détail en accès libre : 4 axes et 3 questions -->
+    <div class="detail" id="detail" aria-label="Détail de votre diagnostic">
+      <section aria-labelledby="axes-titre">
+        <h2 id="axes-titre"></h2>
+        <ul class="axes" id="axes"></ul>
+        <p class="signal" id="dispersion" hidden>
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 14 7 6l3 5 2-3 4 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="dispersion-texte"></span>
+        </p>
+        <p class="axis-note" id="note-nsp" hidden></p>
+      </section>
+      <section aria-labelledby="questions-titre">
+        <h2 id="questions-titre"></h2>
+        <ol class="questions" id="questions"></ol>
+      </section>
+    </div>
+
+    <!-- 4. Ce que donne l'email, puis le formulaire -->
+    <section class="unlock" id="offre" hidden aria-labelledby="formulaire-titre">
+      <h2 id="formulaire-titre"></h2>
+      <ul class="benefits" id="avantages"></ul>
+
+      <!-- Aperçus flous : de vraies images, illisibles, sans texte dans la page -->
+      <div class="previews" id="apercus" role="group" aria-roledescription="carrousel" aria-label="Aperçu du diagnostic complet">
+        <button class="more" type="button" id="apercus-prec" aria-label="Slides précédentes"><svg width="14" height="28" viewBox="0 0 14 28" aria-hidden="true"><path d="M11 3 3 14l8 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="carousel" id="apercus-piste" tabindex="0">
+          <img src="/diagnostic/assets/apercus/apercu-niveau-superieur.jpg" width="960" height="540" alt="" data-alt>
+          <img src="/diagnostic/assets/apercus/apercu-profils.jpg" width="960" height="540" alt="" data-alt>
+          <img src="/diagnostic/assets/apercus/apercu-couverture.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-lecture.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-axes.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-questions.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-echelle-diffusion.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-echelle-capital.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-echelle-process.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-echelle-robustesse.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+          <img src="/diagnostic/assets/apercus/apercu-offre.jpg" width="960" height="540" alt="" data-alt loading="lazy">
+        </div>
+        <button class="more" type="button" id="apercus-suiv" aria-label="Slides suivantes"><svg width="14" height="28" viewBox="0 0 14 28" aria-hidden="true"><path d="m3 3 8 11-8 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+
+      <form id="formulaire" novalidate aria-labelledby="formulaire-titre">
+        <div class="field">
+          <label class="field-label" for="email" id="email-libelle"></label>
+          <input class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-erreur">
+          <p class="field-error" id="email-erreur" hidden></p>
+        </div>
+
+        <!-- Poste et taille d'équipe : optionnels, demandés ici plutôt qu'avant le résultat (FS-1 v2.0) -->
+        <div class="field">
+          <label class="field-label" for="poste" id="poste-libelle"></label>
+          <input class="input" id="poste" name="poste" type="text" maxlength="120" autocomplete="organization-title">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="taille" id="taille-libelle"></label>
+          <select class="input" id="taille" name="taille"></select>
+        </div>
+
+        <div class="field">
+          <label class="consent">
+            <input type="checkbox" id="consentement" name="consentement" required aria-describedby="consentement-erreur">
+            <span id="consentement-texte"></span>
+          </label>
+          <p class="field-error" id="consentement-erreur" hidden></p>
+        </div>
+
+        <button class="btn btn-primary submit" type="submit" id="envoyer"></button>
+        <p class="send-error" id="envoi-erreur" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <!-- 5. Après l'email : PDF complet et questionnaire d'équipe -->
+    <section class="access" id="acces" tabindex="-1" hidden aria-labelledby="acces-titre">
+      <div class="unlock">
+        <h2 id="acces-titre"></h2>
+        <p class="access-text" id="pdf-description"></p>
+        <div id="pdf-repli" hidden>
+          <p class="access-fallback" id="pdf-secours"></p>
+          <button class="btn btn-primary" type="button" id="pdf">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2.5v9M5 8l4 4 4-4M3 15.5h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="pdf-libelle"></span>
+          </button>
+          <p class="field-error" id="pdf-erreur" role="alert" hidden></p>
+        </div>
+      </div>
+
+      <aside class="invite" id="invitation" aria-label="Questionnaire d'équipe">
+        <p id="invitation-texte"></p>
+        <p class="invite-detail" id="invitation-detail"></p>
+        <a class="btn btn-primary" id="invitation-lien" href="#"></a>
+      </aside>
+
+      <p class="date-line" id="resultats-partages"></p>
+    </section>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo-kairn-academy-blanc.webp" alt="kairn.academy, accueil" width="2000" height="293"></a>
+    <nav aria-label="Pied de page">
+      <ul>
+        <li><a href="/formations">Formations</a></li>
+        <li><a href="/formations-kickstart">Kickstart</a></li>
+        <li><a href="/dojo-ia.html">Dojo IA</a></li>
+        <li><a href="/diagnostic/">Diagnostic</a></li>
+        <li><a href="/simulateur-opco.html">Simulateur OPCO</a></li>
+        <li><a href="/#rdv">Échanger avec nous</a></li>
+        <li><a href="https://www.linkedin.com/company/kairn-academy" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/confidentialite">Confidentialité</a></li>
+        <li><a href="/cgv">CGV</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="/diagnostic/assets/resultat.js?v=20261023c"></script>
+<script src="/diagnostic/assets/entete.js"></script>
+</body>
+</html>

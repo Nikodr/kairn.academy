@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kairn · Des usages IA choisis pour leur valeur, adoptés par tous</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta name="description" content="Nous formons devs, PM et designers ensemble, sur vos projets réels, pour que les bonnes pratiques IA deviennent celles de toute l'équipe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Fredoka:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ground: #FBF7FA;
+  --white: #FFFFFF;
+  --lilac: #F4ECF2;
+  --plum: #3F0434;
+  --plum-950: #24021E;
+  --plum-800: #4E0E43;
+  --plum-600: #6E3F66;
+  --plum-300: #C9A9C3;
+  --plum-200: #E8D5E4;
+  --line: #EADCE6;
+  --orange: #F16B52;
+  --orange-hover: #F47D67;
+  --orange-ink: #B4432C;
+  --orange-wash: #FDEDE8;
+  --bone: #F5EFF4;
+  --font: 'Gabarito', system-ui, sans-serif;
+  --gutter: clamp(16px, 3.6vw, 56px);
+  --max: 1280px;
+  --section: clamp(72px, 11vh, 128px);
+}
+* { box-sizing: border-box; }
+html { background: var(--ground); scrollbar-color: var(--plum-200) var(--ground); scroll-behavior: smooth; }
+body { margin: 0; background: var(--ground); color: var(--plum); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--orange); color: var(--plum-950); }
+a { color: inherit; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 8px; }
+img { display: block; }
+.wrap { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ── Type ─────────────────────────────── */
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+.h2 { font-weight: 800; font-size: clamp(34px, 4.2vw, 62px); line-height: 1.02; letter-spacing: -0.035em; max-width: 18em; }
+.intro { margin: 20px 0 0; font-size: clamp(18px, 1.45vw, 21px); line-height: 1.5; color: var(--plum-600); max-width: 40em; text-wrap: pretty; }
+.intro + .intro { margin-top: 6px; }
+.intro .ink { color: var(--plum); font-weight: 700; }
+
+/* ── Buttons ──────────────────────────── */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 700 17px/1 var(--font); padding: 18px 26px; border-radius: 999px; border: 0; cursor: pointer; transition: background .2s ease, color .2s ease, box-shadow .2s ease; }
+.btn-primary { background: var(--orange); color: var(--plum-950); }
+.btn-primary:hover { background: var(--orange-hover); }
+.btn-primary svg { transition: transform .2s ease; }
+.btn-primary:hover svg { transform: translateX(3px); }
+.btn-ghost { color: var(--plum); box-shadow: 0 0 0 1.5px var(--plum) inset; background: transparent; }
+.btn-ghost:hover { background: var(--plum); color: var(--ground); }
+.btn-sm { font-size: 15px; padding: 13px 20px; }
+.cta { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; }
+.micro { font-size: 13.5px; color: var(--plum-600); }
+
+/* ── Header ───────────────────────────── */
+.top { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
+.logo { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -0.8px; text-decoration: none; color: var(--plum); line-height: 1; }
+.logo b { color: var(--orange); font-weight: 600; }
+.top-nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); }
+.top-link { font-weight: 600; font-size: 15px; text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
+.top-link:hover { border-bottom-color: var(--orange); }
+.top-cta { font-weight: 600; font-size: 15px; text-decoration: none; padding: 11px 18px; border-radius: 999px; box-shadow: 0 0 0 1.5px var(--plum) inset; transition: background .2s, color .2s; }
+.top-cta:hover { background: var(--plum); color: var(--ground); }
+.top { position: relative; gap: 16px; }
+.nav-links { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 30px); margin: 0; padding: 0; list-style: none; }
+.nav-links .top-link { display: inline-block; white-space: nowrap; }
+.top-cta { white-space: nowrap; }
+.nav-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--plum); cursor: pointer; place-items: center; transition: background .2s; }
+.nav-toggle:hover, .nav-toggle[aria-expanded="true"] { background: var(--lilac); }
+@media (max-width: 1080px) {
+  .top-nav { gap: 6px; }
+  .nav-toggle { display: grid; order: 2; }
+  .nav-links { display: none; position: absolute; z-index: 20; top: 100%; left: var(--gutter); right: var(--gutter); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px; background: var(--white); border-radius: 18px; box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(36, 2, 30, .35); }
+  .nav-links.is-open { display: flex; }
+  .nav-links li + li { border-top: 1px solid var(--line); }
+  .nav-links .top-link { display: block; padding: 15px 0; border-bottom: 0; font-size: 17px; }
+  .nav-links .top-link:hover { color: var(--orange-ink); }
+}
+/* Sous-menu Formations dans le header */
+.has-sub { position: relative; }
+.sub-toggle { display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; border-bottom: 2px solid transparent; font: 600 15px/1.15 var(--font); color: var(--plum); cursor: pointer; padding: 6px 0; }
+.has-sub.is-current .sub-toggle { border-bottom-color: var(--orange); }
+.sub-toggle svg { transition: transform .2s ease; }
+.sub-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.sub { display: none; position: absolute; z-index: 25; top: calc(100% + 12px); left: -16px; min-width: 270px; list-style: none; margin: 0; padding: 8px; background: var(--white); border-radius: 16px; box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(36, 2, 30, .35); }
+.sub::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.has-sub.is-open .sub { display: block; }
+.sub a { display: block; padding: 11px 14px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; color: var(--plum); transition: background .2s; }
+.sub a:hover, .sub a[aria-current="page"] { background: var(--lilac); }
+.sub small { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; color: var(--plum-600); }
+@media (min-width: 1081px) and (hover: hover) { .has-sub:hover .sub { display: block; } }
+@media (max-width: 1080px) {
+  .nav-links .sub-toggle { display: flex; width: 100%; justify-content: space-between; text-align: left; padding: 15px 0; border-bottom: 0; font-size: 17px; }
+  .has-sub.is-current .sub-toggle { border-bottom: 0; }
+  .sub { position: static; min-width: 0; padding: 0 0 10px; box-shadow: none; border-radius: 0; }
+  .sub::before { display: none; }
+  .sub a { padding: 10px 12px; }
+}
+
+@media (max-width: 420px) {
+  .top .logo { font-size: 26px; }
+  .top-cta { font-size: 14px; padding: 10px 14px; }
+  .top-nav { gap: 2px; }
+}
+
+/* ── Hero ─────────────────────────────── */
+.hero { padding-top: clamp(20px, 5vh, 64px); }
+h1 { font-weight: 800; font-size: clamp(44px, 6.4vw, 100px); line-height: 1; letter-spacing: -0.035em; }
+h1 > span { display: block; }
+.mark { background-image: linear-gradient(var(--orange), var(--orange)); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 42%; padding: 0 .06em; margin: 0 -.06em; }
+@media (prefers-reduced-motion: no-preference) {
+  .mark { animation: mark .9s .4s cubic-bezier(.22, 1, .36, 1) both; }
+  @keyframes mark { from { background-size: 0% 42%; } }
+}
+.hero-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); gap: clamp(32px, 5vw, 80px); align-items: center; padding: clamp(28px, 4.5vh, 48px) 0 clamp(36px, 6vh, 64px); }
+.lead { margin: 0; font-size: clamp(20px, 1.7vw, 25px); line-height: 1.42; font-weight: 500; color: var(--plum-950); max-width: 30em; text-wrap: pretty; }
+.lead strong { font-weight: 700; }
+.actions { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; margin-top: clamp(24px, 3.6vh, 34px); }
+.founders-line { display: flex; align-items: center; gap: 14px; margin-top: clamp(26px, 4vh, 38px); }
+.faces { display: flex; flex-shrink: 0; }
+.faces img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 3px solid var(--ground); }
+.faces img + img { margin-left: -12px; }
+.founders-line p { margin: 0; font-size: 15.5px; line-height: 1.45; color: var(--plum-600); max-width: 34em; }
+.founders-line strong { color: var(--plum); font-weight: 600; }
+
+.voice { position: relative; background: var(--plum); color: var(--bone); border-radius: 24px; padding: clamp(28px, 3vw, 44px); touch-action: pan-y; }
+.slides { display: grid; }
+.slide { grid-area: 1 / 1; margin: 0; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .5s ease, transform .6s cubic-bezier(.22,1,.36,1), visibility 0s .5s; }
+.slide.is-on { opacity: 1; visibility: visible; transform: none; transition: opacity .5s ease .1s, transform .6s cubic-bezier(.22,1,.36,1) .1s, visibility 0s; }
+.slide figcaption { margin-top: auto !important; padding-top: 26px; padding-right: 96px; }
+.dots { position: absolute; right: clamp(28px, 3vw, 44px); bottom: clamp(28px, 3vw, 44px); display: flex; gap: 4px; height: 52px; align-items: center; }
+.dots button { width: 26px; height: 26px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; border-radius: 50%; }
+.dots button::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: rgba(245,239,244,.35); transition: background .2s, transform .2s; }
+.dots button:hover::before { background: rgba(245,239,244,.7); }
+.dots button[aria-current="true"]::before { background: var(--orange); transform: scale(1.25); }
+@media (prefers-reduced-motion: reduce) { .slide, .slide.is-on { transition: none; transform: none; } }
+.voice blockquote { margin: 0; font-size: clamp(20px, 1.75vw, 27px); line-height: 1.35; font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty; }
+.voice figcaption { display: flex; align-items: center; gap: 14px; }
+.voice figcaption img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+.voice figcaption b { display: block; font-size: 16px; }
+.voice figcaption span { font-size: 14px; color: var(--plum-200); }
+q { quotes: "«\00a0" "\00a0»"; }
+.voice q::before, .voice q::after { color: var(--orange); }
+
+.clients { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.clients .wrap { display: flex; align-items: center; gap: clamp(20px, 4vw, 64px); flex-wrap: wrap; padding-top: 26px; padding-bottom: 30px; }
+.clients .label { font-size: 14px; font-weight: 600; color: var(--plum-600); }
+.clients ul { display: flex; align-items: center; gap: clamp(22px, 4vw, 60px); margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+.lg { display: block; height: 26px; background: var(--plum); opacity: .7; -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; transition: opacity .2s ease; }
+.lg:hover { opacity: 1; }
+
+/* ── Sections ─────────────────────────── */
+section.block { padding: var(--section) 0; }
+.bg-white { background: var(--white); }
+.bg-lilac { background: var(--lilac); }
+
+/* Symptoms: a ruled list, the title carries each row */
+.symptoms { list-style: none; margin: clamp(40px, 6vh, 64px) 0 0; padding: 0; border-top: 2px solid var(--plum); }
+.symptoms li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 48px; padding: 30px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.symptoms h3 { font-size: clamp(24px, 2.3vw, 34px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; }
+.symptoms p { margin: 0; font-size: 18px; line-height: 1.55; color: var(--plum-600); max-width: 34em; }
+.stance { display: flex; align-items: center; justify-content: space-between; gap: 24px 48px; flex-wrap: wrap; margin-top: clamp(40px, 6vh, 56px); }
+.stance p { margin: 0; font-size: clamp(22px, 2vw, 30px); line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; max-width: 24em; }
+.stance p span { color: var(--orange-ink); }
+
+/* Method: three steps on one track */
+.track { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(6, auto); gap: 0 clamp(24px, 3vw, 48px); margin-top: clamp(48px, 7vh, 72px); }
+.step { position: relative; padding-top: 44px; display: grid; grid-row: span 6; grid-template-rows: subgrid; align-content: start; }
+.step::before { content: ""; position: absolute; top: 9px; left: 0; right: calc(-1 * clamp(24px, 3vw, 48px)); height: 3px; background: var(--plum-200); }
+.step:last-child::before { right: 0; }
+.step::after { content: ""; position: absolute; top: 0; left: 0; width: 21px; height: 21px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px var(--lilac); }
+.step .meta { font-size: 14px; font-weight: 600; color: var(--orange-ink); margin-bottom: 8px; }
+.step h3 { font-size: clamp(36px, 3.6vw, 52px); font-weight: 800; letter-spacing: -0.035em; line-height: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; align-items: center; align-self: start; }
+.tags li { font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--white); box-shadow: 0 0 0 1px var(--line) inset; }
+.tags li.plain { background: none; box-shadow: none; padding: 6px 4px; font-weight: 500; color: var(--plum-600); }
+.step h4 { margin-top: 22px; font-size: 21px; line-height: 1.3; font-weight: 700; letter-spacing: -0.01em; color: var(--plum-800); }
+.step p { margin: 12px 0 0; font-size: 17px; line-height: 1.55; color: var(--plum-600); }
+.step .btn { margin-top: 24px; align-self: start; justify-self: start; }
+.step-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; align-self: start; }
+.step-links .btn { margin-top: 0; }
+.pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px clamp(24px, 3vw, 48px); margin-top: clamp(40px, 6vh, 56px); padding-top: 24px; border-top: 1px solid var(--plum-200); }
+.pricing p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--plum-600); }
+.pricing-label { font-weight: 700; color: var(--plum) !important; }
+.pricing-body { grid-column: 2 / span 2; display: grid; gap: 4px; }
+.pricing .price { font-size: 17px; color: var(--plum); }
+.pricing .price strong { font-weight: 800; }
+.pricing .price span { color: var(--orange-ink); font-weight: 600; }
+.pricing a { color: var(--plum); font-weight: 600; }
+.entry { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(48px, 7vh, 72px); background: var(--white); border-radius: 20px; }
+.entry-col { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(28px, 3vw, 40px); }
+@media (max-width: 560px) { .entry-col { padding: 26px 22px; } }
+.entry-col + .entry-col { border-left: 1px solid var(--line); }
+.entry h3 { font-size: clamp(22px, 1.9vw, 27px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.entry p { margin: 10px 0 0; font-size: 17.5px; line-height: 1.5; color: var(--plum-600); }
+.entry .btn { margin-top: auto; }
+.entry p + .btn { margin-top: 24px; }
+
+/* Testimonials */
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 56px); margin-top: clamp(40px, 6vh, 64px); }
+.quotes figure { margin: 0; display: flex; flex-direction: column; }
+.quotes h3 { font-size: clamp(24px, 2.2vw, 32px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; padding-top: 22px; border-top: 2px solid var(--plum); }
+.quotes blockquote { margin: 18px 0 0; font-size: 18px; line-height: 1.55; color: var(--plum-800); }
+.quotes q::before, .quotes q::after { color: var(--orange-ink); font-weight: 700; }
+.quotes figcaption { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 26px; }
+.quotes figcaption img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+.quotes figcaption b { display: block; font-size: 16px; }
+.quotes figcaption span { font-size: 14.5px; color: var(--plum-600); }
+
+/* Fit */
+.fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); margin-top: clamp(40px, 6vh, 56px); }
+.fit > div { border-radius: 20px; padding: clamp(26px, 3vw, 40px); }
+.fit .yes { background: var(--orange-wash); }
+.fit .no { background: var(--white); box-shadow: 0 0 0 1px var(--line) inset; }
+.fit-title { margin-top: clamp(56px, 8vh, 88px); font-size: clamp(26px, 2.3vw, 32px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.fit-title + .fit { margin-top: 24px; }
+.fit h4 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+.fit ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 16px; }
+.fit li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; font-size: 17.5px; line-height: 1.45; }
+.fit li svg { margin-top: 3px; }
+
+/* Founders */
+.people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); margin-top: clamp(40px, 6vh, 64px); }
+.person { display: grid; grid-template-columns: clamp(120px, 13vw, 180px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.person img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; filter: grayscale(1); }
+.person h3 { font-size: clamp(24px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.025em; }
+.person .li { display: inline-block; padding: 6px 0; font-size: 15px; font-weight: 600; color: var(--plum); text-decoration: underline; text-decoration-color: var(--plum-300); text-underline-offset: 3px; transition: text-decoration-color .2s; }
+.person .li:hover { text-decoration-color: var(--orange); }
+.person .role { margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--orange-ink); }
+.person p { margin: 14px 0 0; font-size: 16.5px; line-height: 1.6; color: var(--plum-600); }
+
+/* Offers */
+.offer-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px clamp(32px, 5vw, 80px); align-items: center; }
+.map { background: var(--white); border-radius: 20px; padding: 26px 28px 24px; box-shadow: 0 1px 0 var(--line), 0 24px 48px -28px rgba(36, 2, 30, .35); }
+.map-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.map-top b { font-size: 19px; }
+.map-top span { font-size: 13px; font-weight: 700; color: var(--orange-ink); padding: 5px 11px; border-radius: 999px; box-shadow: 0 0 0 1.5px var(--orange) inset; }
+.legend { display: flex; gap: 22px; margin-top: 10px; font-size: 13.5px; color: var(--plum-600); }
+.legend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 7px; vertical-align: -1px; }
+.dot-you { background: var(--plum); }
+.dot-team { box-shadow: 0 0 0 2.5px var(--orange) inset; }
+.map-row { margin-top: 18px; }
+.map-row b { font-size: 14.5px; }
+.bar { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: 8px; height: 12px; }
+.bar i { border-radius: 4px; background: var(--lilac); }
+.bar .pin { position: absolute; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; }
+.bar .you { background: var(--plum); }
+.bar .team { background: var(--white); box-shadow: 0 0 0 3.5px var(--orange) inset; }
+.bar.levels { grid-template-columns: repeat(3, 1fr); }
+.bar i.on { background: var(--plum); }
+.map-profile { margin: 16px 0 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.map-q { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.map-q b { font-size: 14.5px; }
+.map-q i { display: block; height: 7px; border-radius: 4px; background: var(--lilac); margin-top: 9px; }
+
+.offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(48px, 7vh, 72px); align-items: stretch; }
+.offer { display: flex; flex-direction: column; border-radius: 22px; padding: clamp(26px, 2.6vw, 36px); background: var(--white); box-shadow: 0 0 0 1px var(--line) inset; }
+.offer.lead-offer { background: var(--plum); color: var(--bone); box-shadow: none; }
+.offer h3 { font-size: clamp(26px, 2.3vw, 32px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.offer dl { margin: 22px 0 0; }
+.offer dt { font-size: 14px; font-weight: 700; color: var(--orange-ink); margin-top: 16px; }
+.offer.lead-offer dt { color: var(--orange); }
+.offer dd { margin: 4px 0 0; font-size: 17px; line-height: 1.45; }
+.offer .btn { margin-top: auto; width: 100%; }
+.offer dl { margin-bottom: 28px; }
+.offer:not(.lead-offer) .btn-ghost { margin-top: auto; }
+.promise { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 28px; margin: 20px 0 0; padding: 26px clamp(22px, 3vw, 36px); border-radius: 20px; background: var(--orange-wash); }
+.promise li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 16.5px; line-height: 1.45; }
+.promise svg { margin-top: 3px; }
+
+/* FAQ */
+.faq { display: grid; grid-template-columns: minmax(0, .5fr) minmax(0, 1fr); gap: 32px clamp(32px, 5vw, 80px); align-items: start; }
+.faq-list { border-top: 1px solid var(--plum-200); }
+.faq h2 { position: sticky; top: 32px; }
+.faq details { border-bottom: 1px solid var(--plum-200); }
+.faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; letter-spacing: -0.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M7 1v12M1 7h12' stroke='%233F0434' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center no-repeat; box-shadow: 0 0 0 1px var(--plum-200) inset; transition: transform .3s cubic-bezier(.22,1,.36,1), background-color .2s; }
+.faq summary:hover::after { background-color: var(--lilac); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: -6px 0 0; padding: 0 56px 26px 0; font-size: 17.5px; line-height: 1.6; color: var(--plum-600); max-width: 44em; }
+.faq details p a { color: var(--plum); font-weight: 600; }
+
+/* Bloc RDV, dernier bloc (repris de formations.css) */
+.rdv { background: var(--plum); color: var(--bone); padding: var(--section) 0; }
+.rdv-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 48px clamp(32px, 5vw, 80px); align-items: start; }
+.rdv h2 { font-weight: 800; font-size: clamp(36px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -0.035em; }
+.rdv h2 .accent { color: var(--orange); }
+.rdv-steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 18px; counter-reset: s; }
+.rdv-steps li { display: grid; grid-template-columns: 36px 1fr; gap: 14px; font-size: 18px; line-height: 1.45; counter-increment: s; }
+.rdv-steps li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--orange); color: var(--plum-950); font-weight: 700; font-size: 15px; }
+.rdv-after { margin: 28px 0 0; padding-top: 22px; border-top: 1px solid rgba(245,239,244,.18); font-size: 17px; line-height: 1.5; color: var(--plum-200); max-width: 34em; }
+.rdv-after strong { color: var(--bone); }
+.rdv-exit { margin: 18px 0 0; font-size: 16px; color: var(--plum-200); }
+.rdv-exit a { display: inline-block; padding: 10px 0; color: var(--bone); font-weight: 600; text-decoration-color: rgba(245,239,244,.4); }
+.rdv-exit a:hover { text-decoration-color: var(--orange); }
+
+/* Demande de contact (envoi vers Brevo, assets/contact.js) */
+.booking { background: var(--white); color: var(--plum); border-radius: 24px; padding: clamp(24px, 3vw, 36px); scroll-margin-top: 16px; }
+.booking h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.booking .micro { margin-top: 6px; display: block; }
+.field { margin-top: 18px; }
+.field label { display: block; font-size: 14.5px; font-weight: 700; margin-bottom: 8px; }
+.field .opt { font-weight: 500; color: var(--plum-600); }
+.field input, .field textarea { width: 100%; font: 500 16px/1.4 var(--font); color: var(--plum); padding: 13px 14px; border: 0; border-radius: 12px; background: var(--ground); box-shadow: 0 0 0 1px var(--line) inset; caret-color: var(--orange-ink); transition: box-shadow .2s; }
+.field input:focus, .field textarea:focus { outline: none; box-shadow: 0 0 0 2px var(--plum) inset; }
+.field [aria-invalid="true"] { box-shadow: 0 0 0 2px var(--orange-ink) inset; }
+.field textarea { min-height: 84px; resize: vertical; }
+.field-error { margin: 8px 0 0; font-size: 14px; line-height: 1.4; font-weight: 600; color: var(--orange-ink); }
+.field-error:empty { display: none; }
+.booking .btn { width: 100%; margin-top: 24px; }
+.booking-note { margin: 12px 0 0; font-size: 14px; line-height: 1.45; color: var(--plum-600); min-height: 1.45em; }
+
+footer { background: var(--plum-950); color: var(--plum-200); }
+footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap; padding-top: 40px; padding-bottom: 40px; }
+footer .logo { color: var(--bone); font-size: 26px; }
+footer nav ul { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; padding: 0; list-style: none; }
+footer nav a { text-decoration: none; font-size: 15px; transition: color .2s; }
+footer nav a:hover { color: var(--bone); }
+
+/* ── Responsive ───────────────────────── */
+@media (max-width: 960px) {
+  .track { grid-template-columns: 1fr; grid-template-rows: none; gap: 48px; }
+  .step { display: flex; flex-direction: column; grid-row: auto; }
+  .step .btn { align-self: flex-start; }
+  .step::before { display: none; }
+  .pricing { grid-template-columns: 1fr; }
+  .pricing-body { grid-column: auto; }
+  .entry { grid-template-columns: 1fr; }
+  .entry-col + .entry-col { border-left: 0; border-top: 1px solid var(--line); }
+  .entry .btn { width: 100%; text-align: center; padding-left: 18px; padding-right: 18px; }
+  .offers { grid-template-columns: 1fr; }
+  .quotes { grid-template-columns: 1fr; }
+  .promise { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .people { grid-template-columns: 1fr; }
+  .rdv-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .faq h2 { position: static; }
+  .hero-body, .offer-head, .faq { grid-template-columns: 1fr; }
+  .symptoms li { grid-template-columns: 1fr; gap: 10px; }
+  .quotes, .fit { grid-template-columns: 1fr; }
+  .actions { flex-direction: column; align-items: stretch; }
+  .actions .cta, .actions .btn { width: 100%; }
+  .stance .btn { width: 100%; }
+  .cta { align-items: stretch; }
+  .cta .micro { text-align: center; }
+}
+@media (max-width: 560px) {
+  .promise { grid-template-columns: 1fr; }
+  .person { grid-template-columns: 104px minmax(0, 1fr); gap: 18px; }
+  .faq details p { padding-right: 0; }
+}
+/* Logo image (kairn.academy) */
+.logo img { display: block; height: 32px; width: auto; }
+footer .logo img { height: 28px; }
+@media (max-width: 1080px) { .top .logo img { height: 28px; } }
+@media (max-width: 420px) { .top .logo img { height: 22px; } }
+/* Mention sous le bouton d'envoi du formulaire de contact */
+.booking-legal { margin: 12px 0 0; font-size: 13px; line-height: 1.45; color: var(--plum-600); }
+.booking-legal a { color: var(--plum); font-weight: 600; }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien ça coûte ?", "acceptedAnswer": {"@type": "Answer", "text": "Le diagnostic express et le premier échange sont gratuits. Une session de formation coûte 3 000 € HT pour 7 h (1 jour) ou 6 000 € HT pour 14 h (2 jours), quel que soit le nombre de participants, jusqu'à 12. Les entreprises à impact bénéficient de 20 % de remise. La formation est finançable par votre OPCO selon votre éligibilité : estimez votre prise en charge avec notre simulateur OPCO (kairn.academy/simulateur-opco)."}}, {"@type": "Question", "name": "Comment se déroule une formation ?", "acceptedAnswer": {"@type": "Answer", "text": "En intra, pour votre équipe uniquement, sur 1 ou 2 jours, jusqu'à 12 participants. Les exercices partent de vos projets réels. Les formations existent pour le produit (PM et designers) et pour les développeurs ; nous adaptons les parcours à votre contexte."}}, {"@type": "Question", "name": "Une formation IA peut-elle être financée par un OPCO ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, une formation IA peut, selon la situation de l'entreprise et les critères de son OPCO, faire l'objet d'un financement. Nos formations et le Kickstart sont finançables selon votre éligibilité. Depuis octobre 2026, l'entreprise avance les frais, puis se fait rembourser par son OPCO. Vérifiez l'éligibilité du programme, les modalités de prise en charge et les délais avant inscription, et estimez votre prise en charge avec notre simulateur OPCO (kairn.academy/simulateur-opco). L'organisme de formation peut vous aider à préparer les éléments administratifs nécessaires."}}, {"@type": "Question", "name": "Comment estimer mon financement OPCO ?", "acceptedAnswer": {"@type": "Answer", "text": "Avec notre simulateur OPCO (kairn.academy/simulateur-opco) : en deux étapes, vous retrouvez votre OPCO et le plafond qu'il peut financer pour une formation IA de 7 h ou de 14 h. Résultat immédiat, sans engagement. Il s'agit d'une estimation indicative : montants HT, sous réserve de fonds disponibles. Seul l'accord écrit de l'OPCO fixe le montant pris en charge, et le dossier doit être déposé avant le début de la formation."}}, {"@type": "Question", "name": "Qu'est-ce que l'offre \"Kickstart Spec Driven\" ?", "acceptedAnswer": {"@type": "Answer", "text": "Kickstart Spec Driven est un accompagnement embarqué de 3 jours auprès d'une équipe, pour lancer une démarche spec-driven sur un projet réel plutôt que sur un cas d'école. La méthode s'applique directement à votre code, vos specs et votre contexte, et peut se dérouler entièrement à distance."}}, {"@type": "Question", "name": "Qu'est-ce que le Dojo IA ?", "acceptedAnswer": {"@type": "Answer", "text": "Le Dojo IA est notre accompagnement dans la durée, pour garder l'élan et rester à jour : une session pratique par mois (le Kata : une démo sur un sujet précis, puis des exercices, 1 h à 1 h 30) et une veille sur les nouveautés utiles."}}]}</script>
+</head>
+<body>
+<header class="wrap top">
+  <a class="logo" href="/"><img src="assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a>
+  <nav class="top-nav" aria-label="Navigation principale">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <ul class="nav-links" id="menu">
+      <li class="has-sub">
+        <button class="top-link sub-toggle" type="button" aria-expanded="false" aria-controls="sub-formations">Formations<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="sub" id="sub-formations">
+          <li><a href="formations.html">Toutes les formations<small>Product et tech, ensemble</small></a></li>
+          <li><a href="formations-product.html">Product<small>PMs et designers</small></a></li>
+          <li><a href="formations-developpeurs.html">Développeurs<small>Équipes de développement</small></a></li>
+        </ul>
+      </li>
+      <li><a class="top-link" href="formations-kickstart.html">Kickstart</a></li>
+      <li><a class="top-link" href="dojo-ia.html">Dojo IA</a></li>
+      <li><a class="top-link" href="/diagnostic">Diagnostic</a></li>
+      <li><a class="top-link" href="simulateur-opco.html">Simulateur OPCO</a></li>
+    </ul>
+    <a class="top-cta" href="#rdv">Cadrer mon besoin</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="wrap hero" aria-labelledby="titre">
+    <h1 id="titre"><span>Chacun s'est mis à l'IA.</span><span>L'équipe, <span class="mark">pas encore.</span></span></h1>
+    <div class="hero-body">
+      <div>
+        <p class="lead">Nous formons <strong>devs, PM et designers ensemble</strong>, sur vos projets réels : des usages IA choisis pour leur valeur, adoptés par tous.</p>
+        <div class="actions">
+          <div class="cta">
+            <a class="btn btn-primary" href="#rdv">Cadrer mon besoin
+              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <span class="micro">30 min en visio · proposition et devis sous 48 h</span>
+          </div>
+          <div class="cta">
+            <a class="btn btn-ghost" href="diagnostic/">Diagnostiquer mon équipe</a>
+            <span class="micro">3 min, gratuit, résultat immédiat.</span>
+          </div>
+        </div>
+        <div class="founders-line">
+          <div class="faces">
+            <img src="assets/photo-nicolas-drouet.jpg" alt="Nicolas Drouet" width="46" height="46">
+            <img src="assets/photo-aurelien-binder-meunier.jpg" alt="Aurélien Binder-Meunier" width="46" height="46">
+          </div>
+          <p><strong>Nicolas et Aurélien</strong>, des praticiens qui ont livré avec l'IA, côté produit comme côté tech.</p>
+        </div>
+      </div>
+      <div class="voice" id="voices" role="region" aria-roledescription="carrousel" aria-label="Témoignages clients">
+        <div class="slides">
+          <figure class="slide is-on" aria-roledescription="diapositive" aria-label="1 sur 3">
+            <blockquote><q>On a un langage commun, on en parle, et maintenant on peut construire et réfléchir aux process.</q></blockquote>
+            <figcaption><img src="assets/photo-thomas-cerqueus.jpg" alt="" width="52" height="52"><div><b>Thomas Cerqueus</b><span>CTO, Anytime</span></div></figcaption>
+          </figure>
+          <figure class="slide" aria-roledescription="diapositive" aria-label="2 sur 3" aria-hidden="true">
+            <blockquote><q>L'équipe PM et Design est aujourd'hui outillée et motivée pour livrer des features assistées par IA.</q></blockquote>
+            <figcaption><img src="assets/photo-frederic-oru.jpg" alt="" width="52" height="52"><div><b>Frédéric Oru</b><span>Head of AI &amp; Data, Edifice</span></div></figcaption>
+          </figure>
+          <figure class="slide" aria-roledescription="diapositive" aria-label="3 sur 3" aria-hidden="true">
+            <blockquote><q>Il y a un avant et un après marqué.</q></blockquote>
+            <figcaption><img src="assets/photo-nicolas-lauquin.jpg" alt="" width="52" height="52"><div><b>Nicolas Lauquin</b><span>Directeur Technique IA &amp; Mobile, Sofia</span></div></figcaption>
+          </figure>
+        </div>
+        <div class="dots" role="group" aria-label="Choisir un témoignage">
+          <button type="button" aria-label="Témoignage de Thomas Cerqueus" aria-current="true"></button>
+          <button type="button" aria-label="Témoignage de Frédéric Oru"></button>
+          <button type="button" aria-label="Témoignage de Nicolas Lauquin"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients" aria-label="Clients">
+    <div class="wrap">
+      <span class="label">Ils travaillent avec nous</span>
+      <ul>
+        <li><span class="lg" role="img" aria-label="anytime" style="--src:url(assets/logos/anytime.png);width:96px"></span></li>
+        <li><span class="lg" role="img" aria-label="jeuxvideo.com" style="--src:url(assets/logos/jeuxvideo.svg);width:36px"></span></li>
+        <li><span class="lg" role="img" aria-label="AlloCiné" style="--src:url(assets/logos/allocine.svg);width:120px"></span></li>
+        <li><span class="lg" role="img" aria-label="750g" style="--src:url(assets/logos/750g.png);width:56px"></span></li>
+        <li><span class="lg" role="img" aria-label="leboncoin" style="--src:url(assets/logos/leboncoin.svg);width:118px;height:30px"></span></li>
+        <li><span class="lg" role="img" aria-label="Sofia" style="--src:url(assets/logos/sofia.png);width:46px"></span></li>
+        <li><span class="lg" role="img" aria-label="Edifice" style="--src:url(assets/logos/edifice.png);width:110px"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Problème -->
+  <section class="block bg-white" aria-labelledby="pb">
+    <div class="wrap">
+      <h2 class="h2" id="pb">PM, designers et développeurs avancent avec l'IA, mais rarement ensemble.</h2>
+      <p class="intro">Dans les équipes que nous accompagnons, on retrouve 3 symptômes, chez les développeurs comme chez les PM et les designers.</p>
+      <ul class="symptoms">
+        <li><h3>Des écarts dans chaque équipe.</h3><p>Certains utilisent l'IA chaque jour, d'autres s'en méfient ou décrochent. Et il reste difficile de mesurer où en est l'équipe.</p></li>
+        <li><h3>Des pratiques qui restent individuelles.</h3><p>Chacun expérimente de son côté, ce qui fonctionne circule peu, et le langage commun entre produit et tech se perd.</p></li>
+        <li><h3>Un élan qui retombe.</h3><p>Les possibilités restent floues, la veille déborde, et sans relance régulière l'énergie s'épuise.</p></li>
+      </ul>
+      <div class="stance">
+        <p>Nous partons de ce que vos équipes font déjà. <span>Rien n'est imposé : la pratique commune se construit avec elles.</span></p>
+        <a class="btn btn-primary" href="#commencer">Diagnostiquer mon équipe</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Méthode -->
+  <section class="block bg-lilac" id="methode" aria-labelledby="mt">
+    <div class="wrap">
+      <h2 class="h2" id="mt">Cibler, entraîner, ancrer.<br>Vous commencez où vous en êtes.</h2>
+      <p class="intro">Partir du terrain, choisir pour la valeur, tester petit, déployer ce qui fonctionne.</p>
+      <ol class="track" style="list-style:none;padding:0;margin-bottom:0">
+        <li class="step">
+          <span class="meta">État des lieux</span>
+          <h3>Cibler</h3>
+          <ul class="tags"><li>Diagnostic express</li></ul>
+          <h4>Savoir où en est votre équipe.</h4>
+          <p>Gratuit. Le diagnostic situe votre équipe sur 4 axes : qui utilise l'IA, ce qui est partagé, ce qui a changé dans votre façon de travailler, le contrôle de ce que produit l'IA. Vous savez par où commencer.</p>
+          <a class="btn btn-ghost btn-sm" href="/diagnostic">Faire le diagnostic</a>
+        </li>
+        <li class="step">
+          <span class="meta">Projet réel</span>
+          <h3>Entraîner</h3>
+          <ul class="tags"><li>Formations</li><li>Kickstart</li><li>Atelier Transfo IA</li></ul>
+          <h4>Faire monter toute l'équipe d'un cran, sur un harness commun.</h4>
+          <p>Le harness, c'est ce que l'équipe construit ensemble autour de l'IA : son contexte, ses règles, ses skills et ses garde-fous. Vos équipes expérimentent ensemble, adoptent ce qui fonctionne, et ceux qui hésitaient rejoignent le groupe.</p>
+          <div class="step-links">
+            <a class="btn btn-ghost btn-sm" href="formations.html">Voir les formations</a>
+            <a class="btn btn-ghost btn-sm" href="formations-kickstart.html">Voir le Kickstart</a>
+          </div>
+        </li>
+        <li class="step">
+          <span class="meta">Récurrent</span>
+          <h3>Ancrer</h3>
+          <ul class="tags"><li>Dojo IA</li><li class="plain">Kata, veille</li></ul>
+          <h4>Garder l'élan et rester à jour.</h4>
+          <p>Un accompagnement léger, dans la durée, pour soutenir la dynamique et suivre une IA qui évolue très vite.</p>
+          <a class="btn btn-ghost btn-sm" href="dojo-ia.html">Découvrir le Dojo IA</a>
+        </li>
+      </ol>
+      <div class="pricing">
+        <p class="pricing-label">Tarif et financement</p>
+        <div class="pricing-body">
+          <p class="price"><strong>3 000 € HT</strong> la session de 7 h, <strong>6 000 € HT</strong> la session de 14 h (2 jours), jusqu'à 12 participants. <span>−20 % pour les entreprises à impact.</span></p>
+          <p>Formations et Kickstart finançables par votre OPCO, selon éligibilité. <a href="simulateur-opco.html">Estimer votre prise en charge</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-col">
+          <h3>Vous savez qui former ?</h3>
+          <p>Échangez 30 min avec un fondateur pour cadrer votre besoin.</p>
+          <a class="btn btn-primary" href="#rdv">Réserver un échange
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="entry-col">
+          <h3>Combien votre OPCO peut-il financer ?</h3>
+          <p>Estimez votre prise en charge en deux étapes, sans engagement.</p>
+          <a class="btn btn-ghost" href="simulateur-opco.html">Simuler mon financement OPCO</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section class="block bg-white" aria-labelledby="tm">
+    <div class="wrap">
+      <h2 class="h2" id="tm">Ce qu'en disent les équipes</h2>
+      <div class="quotes">
+        <figure>
+          <h3>Un langage commun pour construire la suite</h3>
+          <blockquote><q>Maintenant, tout le monde a un avis sur l'IA, tout le monde a les concepts, et les mêmes. […] On a un langage commun, on en parle, et maintenant on peut construire et réfléchir aux process.</q></blockquote>
+          <figcaption><img src="assets/photo-thomas-cerqueus.jpg" alt="" width="52" height="52"><div><b>Thomas Cerqueus</b><span>CTO, Anytime</span></div></figcaption>
+        </figure>
+        <figure>
+          <h3>Une équipe PM et Design prête à livrer</h3>
+          <blockquote><q>[…] une bonne dose de pratique sur un cas conçu spécifiquement pour nous […]. L'équipe PM et Design est aujourd'hui outillée et motivée pour livrer des features assistées par IA.</q></blockquote>
+          <figcaption><img src="assets/photo-frederic-oru.jpg" alt="" width="52" height="52"><div><b>Frédéric Oru</b><span>Head of AI &amp; Data, Edifice</span></div></figcaption>
+        </figure>
+        <figure>
+          <h3>Un avant et un après</h3>
+          <blockquote><q>On avait besoin d'un renfort externe pour accélérer. Ce programme nous a servi de déclencheur pour créer une vraie dynamique de groupe. […] Il y a un avant et un après marqué.</q></blockquote>
+          <figcaption><img src="assets/photo-nicolas-lauquin.jpg" alt="" width="52" height="52"><div><b>Nicolas Lauquin</b><span>Directeur Technique IA &amp; Mobile, Sofia</span></div></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Autres équipes -->
+  <section class="block" aria-labelledby="ot">
+    <div class="wrap">
+      <h2 class="h2" id="ot">Et les autres équipes ?</h2>
+      <p class="intro">Quand l'équipe produit et tech a pris son rythme, on accompagne aussi les équipes métiers qui produisent un livrable récurrent : contenu, SEO, marketing, data, customer success. Même méthode : chacun devient builder de ses usages, sur un socle commun.</p>
+    </div>
+  </section>
+
+  <!-- Fondateurs -->
+  <section class="block bg-white" aria-labelledby="fd">
+    <div class="wrap">
+      <div class="founders-head">
+        <h2 class="h2" id="fd">Des fondateurs qui ont livré, côté produit et côté tech</h2>
+        <p class="intro">Nous avons passé nos carrières à livrer des produits et à organiser des équipes tech. Aujourd'hui, nous le faisons avec vos équipes, sur vos projets. Un cairn balise le chemin en montagne : nous posons les repères, vos équipes font la route. <strong>Là où ça mène : des product builders qui vont au bout, appuyés par un harness partagé.</strong></p>
+      </div>
+      <div class="people">
+        <article class="person">
+          <img src="assets/photo-nicolas-drouet.jpg" alt="Nicolas Drouet" width="180" height="225" loading="lazy">
+          <div>
+            <h3>Nicolas Drouet</h3>
+            <a class="li" href="https://www.linkedin.com/in/nicolasdrouet/" target="_blank" rel="noopener">Suivre sur LinkedIn</a>
+            <div class="role">Fondateur · CPO · côté product builders : pourquoi et quoi construire, jusqu'à la mise en production</div>
+            <p>Ex-CPO chez Kiliba (Startup IA, 7M levé), ex Senior PM Red Hat &amp; Head of presales Ericsson. Sparring partner des dirigeants tech &amp; product pour repenser leur organisation à l'ère de l'IA de façon robuste et soutenable. Fondateur de The Green Compagnon, communauté de 300+ experts du numérique responsable.</p>
+          </div>
+        </article>
+        <article class="person">
+          <img src="assets/photo-aurelien-binder-meunier.jpg" alt="Aurélien Binder-Meunier" width="180" height="225" loading="lazy">
+          <div>
+            <h3>Aurélien Binder-Meunier</h3>
+            <a class="li" href="https://www.linkedin.com/in/abmeunier/" target="_blank" rel="noopener">Suivre sur LinkedIn</a>
+            <div class="role">Fondateur · CTO · côté harness et développeurs : contexte, agents, garde-fous</div>
+            <p>Ex-CTO et engineering manager, 15 ans en architecture technique et en organisation d'équipes R&amp;D. Praticien quotidien des agents de code, il défend une approche d'adoption de l'IA avec pragmatisme et robustesse.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offres -->
+  <section class="block" id="commencer" aria-labelledby="of">
+    <div class="wrap">
+      <div class="offer-head">
+        <div>
+          <h2 class="h2" id="of">Deux façons de commencer, selon le temps que vous avez</h2>
+          <p class="intro">Le diagnostic express situe votre équipe sur 4 axes : qui utilise l'IA, ce qui est partagé, ce qui a changé dans votre façon de travailler, le contrôle de ce que produit l'IA. Vous choisissez jusqu'où aller.</p>
+        </div>
+        <div class="map" role="img" aria-label="Exemple de résultat du diagnostic express : le profil Chacun sa méthode, ses notes sur les 4 axes et 3 questions à vous poser.">
+          <div class="map-top"><b>Votre résultat</b><span>Exemple</span></div>
+          <p class="map-profile">Chacun sa méthode</p>
+          <div class="map-row"><b>Qui utilise l'IA</b><div class="bar levels"><i class="on"></i><i class="on"></i><i></i></div></div>
+          <div class="map-row"><b>Ce qui est partagé</b><div class="bar levels"><i class="on"></i><i></i><i></i></div></div>
+          <div class="map-row"><b>Ce qui a changé dans votre façon de travailler</b><div class="bar levels"><i class="on"></i><i></i><i></i></div></div>
+          <div class="map-row"><b>Le contrôle de ce que produit l'IA</b><div class="bar levels"><i class="on"></i><i class="on"></i><i></i></div></div>
+          <div class="map-q"><b>3 questions à vous poser</b><i style="width:88%"></i><i style="width:70%"></i><i style="width:80%"></i></div>
+        </div>
+      </div>
+
+      <div class="offers">
+        <article class="offer lead-offer">
+          <h3>Diagnostic express</h3>
+          <dl>
+            <dt>Pour qui</dt><dd>le manager, seul.</dd>
+            <dt>Ce que vous faites</dt><dd>vous répondez à 6 questions sur votre équipe, en 3 min.</dd>
+            <dt>Ce que vous obtenez</dt><dd>un résultat immédiat : le profil de votre équipe, ses notes sur 4 axes et 3 questions à vous poser.</dd>
+          </dl>
+          <a class="btn btn-primary" href="/diagnostic">Diagnostiquer mon équipe</a>
+        </article>
+        <!-- Diagnostic d'équipe masqué tant que la FS-3 n'est pas livrée (décision du 16/10). À réactiver ensuite :
+        <article class="offer">
+          <h3>Diagnostic d'équipe</h3>
+          <dl>
+            <dt>Pour qui</dt><dd>le manager et son équipe.</dd>
+            <dt>Ce que vous faites</dt><dd>vous diffusez à votre équipe un questionnaire anonyme de 5 min.</dd>
+            <dt>Ce que vous obtenez</dt><dd>sous 48 h, une carte de situation d'une page et 30 min de restitution, dont l'écart entre votre lecture et celle de votre équipe.</dd>
+          </dl>
+          <a class="btn btn-ghost" href="/diagnostic#equipe">Lancer le diagnostic d'équipe</a>
+        </article>
+        -->
+        <article class="offer">
+          <h3>Échanger avec nous</h3>
+          <dl>
+            <dt>Pour qui</dt><dd>ceux qui préfèrent en parler directement.</dd>
+            <dt>Ce que vous faites</dt><dd>vous réservez 30 min avec un fondateur.</dd>
+            <dt>Ce que vous obtenez</dt><dd>un premier cadrage de votre besoin et le point d'entrée recommandé.</dd>
+          </dl>
+          <a class="btn btn-ghost" href="#rdv">Réserver un échange</a>
+        </article>
+      </div>
+      <ul class="promise">
+        <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Gratuit dans les deux cas.</li>
+        <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Les résultats sont à vous, que vous travailliez avec nous ou non.</li>
+        <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Vos réponses sont enregistrées de façon anonyme.</li>
+        <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Si votre équipe n'est pas prête, on vous conseillera d'attendre.</li>
+      </ul>
+      <h3 class="fit-title">Pour que ce soit utile</h3>
+      <div class="fit">
+        <div class="yes">
+          <h4>On est utiles quand</h4>
+          <ul>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Un responsable porte la démarche et attend des résultats concrets</li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Une équipe pilote est identifiée et produit un livrable récurrent</li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="#B4432C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Un premier usage se teste en moins de 4 semaines</li>
+          </ul>
+        </div>
+        <div class="no">
+          <h4>On ne l'est pas pour</h4>
+          <ul>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="#6E3F66" stroke-width="2" stroke-linecap="round"/></svg>Sensibiliser toute l'entreprise sans sponsor ni équipe pilote</li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="#6E3F66" stroke-width="2" stroke-linecap="round"/></svg>Écrire une charte avant de savoir qui utilise quoi</li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="#6E3F66" stroke-width="2" stroke-linecap="round"/></svg>Former à un outil sans toucher à la façon de travailler</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block bg-white" aria-labelledby="fq">
+    <div class="wrap faq">
+      <h2 class="h2" id="fq">FAQ sur la formation IA</h2>
+      <div class="faq-list">
+        <details><summary>Combien ça coûte ?</summary><p>Le diagnostic express et le premier échange sont gratuits. Une session de formation coûte 3 000 € HT pour 7 h (1 jour) ou 6 000 € HT pour 14 h (2 jours), quel que soit le nombre de participants, jusqu'à 12. Les entreprises à impact bénéficient de 20 % de remise. La formation est finançable par votre OPCO selon votre éligibilité : estimez votre prise en charge avec notre <a href="simulateur-opco.html">simulateur OPCO</a>.</p></details>
+        <details><summary>Comment se déroule une formation ?</summary><p>En intra, pour votre équipe uniquement, sur 1 ou 2 jours, jusqu'à 12 participants. Les exercices partent de vos projets réels. Les formations existent pour le produit (PM et designers) et pour les développeurs ; nous adaptons les parcours à votre contexte.</p></details>
+        <details><summary>Une formation IA peut-elle être financée par un OPCO ?</summary><p>Oui, une formation IA peut, selon la situation de l'entreprise et les critères de son OPCO, faire l'objet d'un financement. Nos formations et le Kickstart sont finançables selon votre éligibilité. Depuis octobre 2026, l'entreprise avance les frais, puis se fait rembourser par son OPCO. Vérifiez l'éligibilité du programme, les modalités de prise en charge et les délais avant inscription, et estimez votre prise en charge avec notre <a href="simulateur-opco.html">simulateur OPCO</a>. L'organisme de formation peut vous aider à préparer les éléments administratifs nécessaires.</p></details>
+        <details><summary>Comment estimer mon financement OPCO ?</summary><p>Avec notre <a href="simulateur-opco.html">simulateur OPCO</a> : en deux étapes, vous retrouvez votre OPCO et le plafond qu'il peut financer pour une formation IA de 7 h ou de 14 h. Résultat immédiat, sans engagement. Il s'agit d'une estimation indicative : montants HT, sous réserve de fonds disponibles. Seul l'accord écrit de l'OPCO fixe le montant pris en charge, et le dossier doit être déposé avant le début de la formation.</p></details>
+        <details><summary>Qu'est-ce que l'offre "Kickstart Spec Driven" ?</summary><p>Kickstart Spec Driven est un accompagnement embarqué de 3 jours auprès d'une équipe, pour lancer une démarche spec-driven sur un projet réel plutôt que sur un cas d'école. La méthode s'applique directement à votre code, vos specs et votre contexte, et peut se dérouler entièrement à distance.</p></details>
+        <details><summary>Qu'est-ce que le Dojo IA ?</summary><p>Le Dojo IA est notre accompagnement dans la durée, pour garder l'élan et rester à jour : une session pratique par mois (le Kata : une démo sur un sujet précis, puis des exercices, 1 h à 1 h 30) et une veille sur les nouveautés utiles.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RDV, dernier bloc -->
+  <section class="rdv" id="rdv" aria-labelledby="cadrer">
+    <div class="wrap rdv-grid">
+      <div>
+        <h2 id="cadrer">Cadrons le besoin <span class="accent">de votre équipe.</span></h2>
+        <ol class="rdv-steps">
+          <li>Où en est votre équipe avec l'IA, et ce que vous voulez changer.</li>
+          <li>Le bon point de départ : formation, Kickstart ou Dojo IA.</li>
+          <li>Le format, le prix et la piste de financement OPCO.</li>
+        </ol>
+        <p class="rdv-after"><strong>Sous 48 h, vous recevez la proposition et le devis</strong>, rédigés pour être transmis tels quels à votre direction.</p>
+        <p class="rdv-exit">Pas encore sûr du besoin ? <a href="diagnostic/">Faites le diagnostic express de votre équipe en 3&nbsp;min.</a></p>
+      </div>
+      <!-- Demande de contact : envoyée au formulaire Brevo « Demandes de contact (site) » par assets/contact.js -->
+      <form class="booking" id="booking" data-source="Accueil" novalidate>
+        <h3>Demander un échange de 30 min avec Nicolas ou Aurélien</h3>
+        <span class="micro">En visio. Nous vous proposons un créneau par email sous 24 h ouvrées.</span>
+        <div class="field"><label for="nom">Prénom et nom</label><input id="nom" name="nom" autocomplete="name" required aria-describedby="err-nom"><p class="field-error" id="err-nom" aria-live="polite"></p></div>
+        <div class="field"><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="err-email"><p class="field-error" id="err-email" aria-live="polite"></p></div>
+        <div class="field"><label for="equipe">Équipe concernée <span class="opt">(facultatif)</span></label><input id="equipe" name="equipe" placeholder="Ex. : Product, Dev…" autocomplete="off"></div>
+        <div class="field"><label for="entreprise">Entreprise <span class="opt">(facultatif)</span></label><input id="entreprise" name="entreprise" autocomplete="organization"></div>
+        <div class="field"><label for="contexte">Commentaires</label><textarea id="contexte" name="contexte" maxlength="500" placeholder="Je souhaite former mon équipe à l'IA"></textarea></div>
+        <button class="btn btn-primary" type="submit">Envoyer ma demande
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="booking-legal">Vos informations servent uniquement à vous recontacter. <a href="/confidentialite">Politique de confidentialité</a>.</p>
+        <p class="booking-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="assets/logo-kairn-academy-blanc.webp" alt="kairn.academy, accueil" width="2000" height="293"></a>
+    <nav aria-label="Pied de page">
+      <ul>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="formations-kickstart.html">Kickstart</a></li>
+        <li><a href="/diagnostic">Diagnostic</a></li>
+        <li><a href="simulateur-opco.html">Simulateur OPCO</a></li>
+        <li><a href="#rdv">Échanger avec nous</a></li>
+        <li><a href="https://www.linkedin.com/company/kairn-academy" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/confidentialite">Confidentialité</a></li>
+        <li><a href="/cgv">CGV</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script>
+(() => {
+  const root = document.getElementById('voices');
+  const slides = [...root.querySelectorAll('.slide')];
+  const dots = [...root.querySelectorAll('.dots button')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0, timer = null, paused = false;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => { s.classList.toggle('is-on', k === i); s.setAttribute('aria-hidden', k !== i); });
+    dots.forEach((d, k) => d.setAttribute('aria-current', k === i));
+  }
+  function start() { if (reduce) return; clearInterval(timer); timer = setInterval(() => { if (!paused) show(i + 1); }, 7000); }
+  dots.forEach((d, k) => d.addEventListener('click', () => { show(k); start(); }));
+  root.addEventListener('mouseenter', () => paused = true);
+  root.addEventListener('mouseleave', () => paused = false);
+  root.addEventListener('focusin', () => paused = true);
+  root.addEventListener('focusout', () => paused = false);
+  root.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { show(i + 1); dots[i].focus(); start(); }
+    if (e.key === 'ArrowLeft') { show(i - 1); dots[i].focus(); start(); }
+  });
+  let x0 = null;
+  root.addEventListener('pointerdown', e => { x0 = e.clientX; });
+  root.addEventListener('pointerup', e => {
+    if (x0 === null) return;
+    const dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { show(i + (dx < 0 ? 1 : -1)); start(); }
+  });
+  start();
+})();
+</script>
+<script>
+(() => {
+  const btn = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+  const set = open => { btn.setAttribute('aria-expanded', open); menu.classList.toggle('is-open', open); };
+  btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('is-open')) { set(false); btn.focus(); } });
+  document.addEventListener('click', e => { if (!e.target.closest('.top-nav')) set(false); });
+  // Sous-menu Formations : clic, Échap et sortie du focus le referment
+  document.querySelectorAll('.has-sub').forEach(item => {
+    const toggle = item.querySelector('.sub-toggle');
+    const setSub = open => { item.classList.toggle('is-open', open); toggle.setAttribute('aria-expanded', open); };
+    toggle.addEventListener('click', () => setSub(!item.classList.contains('is-open')));
+    item.addEventListener('keydown', e => { if (e.key === 'Escape' && item.classList.contains('is-open')) { e.stopPropagation(); setSub(false); toggle.focus(); } });
+    item.addEventListener('focusout', e => { if (!item.contains(e.relatedTarget)) setSub(false); });
+    document.addEventListener('click', e => { if (!item.contains(e.target)) setSub(false); });
+  });
+})();
+</script>
+<script>
+// Demande de contact : messages d'erreur rédigés, envoi vers Brevo (repris de formations.js)
+(() => {
+  const form = document.getElementById('booking');
+  if (!form) return;
+  const messages = {
+    nom: 'Indiquez votre prénom et votre nom.',
+    email: 'Indiquez un email valide, par exemple prenom@entreprise.fr.',
+  };
+  const showError = (name, text) => {
+    const box = form.querySelector(`#err-${name}`);
+    if (box) box.textContent = text || '';
+    form.querySelectorAll(`[name="${name}"]`).forEach(el => el.setAttribute('aria-invalid', text ? 'true' : 'false'));
+  };
+  const check = name => {
+    const ok = form.elements[name].checkValidity();
+    showError(name, ok ? '' : messages[name]);
+    return ok;
+  };
+  Object.keys(messages).forEach(name => form.elements[name].addEventListener('blur', e => {
+    if (e.target.getAttribute('aria-invalid') === 'true') check(name);
+  }));
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const note = form.querySelector('.booking-note');
+    const invalid = Object.keys(messages).filter(name => !check(name));
+    if (invalid.length) {
+      note.textContent = '';
+      form.querySelector(`[name="${invalid[0]}"]`).focus();
+      return;
+    }
+    // Envoi vers Brevo (assets/contact.js)
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    note.textContent = 'Envoi en cours…';
+    const result = await window.kairnContact.envoyer(form);
+    button.disabled = false;
+    if (result.ok) {
+      form.reset();
+      note.textContent = 'Merci, votre demande est bien envoyée. Nous vous proposons un créneau par email sous 24 h ouvrées.';
+      return;
+    }
+    if (result.champ === 'email') {
+      note.textContent = '';
+      showError('email', messages.email);
+      form.elements.email.focus();
+      return;
+    }
+    note.textContent = "Votre demande n'a pas pu être envoyée. Réessayez dans un instant, ou écrivez-nous à nicolas@kairn.academy.";
+  });
+})();
+</script>
+<script src="assets/contact.js"></script>
+</body>
+</html>

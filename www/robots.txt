@@ -1,0 +1,33 @@
+# kairn.academy - robots.txt
+
+User-agent: *
+Allow: /
+
+
+# Explicit allow for AI/LLM crawlers - this site wants to be discovered and
+# cited by generative engines (ChatGPT, Claude, Perplexity, Gemini, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://kairn.academy/sitemap.xml

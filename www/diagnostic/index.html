@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnostic express · kairn.academy</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
+<meta name="description" content="6 questions, 3 minutes : le profil IA de votre équipe produit ou tech, ses notes sur 4 axes et 3 questions à vous poser. Gratuit, résultat immédiat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Fredoka:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/diagnostic/assets/diagnostic.css?v=20261027b">
+</head>
+<body>
+<header class="wrap top">
+  <a class="logo" href="/"><img src="/assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a>
+  <nav class="top-nav" aria-label="Navigation principale">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <ul class="nav-links" id="menu">
+      <li class="has-sub">
+        <button class="top-link sub-toggle" type="button" aria-expanded="false" aria-controls="sub-formations">Formations<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="sub" id="sub-formations">
+          <li><a href="/formations.html">Toutes les formations<small>Product et tech, ensemble</small></a></li>
+          <li><a href="/formations-product.html">Product<small>PMs et designers</small></a></li>
+          <li><a href="/formations-developpeurs.html">Développeurs<small>Équipes de développement</small></a></li>
+        </ul>
+      </li>
+      <li><a class="top-link" href="/formations-kickstart.html">Kickstart</a></li>
+      <li><a class="top-link" href="/dojo-ia.html">Dojo IA</a></li>
+      <li><a class="top-link" href="/diagnostic/" aria-current="page">Diagnostic</a></li>
+      <li><a class="top-link" href="/simulateur-opco.html">Simulateur OPCO</a></li>
+    </ul>
+    <a class="top-cta" href="/#rdv">Cadrer mon besoin</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Titre et sous-titre autosuffisants : un lead qui arrive ici directement comprend ce qu'il fait et ce qu'il obtient. -->
+  <section class="wrap intro-block" aria-labelledby="titre">
+    <h1 id="titre">Diagnostic express&nbsp;: où en est votre équipe avec <span class="mark">l’IA</span>&nbsp;?</h1>
+    <p class="intro-lead">Répondez à 6 questions sur les usages IA de votre équipe produit ou tech. Vous obtenez directement le profil de maturité IA de votre équipe, ses notes sur 4 axes (qui utilise l’IA, ce qui est partagé, ce qui a changé dans votre façon de travailler, le contrôle de ce que produit l’IA) et 3 questions à vous poser.</p>
+    <ul class="facts"><li>6 questions</li><li>3 minutes</li><li>Résultat immédiat</li><li>Gratuit, sans email</li></ul>
+  </section>
+
+  <!-- Questionnaire dans le bloc inférieur, comme le simulateur OPCO -->
+  <div class="quiz-section">
+    <div class="wrap">
+      <section class="quiz-card" id="questionnaire" aria-label="Questionnaire du diagnostic express">
+        <div class="quiz-head">
+          <p class="quiz-count" id="compteur" aria-live="polite"></p>
+          <div class="quiz-progress" aria-hidden="true"><span id="barre"></span></div>
+        </div>
+        <form class="quiz-body" id="etape" novalidate>
+          <fieldset class="quiz-step" id="groupe" aria-describedby="aide erreur">
+            <legend class="quiz-question" id="question" tabindex="-1"></legend>
+            <p class="quiz-help" id="aide"></p>
+            <div class="choices" id="choix"></div>
+            <p class="field-error" id="erreur" role="alert" hidden></p>
+          </fieldset>
+          <div class="quiz-nav">
+            <button class="btn btn-ghost" type="button" id="precedent"></button>
+            <button class="btn btn-primary" type="submit" id="suivant"></button>
+          </div>
+        </form>
+      </section>
+      <p class="quiz-note" id="mention"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo-kairn-academy-blanc.webp" alt="kairn.academy, accueil" width="2000" height="293"></a>
+    <nav aria-label="Pied de page">
+      <ul>
+        <li><a href="/formations">Formations</a></li>
+        <li><a href="/formations-kickstart">Kickstart</a></li>
+        <li><a href="/dojo-ia.html">Dojo IA</a></li>
+        <li><a href="/diagnostic/">Diagnostic</a></li>
+        <li><a href="/simulateur-opco.html">Simulateur OPCO</a></li>
+        <li><a href="/#rdv">Échanger avec nous</a></li>
+        <li><a href="https://www.linkedin.com/company/kairn-academy" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/confidentialite">Confidentialité</a></li>
+        <li><a href="/cgv">CGV</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="/diagnostic/assets/questionnaire.js?v=20261023c"></script>
+<script src="/diagnostic/assets/entete.js"></script>
+</body>
+</html>

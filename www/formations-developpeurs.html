@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formation IA pour développeurs · kairn.academy</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta name="description" content="Formation intra pour équipes de développeurs : agents de code, context engineering, skills, spec-driven, garde-fous. Sur vos projets réels, chaque module laisse un livrable dans le dépôt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Fredoka:wght@600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/formations.css">
+</head>
+<body>
+<header class="wrap top">
+  <a class="logo" href="/"><img src="assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a>
+  <nav class="top-nav" aria-label="Navigation principale">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <ul class="nav-links" id="menu">
+      <li class="has-sub is-current">
+        <button class="top-link sub-toggle" type="button" aria-expanded="false" aria-controls="sub-formations">Formations<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="sub" id="sub-formations">
+          <li><a href="formations.html">Toutes les formations<small>Product et tech, ensemble</small></a></li>
+          <li><a href="formations-product.html">Product<small>PMs et designers</small></a></li>
+          <li><a href="formations-developpeurs.html" aria-current="page">Développeurs<small>Équipes de développement</small></a></li>
+        </ul>
+      </li>
+      <li><a class="top-link" href="formations-kickstart.html">Kickstart</a></li>
+      <li><a class="top-link" href="dojo-ia.html">Dojo IA</a></li>
+      <li><a class="top-link" href="diagnostic/">Diagnostic</a></li>
+      <li><a class="top-link" href="simulateur-opco.html">Simulateur OPCO</a></li>
+    </ul>
+    <a class="top-cta" href="#rdv">Cadrer ma formation</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="wrap hero" aria-labelledby="titre">
+    <ol class="crumbs" aria-label="Fil d'Ariane"><li><a href="formations.html">Formations</a></li><li aria-current="page">Développeurs</li></ol>
+    <h1 id="titre"><span>Chaque développeur a son agent.</span><span>L'équipe, <span class="mark">pas encore de méthode.</span></span></h1>
+    <div class="hero-body">
+      <div>
+        <p class="lead"><strong>Aurélien Binder-Meunier forme vos développeurs sur vos projets réels.</strong> Chaque module ajoute une pièce au <strong>harness de l'équipe</strong> : contexte, règles, skills et garde-fous, partagés par tous.</p>
+        <div class="actions">
+          <div class="cta">
+            <div class="cta-row">
+              <div class="cta-main">
+                <a class="btn btn-primary" href="#rdv">Cadrer la formation de mon équipe
+                  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <span class="micro">30 min en visio · programme et devis sous 48h</span>
+              </div>
+              <a class="btn btn-ghost" href="programme-developpeurs.pdf" download data-download-gate data-programme="Développeurs">Télécharger le programme</a>
+            </div>
+          </div>
+        </div>
+        <div class="trainer-line">
+          <img src="assets/photo-aurelien-binder-meunier.jpg" alt="" width="52" height="52">
+          <p>Ex-CTO et engineering manager, praticien quotidien des agents de code. <strong>Il forme des équipes tech au développement assisté par IA chez Webedia, Sofia et Anytime.</strong></p>
+        </div>
+      </div>
+      <figure class="hero-quote">
+        <blockquote><q>On avait besoin d'un renfort externe pour accélérer. Ce programme nous a servi de déclencheur pour créer une vraie dynamique de groupe. […] Il y a un avant et un après marqué.</q></blockquote>
+        <figcaption><img src="assets/photo-nicolas-lauquin.jpg" alt="" width="56" height="56"><div><b>Nicolas Lauquin</b><span>Directeur Technique IA et Mobile, Sofia</span></div></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="clients" aria-label="Clients et satisfaction">
+    <div class="wrap">
+      <span class="label">Ils ont formé leurs équipes avec nous</span>
+      <ul>
+        <li><span class="lg" role="img" aria-label="anytime" style="--src:url(logos/anytime.png);width:96px"></span></li>
+        <li><span class="lg" role="img" aria-label="jeuxvideo.com" style="--src:url(logos/jeuxvideo.svg);width:36px"></span></li>
+        <li><span class="lg" role="img" aria-label="AlloCiné" style="--src:url(logos/allocine.svg);width:120px"></span></li>
+        <li><span class="lg" role="img" aria-label="750g" style="--src:url(logos/750g.png);width:56px"></span></li>
+        <li><span class="lg" role="img" aria-label="leboncoin" style="--src:url(logos/leboncoin.svg);width:118px;height:30px"></span></li>
+        <li><span class="lg" role="img" aria-label="Sofia" style="--src:url(logos/sofia.png);width:46px"></span></li>
+        <li><span class="lg" role="img" aria-label="Edifice" style="--src:url(logos/edifice.png);width:110px"></span></li>
+      </ul>
+      <p class="score"><b>8,8/10</b> de satisfaction moyenne · évaluations à chaud 2026</p>
+    </div>
+  </section>
+
+  <!-- Constat -->
+  <section class="block bg-white" aria-labelledby="constat">
+    <div class="wrap finding">
+      <div>
+        <h2 class="h2" id="constat">Les agents écrivent plus de code. La livraison ne suit pas.</h2>
+        <p class="intro">Chacun configure son agent à sa façon, avec son harness personnel, invisible des autres : des règles différentes d'un poste à l'autre, un contexte qui se perd entre deux sessions, une revue qui déborde sous le volume.</p>
+        <p class="intro"><strong>La formation construit le harness de l'équipe</strong> : contexte, règles, skills, agents et garde-fous, versionnés dans le dépôt, que toute l'équipe applique et fait évoluer.</p>
+      </div>
+      <figure class="bars">
+        <p class="bars-sub">Après adoption d'un agent de code :</p>
+        <div class="bars-row">
+          <div class="bars-head"><span>Lignes de code écrites</span><b>×10</b></div>
+          <div class="bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="bars-row">
+          <div class="bars-head"><span>Versions livrées</span><b>+20 % seulement</b></div>
+          <div class="bar"><i style="width:11%"></i></div>
+        </div>
+        <figcaption>Effet moyen après adoption d'agents de code synchrones, sur plus de 500 000 développeurs GitHub. <a href="https://www.nber.org/papers/w35275" target="_blank" rel="noopener">NBER Working Paper 35275</a>, 2026.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="block" id="modules" aria-labelledby="mods">
+    <div class="wrap">
+      <h2 class="h2" id="mods">8 modules pour construire le harness de l'équipe.</h2>
+      <p class="intro">On choisit ensemble, pendant l'échange de 30 min, les modules qui répondent aux enjeux de votre équipe.</p>
+      <div class="mods-carousel" role="region" aria-roledescription="carrousel" aria-label="Les 8 modules développeurs">
+        <div class="mc-track" tabindex="0" data-start="4">
+          <article class="module" id="mod-1" aria-label="Module 1 sur 8">
+            <div class="module-body"><span class="module-num">Module 1</span><h3>Démarrer avec un agent de code</h3><p>Tokens, fenêtre de contexte, réponses non reproductibles. Modèle et outil, chat, complétion ou agent : quand utiliser quoi. Installer, configurer, et ce qu'on ne lui confie pas.</p></div>
+            <p class="keeps"><span>Repart avec</span>Son environnement et ses instructions personnelles configurés.</p>
+          </article>
+          <article class="module" id="mod-2" aria-label="Module 2 sur 8">
+            <div class="module-body"><span class="module-num">Module 2</span><h3>Context engineering</h3><p>Pourquoi le contexte compte plus que le prompt. Règles de projet, AGENTS.md, règles par dossier : ce que l'agent lit, ce qu'on y met, ce qu'on n'y met pas.</p></div>
+            <p class="keeps"><span>Repart avec</span>Un AGENTS.md versionné dans le dépôt.</p>
+          </article>
+          <article class="module" id="mod-3" aria-label="Module 3 sur 8">
+            <div class="module-body"><span class="module-num">Module 3</span><h3>Piloter un agent de code</h3><p>Écrire une demande comme un ticket. Explorer, planifier, implémenter, vérifier. Choisir le mode, donner à l'agent de quoi se vérifier, reprendre la main quand il dérive.</p></div>
+            <p class="keeps"><span>Repart avec</span>Une tâche réelle de son backlog dans une branche.</p>
+          </article>
+          <article class="module" id="mod-4" aria-label="Module 4 sur 8">
+            <div class="module-body"><span class="module-num">Module 4</span><h3>Skills et MCP</h3><p>Quand un geste répété devient un skill, et ce qui le déclenche. Connecter l'agent aux outils de l'équipe (tickets, base, documentation) par MCP.</p></div>
+            <p class="keeps"><span>Repart avec</span>Un skill d'équipe partagé dans le dépôt.</p>
+          </article>
+          <article class="module" id="mod-5" aria-label="Module 5 sur 8">
+            <div class="module-body"><span class="module-num">Module 5</span><h3>Spec-Driven Development</h3><p>Le code n'est plus le goulot, la spec l'est. Du brief à la spec, de la spec au plan, du plan à l'orchestration. Les frameworks de spec, et quand s'en passer.</p></div>
+            <p class="keeps"><span>Repart avec</span>Une feature spec et le plan exécuté par l'agent.</p>
+          </article>
+          <article class="module" id="mod-6" aria-label="Module 6 sur 8">
+            <div class="module-body"><span class="module-num">Module 6</span><h3>Sécurité et garde-fous</h3><p>Les risques propres au code généré. Adapter la revue au volume produit, poser des garde-fous (hooks, permissions, agent relecteur), savoir où ne pas utiliser l'IA.</p></div>
+            <p class="keeps"><span>Repart avec</span>Un garde-fou ou un agent de review branché sur le dépôt.</p>
+          </article>
+          <article class="module" id="mod-7" aria-label="Module 7 sur 8">
+            <div class="module-body"><span class="module-num">Module 7</span><h3>Agents et orchestration</h3><p>Quand déléguer à un sous-agent, et quand ne pas le faire. Agents spécialisés, travail en parallèle sur des branches isolées, coût de la coordination.</p></div>
+            <p class="keeps"><span>Repart avec</span>Un sous-agent spécialisé partagé dans le dépôt, et la règle qui dit quand lui déléguer.</p>
+          </article>
+          <article class="module" id="mod-8" aria-label="Module 8 sur 8">
+            <div class="module-body"><span class="module-num">Module 8</span><h3>Tokens, budget et frugalité</h3><p>Ce que coûte un agent et pourquoi. Choisir le modèle et l'effort selon la tâche, optimiser sa consommation, mesurer l'empreinte.</p></div>
+            <p class="keeps"><span>Repart avec</span>Une grille modèle et effort par type de tâche, et la mesure de la consommation de l'équipe.</p>
+          </article>
+        </div>
+        <div class="mc-nav">
+          <p class="mc-status" aria-live="polite"></p>
+          <button class="mc-btn mc-prev" type="button" aria-label="Modules précédents"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M11 4L6 9l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="mc-btn mc-next" type="button" aria-label="Modules suivants"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <div class="mods-more">
+        <h3>Tous les modules</h3>
+        <div class="mod-list">
+          <details><summary><span class="n">1</span><b>Démarrer avec un agent de code</b><small>Repart avec son environnement et ses instructions personnelles configurés.</small></summary><p>Tokens, fenêtre de contexte, réponses non reproductibles. Modèle et outil, chat, complétion ou agent : quand utiliser quoi. Installer, configurer, et ce qu'on ne lui confie pas.</p></details>
+          <details><summary><span class="n">2</span><b>Context engineering</b><small>Repart avec un AGENTS.md versionné dans le dépôt.</small></summary><p>Pourquoi le contexte compte plus que le prompt. Règles de projet, AGENTS.md, règles par dossier : ce que l'agent lit, ce qu'on y met, ce qu'on n'y met pas.</p></details>
+          <details><summary><span class="n">3</span><b>Piloter un agent de code</b><small>Repart avec une tâche réelle de son backlog dans une branche.</small></summary><p>Écrire une demande comme un ticket. Explorer, planifier, implémenter, vérifier. Choisir le mode, donner à l'agent de quoi se vérifier, reprendre la main quand il dérive.</p></details>
+          <details><summary><span class="n">4</span><b>Skills et MCP</b><small>Repart avec un skill d'équipe partagé dans le dépôt.</small></summary><p>Quand un geste répété devient un skill, et ce qui le déclenche. Connecter l'agent aux outils de l'équipe (tickets, base, documentation) par MCP.</p></details>
+          <details><summary><span class="n">5</span><b>Spec-Driven Development</b><small>Repart avec une feature spec et le plan exécuté par l'agent.</small></summary><p>Le code n'est plus le goulot, la spec l'est. Du brief à la spec, de la spec au plan, du plan à l'orchestration. Les frameworks de spec, et quand s'en passer.</p></details>
+          <details><summary><span class="n">6</span><b>Sécurité et garde-fous</b><small>Repart avec un garde-fou ou un agent de review branché sur le dépôt.</small></summary><p>Les risques propres au code généré. Adapter la revue au volume produit, poser des garde-fous (hooks, permissions, agent relecteur), savoir où ne pas utiliser l'IA.</p></details>
+          <details><summary><span class="n">7</span><b>Agents et orchestration</b><small>Repart avec un sous-agent spécialisé partagé dans le dépôt, et la règle qui dit quand lui déléguer.</small></summary><p>Quand déléguer à un sous-agent, et quand ne pas le faire. Agents spécialisés, travail en parallèle sur des branches isolées, coût de la coordination.</p></details>
+          <details><summary><span class="n">8</span><b>Tokens, budget et frugalité</b><small>Repart avec une grille modèle et effort par type de tâche, et la mesure de la consommation de l'équipe.</small></summary><p>Ce que coûte un agent et pourquoi. Choisir le modèle et l'effort selon la tâche, optimiser sa consommation, mesurer l'empreinte.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contrastes -->
+  <section class="block bg-white" aria-labelledby="diff">
+    <div class="wrap">
+      <h2 class="h2" id="diff">Ce qui change avec nous</h2>
+      <ul class="contrasts">
+        <li>
+          <span class="instead">Plutôt que des exercices génériques</span>
+          <h3>Vos projets et votre backlog</h3>
+          <blockquote><q>Une adaptation à l'audience et au contexte.</q><cite>Développeur iOS, Sofia</cite></blockquote>
+        </li>
+        <li class="featured">
+          <span class="instead">Plutôt que chacun dans son coin</span>
+          <h3>Une pratique commune, versionnée dans le dépôt</h3>
+          <blockquote><q>Tout le monde a les concepts, et les mêmes. […] On a un langage commun, et maintenant on peut construire et réfléchir aux process.</q><cite><img src="assets/photo-thomas-cerqueus.jpg" alt="" width="40" height="40"><span><b>Thomas Cerqueus</b>CTO, Anytime</span></cite></blockquote>
+        </li>
+        <li>
+          <span class="instead">Plutôt que dépendre d'un expert externe</span>
+          <h3>Une équipe qui repart autonome, avec ses livrables</h3>
+          <blockquote><q>On a bien appris comment utiliser l'outil, les bonnes pratiques et les mauvaises pratiques, les pièges.</q><cite>Développeur mobile, Sofia</cite></blockquote>
+        </li>
+      </ul>
+      <div class="intro-peer">
+        <p>Parlez à une équipe que nous avons formée.<span>On organise l'échange avant tout engagement de votre part.</span></p>
+        <a class="btn btn-ghost btn-sm" href="#rdv" data-prefill="J'aimerais être mis en relation avec une équipe que vous avez formée.">Demander une mise en relation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formats et prix -->
+  <section class="block bg-lilac" id="prix" aria-labelledby="tarif">
+    <div class="wrap">
+      <h2 class="h2" id="tarif">Deux formats, un prix par session</h2>
+      <p class="intro">Le prix ne dépend pas du nombre de participants. <strong>Vous formez les deux équipes ?</strong> On compose le format ensemble pendant l'échange.</p>
+      <div class="formats">
+        <article class="format">
+          <h3>1 jour</h3>
+          <p class="price">3 000 € <small>HT</small></p>
+          <p class="price-meta">par session, jusqu'à 12 participants<small>hors frais de déplacement</small></p>
+          <p><strong>Les modules prioritaires pour démarrer.</strong> Par exemple : context engineering et piloter un agent de code.</p>
+        </article>
+        <article class="format">
+          <h3>2 jours</h3>
+          <p class="price">6 000 € <small>HT</small></p>
+          <p class="price-meta">par session, jusqu'à 12 participants<small>hors frais de déplacement</small></p>
+          <p><strong>De quoi couvrir les enjeux de toute l'équipe.</strong> Par exemple, en plus : skills et MCP, sécurité et garde-fous.</p>
+        </article>
+      </div>
+      <div class="opco">
+        <p>Finançables par votre OPCO, selon éligibilité.<span>Nous préparons les documents pour votre OPCO.</span></p>
+        <a class="btn btn-ghost btn-sm" href="simulateur-opco.html">Estimer votre prise en charge</a>
+      </div>
+      <ul class="conditions">
+        <li><strong>Chez vous ou à distance</strong>Intra-entreprise, sur vos projets réels, en une fois ou en plusieurs sessions.</li>
+        <li><strong>Démarrage sous un mois</strong>En présentiel partout en France, frais de déplacement en sus.</li>
+        <li><strong>Entreprise à impact ou petite équipe</strong>Nous adaptons le tarif. On en parle pendant l'échange.</li>
+      </ul>
+      <div class="after-price">
+        <p>Le programme détaillé (objectifs, prérequis, modalités), à transmettre à vos RH ou à votre direction.</p>
+        <a class="btn btn-ghost btn-sm" href="programme-developpeurs.pdf" download data-download-gate data-programme="Développeurs">Télécharger le programme (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formateur -->
+  <section class="block" aria-labelledby="formateur">
+    <div class="wrap">
+      <article class="person">
+        <img src="assets/photo-aurelien-binder-meunier.jpg" alt="Aurélien Binder-Meunier" width="180" height="225" loading="lazy">
+        <div>
+          <h2 id="formateur">Aurélien Binder-Meunier</h2>
+          <div class="role">Votre formateur · cofondateur, CTO</div>
+          <p>Ex-CTO et engineering manager, 15 ans en architecture technique et en organisation d'équipes R&amp;D. Il forme des équipes tech au développement assisté par IA (Webedia, Sofia, Anytime), et depuis plusieurs années à la robustesse et à l'éco-conception logicielle (SNCF, Thales, Decathlon). Praticien quotidien des agents de code, il défend une approche qui renforce la qualité au lieu d'intensifier le travail. Chez kairn.academy, il est côté harness : contexte, agents, garde-fous.</p>
+          <a class="text-link" href="https://www.linkedin.com/in/abmeunier/" target="_blank" rel="noopener">Suivre Aurélien sur LinkedIn</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block bg-white" aria-labelledby="fq">
+    <div class="wrap faq">
+      <h2 class="h2" id="fq">Questions fréquentes</h2>
+      <div class="faq-list">
+        <details><summary>Et nos données, notre code ?</summary><p>Nous travaillons sur vos projets, avec vos règles. La formation traite de ce qu'on confie ou non à un agent, des permissions et des garde-fous à poser (module 6). Pour les données sensibles, il est possible de travailler avec des modèles hébergés en France. Nous vérifions vos contraintes pendant l'échange.</p></details>
+        <details><summary>Quels outils et quels prérequis ?</summary><p>L'approche est portable : règles, skills et garde-fous fonctionnent quel que soit l'agent de code choisi par votre équipe. Les prérequis (accès au dépôt, licences, une tâche réelle du backlog) sont listés dans le programme et vérifiés pendant l'échange.</p></details>
+        <details><summary>Et l'impact environnemental, l'éthique ?</summary><p>Nous en parlons franchement. Le module 8 traite du coût et de l'empreinte d'un agent, et de la façon de choisir le modèle et l'effort selon la tâche. Le module 6 aborde les cas où il vaut mieux ne pas utiliser l'IA.</p></details>
+        <details><summary>Comment fonctionne le financement OPCO ?</summary><p>Nos formations sont finançables par votre OPCO, selon éligibilité. La demande se fait avant la session : l'entreprise règle la formation, puis se fait rembourser par son OPCO. Nous préparons les documents nécessaires. Estimez votre prise en charge avec le <a href="simulateur-opco.html">simulateur OPCO</a>.</p></details>
+        <details><summary>Présentiel ou distanciel ?</summary><p>Les deux. Tous les modules peuvent se faire à distance. En présentiel, nous nous déplaçons partout en France, frais de déplacement en sus. La formation peut être donnée en une fois ou en plusieurs sessions.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suite, en une ligne -->
+  <nav class="wrap next-links" aria-label="Aller plus loin">
+    <span>Aller plus loin :</span>
+    <a href="formations.html">former les deux équipes ensemble</a>
+    <a href="formations-kickstart.html">le Kickstart, première marche vers des product builders qui vont jusqu'à la PR</a>
+    <a href="dojo-ia.html">le Dojo IA, pour garder l'élan</a>
+  </nav>
+
+  <!-- RDV, dernier bloc -->
+  <section class="rdv" id="rdv" aria-labelledby="cadrer">
+    <div class="wrap rdv-grid">
+      <div>
+        <h2 id="cadrer">Cadrons la formation <span class="accent">de votre équipe.</span></h2>
+        <ol class="rdv-steps">
+          <li>Ce que votre équipe fait déjà avec l'IA.</li>
+          <li>Les 3 cas d'usage à viser en priorité.</li>
+          <li>Le format, la durée et la piste de financement OPCO.</li>
+        </ol>
+        <p class="rdv-after"><strong>Sous 48 h, vous recevez le programme et le devis</strong>, rédigés pour être transmis tels quels à votre direction ou à vos RH.</p>
+        <p class="rdv-exit">Pas encore sûr du besoin ? <a href="diagnostic/">Faites le diagnostic express de la maturité IA de votre équipe en 3&nbsp;min.</a></p>
+      </div>
+      <!-- Demande de contact : envoyée au formulaire Brevo « Demandes de contact (site) » par assets/contact.js -->
+      <form class="booking" id="booking" data-source="Formation développeurs" data-team="developpeurs" novalidate>
+        <h3>Demander un échange de 30 min avec Aurélien</h3>
+        <span class="micro">En visio. Nous vous proposons un créneau par email sous 24 h ouvrées.</span>
+        <p class="booking-flag" role="status" hidden></p>
+        <div class="field"><label for="nom">Prénom et nom</label><input id="nom" name="nom" autocomplete="name" required aria-describedby="err-nom"><p class="field-error" id="err-nom" aria-live="polite"></p></div>
+        <div class="field"><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="err-email"><p class="field-error" id="err-email" aria-live="polite"></p></div>
+        <div class="field"><label for="equipe">Équipe à former <span class="opt">(facultatif)</span></label><input id="equipe" name="equipe" placeholder="Ex. : Product, Dev, SEO, Marketing…" autocomplete="off"></div>
+        <div class="field"><label for="entreprise">Entreprise <span class="opt">(facultatif)</span></label><input id="entreprise" name="entreprise" autocomplete="organization"></div>
+        <div class="field"><label for="contexte">Qu'est-ce qui vous amène ? <span class="opt">(facultatif)</span></label><textarea id="contexte" name="contexte" maxlength="500"></textarea></div>
+        <button class="btn btn-primary" type="submit">Envoyer ma demande
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="booking-legal">Vos informations servent uniquement à vous recontacter. <a href="/confidentialite">Politique de confidentialité</a>.</p>
+        <p class="booking-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- Téléchargement du programme : prénom, nom, email et programme (data-programme du lien) envoyés au formulaire Brevo « Téléchargement de programme (site) » par assets/telechargement.js -->
+<dialog class="dl-dialog" id="dl-dialog" aria-labelledby="dl-titre">
+  <div class="booking dl-card">
+    <button class="dl-close" type="button" data-close aria-label="Fermer">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <form class="dl-form" novalidate>
+      <h3 id="dl-titre">Recevoir le programme détaillé</h3>
+      <span class="micro">Objectifs, prérequis, modalités. Le PDF se télécharge dès que vous validez.</span>
+      <div class="dl-row">
+        <div class="field"><label for="dl-prenom">Prénom</label><input id="dl-prenom" name="prenom" autocomplete="given-name" required aria-describedby="err-dl-prenom"><p class="field-error" id="err-dl-prenom" aria-live="polite"></p></div>
+        <div class="field"><label for="dl-nom">Nom</label><input id="dl-nom" name="nom" autocomplete="family-name" required aria-describedby="err-dl-nom"><p class="field-error" id="err-dl-nom" aria-live="polite"></p></div>
+      </div>
+      <div class="field"><label for="dl-email">Email professionnel</label><input id="dl-email" name="email" type="email" autocomplete="email" required aria-describedby="err-dl-email"><p class="field-error" id="err-dl-email" aria-live="polite"></p></div>
+      <button class="btn btn-primary" type="submit">Télécharger le programme
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v9M4 8l4 4 4-4M3 14h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="booking-legal">Vos informations servent uniquement à vous recontacter au sujet de nos formations. <a href="/confidentialite">Politique de confidentialité</a>.</p>
+    </form>
+    <div class="dl-done" role="status">
+      <h3>Le téléchargement a démarré.</h3>
+      <p>Rien ne s'est passé ? <a class="dl-retry" href="#" download>Télécharger à nouveau le PDF</a>.</p>
+      <button class="btn btn-ghost btn-sm" type="button" data-close>Fermer</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="sticky-cta" aria-hidden="true">
+  <a class="btn btn-primary" href="#rdv" tabindex="-1">Cadrer la formation de mon équipe</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="assets/logo-kairn-academy-blanc.webp" alt="kairn.academy, accueil" width="2000" height="293"></a>
+    <nav aria-label="Pied de page">
+      <ul>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="formations-kickstart.html">Kickstart</a></li>
+        <li><a href="diagnostic/">Diagnostic</a></li>
+        <li><a href="simulateur-opco.html">Simulateur OPCO</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/confidentialite">Confidentialité</a></li>
+        <li><a href="/cgv">CGV</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script src="assets/formations.js"></script>
+<script src="assets/contact.js"></script>
+<script src="assets/telechargement.js"></script>
+</body>
+</html>

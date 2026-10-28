@@ -1,0 +1,93 @@
+/* Programmes de formation imprimables (A4), source des PDF programme-*.pdf */
+:root {
+  --ground: #FBF7FA;
+  --lilac: #F4ECF2;
+  --plum: #3F0434;
+  --plum-950: #24021E;
+  --plum-600: #6E3F66;
+  --plum-200: #E8D5E4;
+  --line: #EADCE6;
+  --orange: #F16B52;
+  --orange-ink: #B4432C;
+  --orange-wash: #FDEDE8;
+  --font: 'Gabarito', system-ui, sans-serif;
+}
+@page { size: A4; margin: 14mm 15mm 16mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font: 400 9.4pt/1.4 var(--font); color: var(--plum-950); background: #fff; }
+h1, h2, h3 { margin: 0; color: var(--plum); text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* En-tête */
+.head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--plum); }
+.head .logo { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20pt; letter-spacing: -0.5px; color: var(--plum); line-height: 1; }
+.logo b { color: var(--orange); font-weight: 600; }
+.head .logo img { display: block; height: 24pt; width: auto; }
+.head > span:last-child { font-size: 8.5pt; font-weight: 600; color: var(--plum-600); }
+
+.title { margin-top: 12px; }
+.title h1 { font-size: 21pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.title p { margin: 6px 0 0; font-size: 10.5pt; line-height: 1.4; color: var(--plum-600); max-width: 40em; }
+
+/* Fiche pratique */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; margin: 12px 0 0; padding: 8px 14px; font-size: 8.8pt; line-height: 1.35; border-radius: 10px; background: var(--lilac); }
+.facts div { display: grid; grid-template-columns: 21mm 1fr; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--plum-200); }
+.facts div:nth-last-child(-n+2) { border-bottom: 0; }
+.facts dt { font-weight: 700; color: var(--plum); }
+.facts dd { margin: 0; }
+
+h2 { margin-top: 13px; font-size: 12pt; font-weight: 800; letter-spacing: -0.01em; }
+h2 + p, h2 + ul { margin-top: 6px; }
+ul { margin: 6px 0 0; padding-left: 16px; }
+li + li { margin-top: 3px; }
+li::marker { color: var(--orange-ink); }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 22px; }
+
+/* Modules */
+.modules { width: 100%; margin-top: 8px; border-collapse: collapse; font-size: 8.8pt; line-height: 1.35; }
+.modules th { text-align: left; font-size: 8.5pt; font-weight: 700; color: var(--plum-600); padding: 0 6px 5px; border-bottom: 2px solid var(--plum); }
+.modules td { vertical-align: top; padding: 5px 6px; border-bottom: 1px solid var(--line); }
+.modules tr { break-inside: avoid; }
+.modules td:first-child { width: 8mm; font-weight: 700; color: var(--orange-ink); }
+.modules td:nth-child(2) { width: 82mm; }
+.modules td b { display: block; font-size: 10pt; color: var(--plum); }
+.modules td:last-child { background: var(--orange-wash); }
+
+.note { margin-top: 10px; padding: 10px 14px; border-radius: 10px; background: var(--orange-wash); font-size: 9.5pt; }
+.note strong { color: var(--plum); }
+.page-break { break-before: page; }
+.todo { padding: 0 4px; border-radius: 4px; background: #FFF1A8; font-weight: 600; }
+
+/* Pied */
+.foot { margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--plum-200); display: flex; justify-content: space-between; gap: 16px; font-size: 8.5pt; color: var(--plum-600); }
+.foot b { color: var(--plum); }
+
+@media screen {
+  body { background: var(--ground); }
+  .sheet { width: 210mm; margin: 24px auto; padding: 14mm 15mm 16mm; background: #fff; box-shadow: 0 10px 40px -20px rgba(36, 2, 30, .35); }
+}
+ul.cols { display: grid; gap: 3px 22px; }
+ul.cols li + li { margin-top: 0; }
+
+/* Programme de session : déroulé horaire */
+.schedule { width: 100%; margin-top: 8px; border-collapse: collapse; font-size: 8.6pt; line-height: 1.35; }
+.schedule th { text-align: left; font-size: 8.3pt; font-weight: 700; color: var(--plum-600); padding: 0 6px 5px; border-bottom: 2px solid var(--plum); }
+.schedule td { vertical-align: top; padding: 5px 6px; border-bottom: 1px solid var(--line); }
+.schedule tr { break-inside: avoid; }
+.schedule td:first-child { width: 22mm; white-space: nowrap; font-weight: 600; color: var(--plum); }
+.schedule td:nth-child(2) { width: 26mm; font-weight: 700; color: var(--plum); }
+.schedule td:nth-child(2) small { display: block; font-weight: 500; color: var(--plum-600); }
+.schedule td:last-child { width: 12mm; text-align: center; font-weight: 700; color: var(--orange-ink); }
+.schedule .atelier { display: block; margin-top: 3px; font-weight: 600; color: var(--plum-950); }
+.schedule tr.break td { background: var(--lilac); color: var(--plum-600); font-weight: 500; }
+ol.objectives { margin: 6px 0 0; padding-left: 18px; }
+ol.objectives li::marker { color: var(--orange-ink); font-weight: 700; }
+.legal { margin-top: 14px; padding: 10px 14px; border-radius: 10px; background: var(--lilac); font-size: 8.4pt; line-height: 1.45; }
+.legal strong { color: var(--plum); }
+h2 { break-after: avoid; }
+.legal, .note, .foot { break-inside: avoid; }
+.legal { margin-top: 10px; }
+.foot { margin-top: 10px; padding-top: 8px; }
+.modules td { padding-top: 4px; padding-bottom: 4px; }
+.modules { font-size: 8.5pt; line-height: 1.32; }
