@@ -339,6 +339,12 @@ footer .logo img { height: 28px; }
 @media (max-width: 1080px) { .top .logo img { height: 28px; } }
 @media (max-width: 420px) { .top .logo img { height: 22px; } }
 </style>
+<style>/* En-tête fixe : toujours visible au défilement */
+html { scroll-padding-top: 88px; }
+header.top { position: sticky; top: 0; z-index: 60; }
+header.top::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: var(--ground, #FBF7FA); border-bottom: 1px solid rgba(36, 2, 30, .08); }
+html { overflow-x: clip; }
+</style>
 </head>
 <body>
 <header class="wrap top">

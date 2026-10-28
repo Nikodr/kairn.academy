@@ -7,6 +7,12 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/formations.css">
+<style>/* En-tête fixe : toujours visible au défilement */
+html { scroll-padding-top: 88px; }
+header.top { position: sticky; top: 0; z-index: 60; }
+header.top::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: var(--ground, #FBF7FA); border-bottom: 1px solid rgba(36, 2, 30, .08); }
+html { overflow-x: clip; }
+</style>
 </head>
 <body>
 <header class="wrap top"><a class="logo" href="/"><img src="assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a></header>
