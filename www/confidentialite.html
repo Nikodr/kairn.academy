@@ -4,8 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Politique de confidentialité · kairn.academy</title>
+<meta name="description" content="Données collectées par les formulaires de kairn.academy : finalités, prestataires, durée de conservation et exercice de vos droits.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Fredoka:wght@600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/formations.css">
 <style>/* En-tête fixe : toujours visible au défilement */
 html { scroll-padding-top: 88px; }
@@ -13,14 +17,80 @@ header.top { position: sticky; top: 0; z-index: 60; }
 header.top::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: var(--ground, #FBF7FA); border-bottom: 1px solid rgba(36, 2, 30, .08); }
 html { overflow-x: clip; }
 </style>
+<style>
+.legal { padding-block: 8px clamp(56px, 9vh, 112px); }
+.legal h1 { font-size: clamp(36px, 4.4vw, 64px); margin-top: 8px; }
+.legal .updated { margin: 16px 0 0; font-size: 14px; color: var(--plum-600); }
+.legal-grid { display: grid; grid-template-columns: minmax(200px, 260px) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); margin-top: clamp(32px, 6vh, 64px); align-items: start; }
+.legal-toc { position: sticky; top: 104px; }
+.legal-toc p { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .02em; color: var(--plum-600); }
+.legal-toc ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; border-left: 1px solid var(--line); }
+.legal-toc a { display: block; padding: 8px 14px; margin-left: -1px; border-left: 2px solid transparent; font-size: 15px; line-height: 1.35; color: var(--plum-600); text-decoration: none; }
+.legal-toc a:hover { color: var(--plum); border-left-color: var(--orange); }
+.legal-body { max-width: 72ch; font-size: 17px; line-height: 1.65; }
+.legal-body section + section { margin-top: 44px; }
+.legal-body h2 { font-size: clamp(22px, 2vw, 28px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 14px; scroll-margin-top: 104px; }
+.legal-body p { margin: 0 0 14px; color: var(--plum-950); }
+.legal-body a { text-decoration-color: var(--orange); text-decoration-thickness: 2px; font-weight: 600; }
+.legal-body a:hover { background: var(--orange-wash); }
+@media (max-width: 860px) {
+  .legal-grid { grid-template-columns: 1fr; gap: 28px; }
+  .legal-toc { position: static; }
+  .legal-toc ol { border-left: 0; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .legal-toc a { padding: 10px 0; border-left: 0; }
+}
+@media (max-width: 520px) { .legal-toc ol { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-<header class="wrap top"><a class="logo" href="/"><img src="assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a></header>
-<main class="wrap" style="max-width:720px;padding-block:48px;line-height:1.6">
-<h1>Politique de confidentialité</h1>
-<p><em>Dernière mise à jour : 28 octobre 2026.</em></p>
-<h2>1. Responsable du traitement</h2><p>Le responsable du traitement est <strong>The Green Compagnon</strong>, SAS au capital de 1 000 €, SIREN 884 731 514, dont le siège social est situé au 109 rue Georges Ribordy, 95390 Saint-Prix, qui publie le site sous la marque kairn.academy et dispense les formations.</p><p>Contact : Nicolas Drouet, <a href="mailto:nicolas@kairn.academy">nicolas@kairn.academy</a>, ou par courrier au siège social. Aucun délégué à la protection des données (DPO) n’a été désigné.</p><h2>2. Navigation sur le site</h2><p>Le site fonctionne sans compte. Il n’utilise aucun cookie de mesure d’audience, aucun cookie publicitaire et aucun pixel de suivi (ni Google Ads, ni Meta). Aucun bandeau de consentement n’est donc nécessaire.</p><p>Les polices de caractères sont chargées depuis Google Fonts : votre navigateur transmet alors son adresse IP à Google pour récupérer ces polices.</p><h2>3. Formulaires du site</h2><p><strong>Prise de rendez-vous et demande de contact.</strong> Données : nom, email professionnel, structure, message et, le cas échéant, les informations que vous ajoutez. Finalité : répondre à votre demande et préparer l’échange de 30 minutes. Base légale : votre consentement et les mesures précontractuelles que vous demandez.</p><p><strong>Diagnostic express.</strong> Données : vos réponses au questionnaire, le résultat calculé et, si vous les renseignez, votre email, votre poste et la taille de votre équipe. Finalité : calculer et vous transmettre votre résultat, puis, avec votre accord, vous recontacter. Base légale : votre consentement. Pendant que vous répondez, les réponses restent dans la mémoire de votre navigateur (stockage de session) et sont effacées à la fermeture de l’onglet.</p><p><strong>Simulateur de prise en charge OPCO.</strong> Données : prénom, email professionnel, informations sur votre structure (dénomination, SIREN, effectif, convention collective, OPCO), nombre de participants, montant du devis si vous l’indiquez, choix de simulation et résultat affiché. Finalité : calculer et afficher votre estimation, puis, avec votre accord, vous recontacter au sujet de votre dossier de financement. Base légale : votre consentement. Pendant la recherche de votre structure, le texte saisi est envoyé depuis votre navigateur à l’annuaire public des entreprises (recherche-entreprises.api.gouv.fr), selon ses propres conditions. Nous ne collectons aucune donnée de dirigeant.</p><p><strong>Téléchargement de programme.</strong> Données : votre email. Finalité : vous envoyer le programme demandé. Base légale : votre consentement.</p><p>Les champs obligatoires sont signalés dans chaque formulaire. Sans eux, la demande ne peut pas être traitée. Les formulaires ne vous inscrivent pas à une lettre d’information sans votre accord explicite.</p><h2>4. Destinataires et prestataires</h2><p>Vos données sont accessibles uniquement aux personnes de The Green Compagnon et de kairn.academy chargées du suivi des demandes. Elles ne sont ni vendues ni cédées.</p><p>Prestataires (sous-traitants) : <strong>Brevo</strong> (outil d’emailing et de gestion des contacts, qui reçoit les formulaires et envoie les emails de suivi), <strong>Google</strong> (feuille de calcul Google Sheets qui reçoit les réponses du diagnostic, et Google Fonts) et <strong>GitHub</strong> (hébergement du site, GitHub Pages). Le formulaire du simulateur est protégé contre les robots par <strong>Cloudflare Turnstile</strong>, qui traite l’adresse IP et des signaux du navigateur au titre de notre intérêt légitime à protéger le site, sans cookie publicitaire ni profilage.</p><h2>5. Durée de conservation</h2><p>Les données des formulaires (contact, diagnostic, simulateur, téléchargement) sont conservées 3 ans à compter du dernier échange, puis supprimées. Vous pouvez demander leur suppression avant ce terme.</p><h2>6. Transferts hors de l’Union européenne</h2><p>Certains prestataires (Google, GitHub, Cloudflare) peuvent traiter des données hors de l’Union européenne. Ces transferts sont encadrés par les garanties prévues par le RGPD (notamment le Data Privacy Framework ou les clauses contractuelles types) que ces prestataires indiquent appliquer dans leurs propres conditions.</p><h2>7. Vos droits</h2><p>Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition, du droit à la portabilité lorsqu’il s’applique, et du droit de retirer votre consentement à tout moment. Pour les exercer, écrivez à <a href="mailto:nicolas@kairn.academy">nicolas@kairn.academy</a> en indiquant l’adresse email utilisée dans le formulaire. Vous pouvez aussi vous désinscrire de tout email de suivi en un clic.</p><p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p><h2>8. Liens externes et mises à jour</h2><p>Les sites vers lesquels pointent nos liens appliquent leur propre politique de confidentialité. Les données saisies dans nos formulaires ne leur sont pas transmises, hormis aux destinataires cités à la section 4.</p><p>Cette politique est mise à jour lorsque les fonctionnalités ou les traitements évoluent.</p>
-<p><a href="/">Retour à l’accueil</a></p>
+<header class="wrap top">
+  <a class="logo" href="/"><img src="assets/logo-kairn-academy.webp" alt="kairn.academy, accueil" width="2000" height="348"></a>
+  <nav class="top-nav" aria-label="Navigation principale">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <ul class="nav-links" id="menu">
+      <li class="has-sub">
+        <button class="top-link sub-toggle" type="button" aria-expanded="false" aria-controls="sub-formations">Formations<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="sub" id="sub-formations">
+          <li><a href="formations.html">Toutes les formations<small>Product et tech, ensemble</small></a></li>
+          <li><a href="formations-product.html">Product<small>PMs et designers</small></a></li>
+          <li><a href="formations-developpeurs.html">Développeurs<small>Équipes de développement</small></a></li>
+        </ul>
+      </li>
+      <li><a class="top-link" href="formations-kickstart.html">Kickstart</a></li>
+      <li><a class="top-link" href="dojo-ia.html">Dojo IA</a></li>
+      <li><a class="top-link" href="diagnostic/">Diagnostic</a></li>
+      <li><a class="top-link" href="simulateur-opco.html">Simulateur OPCO</a></li>
+    </ul>
+    <a class="top-cta" href="/#rdv">Réserver 30 min</a>
+  </nav>
+</header>
+
+<main class="wrap legal">
+  <ol class="crumbs" aria-label="Fil d'Ariane"><li><a href="/">Accueil</a></li><li aria-current="page">Politique de confidentialité</li></ol>
+  <h1>Politique de confidentialité</h1>
+  <p class="updated">Dernière mise à jour : 28 octobre 2026.</p>
+  <div class="legal-grid">
+    <nav class="legal-toc" aria-label="Sommaire"><p>Sur cette page</p><ol><li><a href="#responsable-du-traitement">1. Responsable du traitement</a></li><li><a href="#navigation-sur-le-site">2. Navigation sur le site</a></li><li><a href="#formulaires-du-site">3. Formulaires du site</a></li><li><a href="#destinataires-et-prestataires">4. Destinataires et prestataires</a></li><li><a href="#duree-de-conservation">5. Durée de conservation</a></li><li><a href="#transferts-hors-de-lunion-europeenne">6. Transferts hors de l’Union européenne</a></li><li><a href="#vos-droits">7. Vos droits</a></li><li><a href="#liens-externes-et-mises-a-jour">8. Liens externes et mises à jour</a></li></ol></nav>
+    <div class="legal-body"><section><h2 id="responsable-du-traitement">1. Responsable du traitement</h2><p>Le responsable du traitement est <strong>The Green Compagnon</strong>, SAS au capital de 1 000 €, SIREN 884 731 514, dont le siège social est situé au 109 rue Georges Ribordy, 95390 Saint-Prix, qui publie le site sous la marque kairn.academy et dispense les formations.</p><p>Contact : Nicolas Drouet, <a href="mailto:nicolas@kairn.academy">nicolas@kairn.academy</a>, ou par courrier au siège social. Aucun délégué à la protection des données (DPO) n’a été désigné.</p></section><section><h2 id="navigation-sur-le-site">2. Navigation sur le site</h2><p>Le site fonctionne sans compte. Il n’utilise aucun cookie de mesure d’audience, aucun cookie publicitaire et aucun pixel de suivi (ni Google Ads, ni Meta). Aucun bandeau de consentement n’est donc nécessaire.</p><p>Les polices de caractères sont chargées depuis Google Fonts : votre navigateur transmet alors son adresse IP à Google pour récupérer ces polices.</p></section><section><h2 id="formulaires-du-site">3. Formulaires du site</h2><p><strong>Prise de rendez-vous et demande de contact.</strong> Données : nom, email professionnel, structure, message et, le cas échéant, les informations que vous ajoutez. Finalité : répondre à votre demande et préparer l’échange de 30 minutes. Base légale : votre consentement et les mesures précontractuelles que vous demandez.</p><p><strong>Diagnostic express.</strong> Données : vos réponses au questionnaire, le résultat calculé et, si vous les renseignez, votre email, votre poste et la taille de votre équipe. Finalité : calculer et vous transmettre votre résultat, puis, avec votre accord, vous recontacter. Base légale : votre consentement. Pendant que vous répondez, les réponses restent dans la mémoire de votre navigateur (stockage de session) et sont effacées à la fermeture de l’onglet.</p><p><strong>Simulateur de prise en charge OPCO.</strong> Données : prénom, email professionnel, informations sur votre structure (dénomination, SIREN, effectif, convention collective, OPCO), nombre de participants, montant du devis si vous l’indiquez, choix de simulation et résultat affiché. Finalité : calculer et afficher votre estimation, puis, avec votre accord, vous recontacter au sujet de votre dossier de financement. Base légale : votre consentement. Pendant la recherche de votre structure, le texte saisi est envoyé depuis votre navigateur à l’annuaire public des entreprises (recherche-entreprises.api.gouv.fr), selon ses propres conditions. Nous ne collectons aucune donnée de dirigeant.</p><p><strong>Téléchargement de programme.</strong> Données : votre email. Finalité : vous envoyer le programme demandé. Base légale : votre consentement.</p><p>Les champs obligatoires sont signalés dans chaque formulaire. Sans eux, la demande ne peut pas être traitée. Les formulaires ne vous inscrivent pas à une lettre d’information sans votre accord explicite.</p></section><section><h2 id="destinataires-et-prestataires">4. Destinataires et prestataires</h2><p>Vos données sont accessibles uniquement aux personnes de The Green Compagnon et de kairn.academy chargées du suivi des demandes. Elles ne sont ni vendues ni cédées.</p><p>Prestataires (sous-traitants) : <strong>Brevo</strong> (outil d’emailing et de gestion des contacts, qui reçoit les formulaires et envoie les emails de suivi), <strong>Google</strong> (feuille de calcul Google Sheets qui reçoit les réponses du diagnostic, et Google Fonts) et <strong>GitHub</strong> (hébergement du site, GitHub Pages). Le formulaire du simulateur est protégé contre les robots par <strong>Cloudflare Turnstile</strong>, qui traite l’adresse IP et des signaux du navigateur au titre de notre intérêt légitime à protéger le site, sans cookie publicitaire ni profilage.</p></section><section><h2 id="duree-de-conservation">5. Durée de conservation</h2><p>Les données des formulaires (contact, diagnostic, simulateur, téléchargement) sont conservées 3 ans à compter du dernier échange, puis supprimées. Vous pouvez demander leur suppression avant ce terme.</p></section><section><h2 id="transferts-hors-de-lunion-europeenne">6. Transferts hors de l’Union européenne</h2><p>Certains prestataires (Google, GitHub, Cloudflare) peuvent traiter des données hors de l’Union européenne. Ces transferts sont encadrés par les garanties prévues par le RGPD (notamment le Data Privacy Framework ou les clauses contractuelles types) que ces prestataires indiquent appliquer dans leurs propres conditions.</p></section><section><h2 id="vos-droits">7. Vos droits</h2><p>Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition, du droit à la portabilité lorsqu’il s’applique, et du droit de retirer votre consentement à tout moment. Pour les exercer, écrivez à <a href="mailto:nicolas@kairn.academy">nicolas@kairn.academy</a> en indiquant l’adresse email utilisée dans le formulaire. Vous pouvez aussi vous désinscrire de tout email de suivi en un clic.</p><p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p></section><section><h2 id="liens-externes-et-mises-a-jour">8. Liens externes et mises à jour</h2><p>Les sites vers lesquels pointent nos liens appliquent leur propre politique de confidentialité. Les données saisies dans nos formulaires ne leur sont pas transmises, hormis aux destinataires cités à la section 4.</p><p>Cette politique est mise à jour lorsque les fonctionnalités ou les traitements évoluent.</p></section></div>
+  </div>
 </main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="assets/logo-kairn-academy-blanc.webp" alt="kairn.academy, accueil" width="2000" height="293"></a>
+    <nav aria-label="Pied de page">
+      <ul>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="formations-kickstart.html">Kickstart</a></li>
+        <li><a href="dojo-ia.html">Dojo IA</a></li>
+        <li><a href="diagnostic/">Diagnostic</a></li>
+        <li><a href="simulateur-opco.html">Simulateur OPCO</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/confidentialite">Confidentialité</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script src="assets/formations.js"></script>
 </body>
 </html>
