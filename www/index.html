@@ -88,7 +88,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .has-sub { position: relative; }
 .sub-toggle { display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; border-bottom: 2px solid transparent; font: 600 15px/1.15 var(--font); color: var(--plum); cursor: pointer; padding: 6px 0; }
 .has-sub.is-current .sub-toggle { border-bottom-color: var(--orange); }
-.sub-toggle svg { transition: transform .2s ease; }
+.sub-toggle svg { margin-left: 6px; transition: transform .2s ease; }
 .sub-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .sub { display: none; position: absolute; z-index: 25; top: calc(100% + 12px); left: -16px; min-width: 270px; list-style: none; margin: 0; padding: 8px; background: var(--white); border-radius: 16px; box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(36, 2, 30, .35); }
 .sub::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
@@ -411,7 +411,7 @@ html { overflow-x: clip; }
             <a class="btn btn-primary" href="#rdv">Cadrer mon besoin
               <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <span class="micro">30 min en visio · proposition et devis sous 48 h</span>
+            <span class="micro">30min - devis sous 48h</span>
           </div>
           <div class="cta">
             <a class="btn btn-ghost" href="diagnostic/">Diagnostiquer mon équipe</a>
@@ -710,7 +710,7 @@ html { overflow-x: clip; }
       </div>
       <!-- Demande de contact : envoyée au formulaire Brevo « Demandes de contact (site) » par assets/contact.js -->
       <form class="booking" id="booking" data-source="Accueil" novalidate>
-        <h3>Demander un échange de 30 min avec Nicolas ou Aurélien</h3>
+        <h3>Demander un échange de 30&nbsp;min avec Nicolas ou Aurélien</h3>
         <span class="micro">En visio. Nous vous proposons un créneau par email sous 24 h ouvrées.</span>
         <div class="field"><label for="nom">Prénom et nom</label><input id="nom" name="nom" autocomplete="name" required aria-describedby="err-nom"><p class="field-error" id="err-nom" aria-live="polite"></p></div>
         <div class="field"><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="err-email"><p class="field-error" id="err-email" aria-live="polite"></p></div>
